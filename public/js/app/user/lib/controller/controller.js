@@ -10,16 +10,18 @@ export default can.Control.extend({
 }, {
 	init: function() {
 		var server = $('#modules').find('.module.server');
-
-		if(server.length) {
+		
+		this.server = server.length;
+		
+		if(this.server) {
 			server.children().appendTo(this.element);
 			server.remove();
 			return this.after_request();
 		}
-
+		
 		System.import(this.options.css_path + this.options.name + '/index.css!').then(can.proxy(this.request, this));
 	},
-
+	
 	request: function() {
 		var	str = this.options.path.server,
 			strLastChar,
@@ -70,6 +72,10 @@ export default can.Control.extend({
 		this.variables();
 		this.plugins();
 		$(window).trigger('custom_resize');
+		
+		if(this.server) {
+			$(window).trigger('custom_ready');
+		}
 		
 		this.after_init(data);
 	},
