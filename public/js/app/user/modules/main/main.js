@@ -38,7 +38,7 @@ export default Controller.extend(
 			new google.maps.Marker({
 				position: this.vishnevoeLatLng,
 				map: this.map,
-				icon: this.base_url + '/img/user/marker.png'
+				icon: this.base_url + '/img/user/1280/marker.png'
 			});
 		},
 		

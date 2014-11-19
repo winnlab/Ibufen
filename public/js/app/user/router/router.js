@@ -25,6 +25,10 @@ export default can.Control.extend({
 			can.route.bindings.pushstate.root = options.base;
 			can.route.ready();
 			
+			$('body').css({
+				overflow: 'auto'
+			});
+			
 			$('#preloader').fadeOut(300);
 		},
 		
