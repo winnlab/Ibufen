@@ -1,0 +1,27 @@
+{{#gt pages 1}}
+	<div class="col-md-offset-0">
+		<ul class="pagination">
+			<li class="pn-prev {{#is page 1}}disabled{{/if}}"><a href="#">&laquo;</a></li>
+			<li class="pn-page {{#is 1 page}}active{{/is}}" data-page="1"><a href="#">1</a></li>
+			{{#if blockBefore}}
+				<li class="disabled"><a href="#">...</a></li>
+			{{/if}}
+			{{{pagesList}}}
+			{{#if blockAfter}}
+				<li class="disabled"><a href="#">...</a></li>
+			{{/if}}
+			{{#isnt pages 1}}
+				<li class="pn-page {{#is pages page}}active{{/is}}" data-page="{{pages}}"><a href="#">{{pages}}</a></li>
+			{{/isnt}}
+			<li class="pn-next {{#is page pages}}disabled{{/if}}"><a href="#">&raquo;</a></li>
+			<div class="col-md-3 pull-right" title="Перейти на страницу...">
+				<div class="input-group">
+					<input type="text" class="form-control" can-value="page" />
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">Перейти</button>
+				  	</span>
+				</div>
+			</div>
+		</ul>
+	</div>
+{{/if}}

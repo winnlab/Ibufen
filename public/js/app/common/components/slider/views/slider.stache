@@ -1,0 +1,9 @@
+<div class='slider-wrap'>
+	{{#if gallery}}
+		{{#each gallery.images}}
+			<div class='slider-image {{#is @index position}}current{{/is}}' style='background-image: url("/img/uploads/{{.}}");'></div>
+		{{/each}}
+    {{/if}}
+	<div class='slider-arrow left'><i class="fa fa-chevron-left fa-3"></i></div>
+	<div class='slider-arrow right'><i class="fa fa-chevron-right fa-3"></i></div>
+</div>

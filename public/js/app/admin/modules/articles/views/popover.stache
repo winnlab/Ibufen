@@ -1,0 +1,29 @@
+<div class="articlePopover panel panel-primary" {{data 'article'}}>
+	<div class="panel-heading">
+		<span>Позиция статьи "{{article.title}}" </span>
+		<span>{{#if themeName}}в теме "{{themeName}}"{{else}}на главной{{/if}}</span>
+	</div>
+	<div class="panel-body">
+		<div class="form-group">
+			<label class="col-md-2 control-label">Позиция:</label>
+			<div class="col-md-10">
+				<input class="form-control" type="text" can-value="position" />
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10 checkbox">
+				<label class="col-md-12">
+					<input type="checkbox" can-value="hasBigView" /> Отображать большой?
+				</label>
+			</div>
+		</div>
+	</div>
+	<div class="panel-body">
+		<button type="button" class="btn btn-primary savePosition pull-right">
+			Сохранить
+		</button>
+		<button type="button" class="btn btn-danger cancelPosition">
+			Отмена
+		</button>
+	</div>
+</div>

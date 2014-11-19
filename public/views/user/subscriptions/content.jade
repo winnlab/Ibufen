@@ -1,0 +1,57 @@
+.content
+	include ../helpers/breadcrumbs
+
+	.topper_title Подписки
+
+	.tabs
+		.tabs_flex
+			.tab.tab_selector.authors(data-tab="authors")
+				.tab_selector_inside
+					.title На автора
+			
+			.tab.tab_selector.themes.active(data-tab="themes")
+				.tab_selector_inside
+					.title На темы
+
+	.tab_contents
+		.tab_content.tab_selector.themes.active
+			.tab_head
+				.age
+					.adorable_table
+						.adorable_cell Возраст
+
+				.theme
+					.adorable_table
+						.adorable_cell Тема
+
+				.unsub
+					.adorable_table
+						.adorable_cell Отписатся
+
+			- each subscription, key in subscriptions
+				.tab_block
+					.close(data-theme_id = subscription.theme_id.toString())
+					.title
+						.title_inner
+							.age
+								.adorable_table
+									.adorable_cell
+										img.rounded.title_img(src="/img/avatar_100x100.jpg")
+										.label= subscription.age
+							.theme
+								.adorable_table
+									.adorable_cell= subscription.name
+
+		.tab_content.tab_selector.authors
+			.tab_head
+				.age
+					.adorable_table
+						.adorable_cell Возраст
+				
+				.theme
+					.adorable_table
+						.adorable_cell Тема
+				
+				.unsub
+					.adorable_table
+						.adorable_cell Отписатся

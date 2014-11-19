@@ -1,0 +1,14 @@
+extends ../layout
+
+block append header
+	link(href="/css/user/subscriptions/subscriptions.css" rel="stylesheet")
+
+block content
+	.module.server.subscriptions#subscriptions
+		include content
+
+block append scripts
+	script.
+		var app = {
+			subscriptions: !{JSON.stringify(subscriptions)}
+		};

@@ -1,0 +1,11 @@
+extends ../layout
+
+block append header
+	link(href="/css/user/main/main.css" rel="stylesheet")
+
+block content
+	.module.server#main
+		include content
+
+block append scripts
+	

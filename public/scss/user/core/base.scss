@@ -1,0 +1,18 @@
+@charset "UTF-8";
+@import '../../normalize/normalize';
+@import '../dynamic/dynamic';
+
+body {
+	font-size: 18px;
+	background: url('/img/user/pat.jpg') repeat center;
+	background-color: $bg;
+	color: $base;
+	font-family: 'Roboto_Medium';
+	overflow-x: hidden;
+}
+
+#main_container {
+	max-width: $big_max_width;
+	min-width: $big_min_width;
+	margin: 0 auto;
+}

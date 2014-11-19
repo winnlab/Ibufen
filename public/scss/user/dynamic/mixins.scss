@@ -1,0 +1,135 @@
+/* useful */
+$small: 1180px;
+$large: 1600px;
+
+@mixin respond-to($media) {
+	@if $media == small {
+		@media only screen and (max-width: $small) { @content; }
+	}
+	@else if $media == medium {
+		@media only screen and (min-width: $small + 1) and (max-width: $large - 1) { @content; }
+	}
+	@else if $media == large {
+		@media only screen and (min-width: $large) { @content; }
+	}
+}
+
+
+@mixin absolute_horizontal_centered {
+	left: 0;
+	right: 0;
+	margin: auto;
+	position: absolute;
+}
+
+@mixin absolute_centered {
+	@include absolute_horizontal_centered();
+	top: 0;
+	bottom: 0;
+}
+
+@mixin border_radius($size) {
+	-moz-border-radius: $size;
+	-webkit-border-radius: $size;
+	-khtml-border-radius: $size;
+	border-radius: $size;
+}
+
+@mixin box_shadow($shadow...) {
+	-webkit-box-shadow:	$shadow;
+	-moz-box-shadow:	$shadow;
+	box-shadow:			$shadow;
+}
+
+@mixin transition($transition...) {
+	-webkit-transition: $transition;
+	-moz-transition: 	$transition;
+	-o-transition: 		$transition;
+	-ms-transition: 	$transition;
+	transition: 		$transition;
+}
+
+@mixin image_fix {
+	@include box_shadow(0 0 0 rgba(0, 0, 0, 0));
+	image-rendering: optimizespeed;
+}
+
+@mixin lovely {
+	content: "";
+    display: block;
+    margin-top: 100%;
+}
+
+@mixin linear_gradient($val1, $val2, $val3) {
+	background-image: -o-linear-gradient($val1, $val2, $val3);
+	background-image: -moz-linear-gradient($val1, $val2, $val3);
+	background-image: -webkit-linear-gradient($val1, $val2, $val3);
+	background-image: -ms-linear-gradient($val1, $val2, $val3);
+	background-image: linear-gradient($val1, $val2, $val3);
+}
+
+@mixin pseudo {
+	position: absolute;
+	content: "";
+}
+
+@mixin border_boxed {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@mixin transform($val) {
+	-webkit-transform: $val;
+	-moz-transform: $val;
+	-o-transform: $val;
+	-ms-transform: $val;
+	transform: $val;
+}
+
+@mixin background_cover {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	-moz-background-size: cover;
+}
+
+@mixin my_inline_block {
+	display: inline-block;
+	vertical-align: top;
+}
+
+@mixin rounded {
+	@include border_radius(99999em);
+}
+
+@mixin reverse {
+	display: inline-flexbox;
+	display: -moz-inline-box;
+	display: -webkit-inline-box;
+	display: -moz-inline-flex;
+	display: -webkit-inline-flex;
+	flex-direction: row-reverse;
+	-moz-box-direction: reverse;
+	-webkit-box-direction: reverse;
+	-moz-flex-direction: row-reverse;
+	-webkit-flex-direction: row-reverse;
+}
+
+/* base */
+
+@mixin bold {
+	font-family: 'PT_Sans_Bold';
+	letter-spacing: 0.5px;
+}
+
+@mixin column {
+	@include my_inline_block;
+	@include border_boxed;
+	margin: 10px;
+	width: 280px;
+	position: relative;
+	&.double {
+		width: 580px;
+	}
+}

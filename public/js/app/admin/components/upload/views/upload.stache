@@ -1,0 +1,41 @@
+<label class="btn btn-primary" for="{{uploadId}}">
+	<content />
+</label>
+{{#if progress}}
+	<div class="progress">
+		<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%;">
+			{{progress}}%
+		</div>
+	</div>
+{{/if}}
+<form action="{{url}}" method="POST" enctype="multipart/form-data">
+	<input type="file" name="{{name}}{{#if multiple}}[]{{/if}}" accept="{{accept}}" id="{{uploadId}}" {{#if multiple}}multiple{{/if}} />
+</form>
+{{#if files.length}}
+	<div class="queue">
+		{{#each files}}
+			<div>{{name}}</div>
+		{{/each}}
+	</div>
+{{/if}}
+{{#if uploaded.length}}
+	<div class="uploadedWrap" >
+		{{#each uploaded}}
+			<div class="image-item" {{#if sortable}}data-name="{{.}}"{{/if}}>
+				{{#stringContains accept 'image'}}
+					<span class="uploaded thumbnail" style="background-image: url('/img/uploads/{{.}}')"></span>
+				{{else}}
+					<span>{{.}}</span>&nbsp;
+				{{/if}}
+				{{#isDeleteBtn}}
+					<div {{data "uploaded"}} class="remove btn btn-danger" style="position: absolute; top: -5%; left: -3%">
+						<i class="fa fa-trash-o"></i>
+					</div>
+				{{/isDeleteBtn}}
+				{{#if showurl}}
+					<input class="col-md-12" type="text" value="{{getURLRoot}}/img/uploads/{{.}}" onClick="this.setSelectionRange(0, this.value.length)"/>
+				{{/if}}
+			</div>
+		{{/each}}
+	</div>
+{{/if}}

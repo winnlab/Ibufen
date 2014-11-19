@@ -1,0 +1,336 @@
+<div class="box {{#if article._id}}box-warning{{/if}}">
+    <div class="box-header">
+        <h3 class="box-title">
+            {{#if article._id}}Редактирование{{else}}Добавление{{/if}} статьи
+        </h3>
+        <div class="box-tools pull-right">
+            <div class="btn btn-primary toList">
+                Назад
+            </div>
+        </div>
+    </div>
+    <div class="box-footer">
+        <form class="form-horizontal setArticle">
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="title">Название:</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" can-value="article.title" placeholder="Наименование" />
+                    <div class="help help-block"></div>
+                </div>
+            </div>
+
+            {{#if article._id}}
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10 checkbox">
+                        <label class="col-md-4">
+                            <input type="checkbox" can-value="article.active" /> Активна?
+                        </label>
+                        <div class="help help-block"></div>
+                    </div>
+                </div>
+            {{/if}}
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="position">Позиция на главной (чем больше, тем раньше):</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="number" can-value="article.position" placeholder="Позиция" />
+                    <div class="help help-block"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 checkbox">
+                    <label>
+                        <input type="checkbox" can-value="article.hasBigView" /> Большой вид на главной?
+                    </label>
+                    <div class="help help-block"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 checkbox">
+                    <label>
+                        <input type="checkbox" can-value="article.recommended" /> Рекомендована?
+                    </label>
+                    <div class="help help-block"></div>
+                </div>
+            </div>
+
+            {{#if ages.length}}
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="age[age_id]">Возраста статьи:</label>
+                    <div class="col-md-10">
+                        <select class="currentAgeSelect form-control" multiple>
+                            {{#sortedBy ages 'title'}}
+                                <option {{data "ages"}} value="{{_id}}" {{#arrContains ageValue _id false false}}selected{{/arrContains}}>{{title}}</option>
+                            {{/sortedBy}}
+                        </select>
+                    </div>
+                </div>
+            {{/if}}
+
+            {{#if ageValue.length}}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Темы статьи
+                </div>
+                <div class="panel-body">
+                    {{#if themes.length}}
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <select class="currentThemeSelect form-control" multiple>
+                                    {{#sortedBy themes 'name'}}
+                                        {{#arrOfObjectsContains article.age '_id' age_id false}}
+                                            <option {{data "themes"}} value="{{_id}}" {{#arrContains themeValue _id false false}}selected{{/arrContains}}>{{name}}</option>
+                                        {{/arrContains}}
+                                    {{/sortedBy}}
+                                </select>
+                            </div>
+                        </div>
+                    {{/if}}
+                </div>
+                <div class="panel-body">
+                {{#sortedBy article.theme 'name'}}
+                    <div class="row">
+                        <div class="col-md-4">
+                            {{name}}:
+                        </div>
+                        <div class="col-md-4">
+                            <label>Позиция (чем больше, тем раньше):</label>
+                            <input type="number" can-value="position" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="pull-right">
+                                <input type="checkbox" can-value="hasBigView" />
+                                Отображать большой
+                            </label>
+                        </div>
+                    </div>
+                {{/sortedBy}}
+                </div>
+            </div>
+            {{/if}}
+
+            {{#if types.length}}
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="type[name]">Тип статьи:</label>
+                    <div class="col-md-10">
+                        <select can-value="article.type.name" class="form-control" name="type[name]">
+                            {{#sortedBy types 'name'}}
+                                <option value="{{name}}">{{name}}</option>
+                            {{/sortedBy}}
+                        </select>
+                    </div>
+                </div>
+            {{/if}}
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Параметры описания:
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="desc[shorttext]">Краткое описание:</label>
+                        <div class="col-md-10">
+                            <textarea maxlength="145" rows="4" class="form-control" type="text" can-value="article.desc.shorttext" placeholder="Краткое описание"></textarea>
+                            <div class="help help-block"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="desc[text]">Описание:</label>
+                        <div class="col-md-10">
+                            <textarea class="form-control" type="text" {{wysiwyg true module}} name="desc[text]">
+                                {{{article.desc.text}}}
+                            </textarea>
+                            <div class="help help-block"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{#if article._id}}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Изоборажения
+                    </div>
+                    <div class="panel-body">
+                        <upload
+                            class="col-md-12"
+                            name="image.background"
+                            url="/admin/article/img"
+                            delete-url="/admin/article/img"
+                            entity="{article}"
+                            uploaded="{article.image.background}"
+                            accept="image/*"
+                        >
+                            Загрузить изображение фона
+                        </upload>
+                    </div>
+                    {{#if article.image.background}}
+                        <div class="panel-body">
+                            <button type="button" class="btn btn-primary croppers">
+                                <span>Вырезать изображения&nbsp;</span>
+                                <i class="fa fa-level-down"></i>
+                            </button>
+                        </div>
+                        {{#if showCroppers}}
+                            {{#each cropSizes}}
+                                <div class="panel-body cropper-wrap" data-prefix="{{size}}" data-w="{{w}}" data-h="{{h}}"> 
+                                    <h4>{{name}}</h4>
+                                    <div class="col-md-6">
+                                        <img class="croppedImage" {{cropper article.image size ratio}} src="/img/uploads/{{article.image.background}}" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" class="btn btn-primary cropImage">
+                                            <i class="fa fa-crop"></i>
+                                            <span>Вырезать</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{#objectHasProperty article.image size}}
+                                            <h5 class="col-md-6">Превью:</h5>
+                                            <span class="pull-right">
+                                                <button type="button" class="btn-sm btn-danger removeCropped">
+                                                    <i class="fa fa-trash"></i>
+                                                    <span>Удалить</span>
+                                                </button>
+                                            </span>
+                                            <img class="cropped-postview" src="/img/uploads/{{getObjectProperty article.image size}}" />
+                                        {{/objectHasProperty}}
+                                    </div>
+                                </div>
+                            {{/each}}
+                            </div>
+                        {{/if}}
+                    {{/if}}
+                </div>
+            {{/if}}
+
+            {{#if article._id}}
+                <div class="panel panel-info">
+                    <div class="panel-heading col-md-12">
+                        <div class="panel-title">
+                            Галереи изображений
+                        </div>
+                        <div>
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-primary addGallery">
+                                    <i class="fa fa-plus"></i>
+                                    <span>Добавить галерею</span>
+                                </button>
+                            </div>
+                            <div class="col-md-8 {{#unless addingGallery}}hidden{{/unless}}">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" can-value="newGalleryName">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary confirmGallery" type="button">
+                                            <i class="fa fa-plus"></i>
+                                            <span>Добавить</span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{#if gallery}}
+                        {{#each gallery}}
+                            <div class="panel-body col-md-12 gallery" {{data "gallery"}}>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" for="name">Название:</label>
+                                    <div class="col-md-6">
+                                        <input class="form-control galleryName" type="text" can-value="name" placeholder="Наименование" />
+                                        <div class="help help-block"></div>
+                                    </div>
+                                    <div clas="col-md-4">
+                                        <button type="button" class="pull-right btn btn-danger removeGallery">
+                                            <i class="fa fa-trash"></i>
+                                            <span>Удалить</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <upload
+                                    class="col-md-12"
+                                    name="images"
+                                    url="/admin/gallery/img"
+                                    delete-url="/admin/gallery/img"
+                                    entity="{.}"
+                                    uploaded="{images}"
+                                    accept="image/*"
+                                    multiple="true"
+                                    sortable="true"
+                                    showurl="true"
+                                    parentname="gallery"
+                                >
+                                    Загрузить изображения
+                                </upload>
+                            </div>
+                            <hr class="col-sm-12" />
+                        {{/each}}
+                    {{/if}}
+                </div>
+            {{/if}}
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 checkbox">
+                    <label class="col-md-4">
+                        <input type="checkbox" can-value="article.is_quiz" /> Прикрепить опрос
+                    </label>
+                    <div class="help help-block"></div>
+                </div>
+            </div>
+
+            {{#if article._id}}
+                {{#if article.is_quiz}}
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="panel-title">Варианты ответов:</div>
+                            <div>
+                                <button type="button" class="addAnswer btn btn-primary"><i class="fa fa-plus"></i>&nbsp;Добавить ответ</button>
+                            </div>
+                        </div>
+                        {{#sortedBy article.answer 'position'}}
+                            <div class="well answer" {{data "answer"}}>
+                                <div class="form-group">
+                                    {{#if _id}}
+                                        <input type="hidden" can-value="_id" />
+                                    {{/if}}
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            Ответило так: <span class="badge">{{score}}</span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button class="btn btn-danger removeAnswer pull-right"><i class="fa fa-trash-o"></i>&nbsp;Удалить</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="answer[{{@index}}][position]">Позиция:</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="number" placeholder="Относительный номер по порядку" can-value="position" />
+                                            <div class="help help-block"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="answer[{{@index}}][text]">Вариант ответа:</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" type="text" {{! {{wysihtml5}} }} placeholder="Текст вариант ответа" can-value="text">
+                                            </textarea>
+                                            <div class="help help-block"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {{/sortedBy}}
+                    </div>
+                {{/if}}
+            {{/if}}
+
+            <div class="row">
+                <div class="col-md-offset-2 col-md-6">
+                    <button class="btn btn-primary" type="submit">
+                        Сохранить
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

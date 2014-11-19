@@ -1,0 +1,69 @@
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">
+            Данные пользователя
+        </h3>
+        <div class="box-tools pull-right">
+            <div class="btn btn-primary toList">
+                Назад
+            </div>
+        </div>
+    </div>
+    <div class="box-footer clearfix">
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="title">Активен?:</label>
+            <div class="col-md-10">
+                <input disabled class="form-control" type="text" value="{{#if client.active}}Да{{else}}Нет{{/if}}" />
+                <div class="help help-block"></div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="title">Имя:</label>
+            <div class="col-md-10">
+                <input disabled class="form-control" type="text" can-value="client.profile.first_name" />
+                <div class="help help-block"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="title">Фамилия:</label>
+            <div class="col-md-10">
+                <input disabled class="form-control" type="text" can-value="client.profile.last_name" />
+                <div class="help help-block"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="title">E-m@il:</label>
+            <div class="col-md-10">
+                <input disabled class="form-control" type="text" can-value="client.email" />
+                <div class="help help-block"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="created_at">Дата создания:</label>
+            <div class="col-md-10">
+                <input disabled class="form-control" type="text" value="{{parseDate client.created_at}}" />
+                <div class="help help-block"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="activated_at">Дата активации:</label>
+            <div class="col-md-10">
+                <input disabled class="form-control" type="text" value="{{parseDate client.activated_at}}" />
+                <div class="help help-block"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="last_activated_at">Дата последней активности:</label>
+            <div class="col-md-10">
+                <input disabled class="form-control" type="text" value="{{parseDate client.last_activity_at}}" />
+                <div class="help help-block"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,609 @@
+@import '../dynamic/dynamic';
+
+@mixin blue_bubbles {
+	@include pseudo;
+	height: 25px;
+	width: 100%;
+	left: 0;
+	background: url('/img/user/1280/blue_bubbles.png') no-repeat center;
+	z-index: 1;
+}
+
+.module.main {
+	.content {
+		margin: 0 auto;
+		width: 960px;
+		position: relative;
+		height: 100%;
+	}
+	
+	.logo {
+		width: 209px;
+		height: 66px;
+		background: url('/img/user/1280/logo.png') no-repeat center;
+	}
+	
+	.icons {
+		position: absolute;
+		height: 30px;
+		right: 0;
+		width: 240px;
+		text-align: right;
+	}
+	
+	.icon {
+		@include my_inline_block;
+		width: 31px;
+		height: 30px;
+		background: url('/img/user/social.png') no-repeat;
+		cursor: pointer;
+		
+		&.fb {
+			margin-left: 39px;
+		}
+		
+		&.vk {
+			background-position: -32px 0;
+			margin-left: 10px;
+		}
+	}
+	
+	.topper_container {
+		height: 749px;
+		background: url('/img/user/1280/bed.jpg') no-repeat center;
+		position: relative;
+		
+		&:after {
+			@include pseudo;
+			height: 27px;
+			width: 100%;
+			bottom: -13px;
+			left: 0;
+			background: url('/img/user/1280/white_bubbles.png') no-repeat center;
+			z-index: 1;
+		}
+		
+		.logo {
+			position: absolute;
+			left: 0;
+			top: 24px;
+		}
+		
+		.icons {
+			top: 48px;
+		}
+		
+		.pack {
+			position: absolute;
+			width: 340px;
+			height: 422px;
+			top: 340px;
+			left: -51px;
+			background: url('/img/user/1280/pack.png') no-repeat;
+		}
+		
+		.text {
+			@include border_boxed;
+			position: absolute;
+			width: 670px;
+			height: 410px;
+			right: 0;
+			bottom: 0;
+			font-family: 'PT_Sans_Caption';
+			color: white;
+			padding: 136px 0 0 165px;
+		}
+		
+		.top_label {
+			font-size: 48px;
+			line-height: 48px;
+		}
+		
+		.bottom_label {
+			font-size: 28px;
+			line-height: 28px;
+			margin-top: 15px;
+		}
+		
+		.buy {
+			height: 68px;
+			width: 170px;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			color: $black;
+			
+			.adorable_cell {
+				text-align: right;
+			}
+			
+			img, span {
+				vertical-align: middle;
+			}
+		}
+		
+		.buy_label {
+			text-transform: uppercase;
+			font-family: 'Roboto_Black';
+			border-bottom: 2px dotted $black;
+			margin-left: 9px;
+		}
+	}
+	
+	.video_container {
+		height: 775px;
+		position: relative;
+		background-color: $blue;
+		
+		&:before {
+			@include pseudo;
+			width: 100%;
+			height: 100%;
+			background: url('/img/user/1280/sky.png') no-repeat center;
+			opacity: 0.58;
+		}
+		
+		.player {
+			@include absolute_horizontal_centered;
+			width: 825px;
+			height: 472px;
+			top: 100px;
+			
+			&:before {
+				@include pseudo;
+				width: 100%;
+				height: 45px;
+				bottom: -22px;
+				background: url('/img/user/1280/player_shadow.png') no-repeat center;
+			}
+		}
+		
+		.vimeo {
+			position: relative;
+		}
+		
+		.know_more {
+			position: absolute;
+			bottom: 137px;
+			width: 100%;
+			left: 0;
+			text-align: center;
+			font-family: 'Roboto_Black';
+			color: white;
+			font-size: 15px;
+			line-height: 15px;
+			text-transform: uppercase;
+		}
+	}
+	
+	.dragon_container {
+		height: 1672px;
+		position: relative;
+		
+		&:before {
+			@include blue_bubbles;
+			top: -12px;
+		}
+		
+		&:after {
+			@include blue_bubbles;
+			bottom: -12px;
+		}
+		
+		.dragon_content {
+			&:before {
+				@include pseudo;
+				width: 972px;
+				height: 1340px;
+				top: -118px;
+				left: -64px;
+				background: url('/img/user/1280/line.png') no-repeat;
+				z-index: 1;
+			}
+		}
+		
+		.dragon_1 {
+			position: absolute;
+			width: 657px;
+			height: 392px;
+			top: 0;
+			right: -39px;
+			background: url('/img/user/1280/dragon_1.png') no-repeat;
+			z-index: 2;
+		}
+		
+		.dragon_2 {
+			position: absolute;
+			width: 480px;
+			height: 514px;
+			top: 386px;
+			left: -8px;
+			background: url('/img/user/1280/dragon_2.png') no-repeat;
+			z-index: 2;
+		}
+		
+		.dragon_3 {
+			position: absolute;
+			width: 444px;
+			height: 413px;
+			top: 973px;
+			right: -7px;
+			background: url('/img/user/1280/dragon_3.png') no-repeat;
+			z-index: 2;
+		}
+		
+		.topper {
+			width: 100%;
+			position: absolute;
+			z-index: 3;
+			height: 78px;
+			top: 13px;
+			background-color: rgba(0, 0, 0, 0.1);
+			
+			.adorable_cell {
+				text-align: left;
+			}
+		}
+		
+		
+		.logo {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		
+		.logo {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		
+		.icons {
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		}
+		
+		.fever {
+			vertical-align: middle;
+			color: white;
+			font-size: 20px;
+			line-height: 20px;
+			font-family: 'PT_Sans_Caption';
+			margin-left: 18px;
+		}
+		
+		.dragon_text {
+			@include border_boxed;
+			position: absolute;
+			z-index: 3;
+			height: auto;
+		}
+		
+		.dragon_text_1 {
+			top: 113px;
+			left: 0;
+		}
+		
+		.dragon_text_2 {
+			top: 616px;
+			right: 0;
+		}
+		
+		.dragon_text_3 {
+			top: 1092px;
+			left: 0;
+		}
+		
+		.dragon_top_label {
+			font-family: 'Neucha';
+			font-size: 36px;
+			line-height: 40px;
+			color: white;
+		}
+		
+		.dragon_bottom_label {
+			margin-top: 20px;
+			line-height: 30px;
+			
+			.r {
+				font-size: 14px;
+				line-height: 18px;
+				vertical-align: top;
+			}
+		}
+		
+		.notes {
+			position: absolute;
+			width: 100%;
+			height: 205px;
+			bottom: 0;
+			left: 0;
+			font-size: 12px;
+			font-family: 'Roboto_Light';
+			
+			.r {
+				font-size: 9px;
+				line-height: 9px;
+				vertical-align: top;
+				font-family: 'Roboto_Medium';
+			}
+		}
+	}
+	
+	.safety_container {
+		height: 762px;
+		background: url('/img/user/1280/safety.jpg') no-repeat center;
+		
+		.safety_text {
+			@include border_boxed;
+			height: auto;
+			top: 191px;
+			left: 0;
+			position: absolute;
+			padding: 0 40px 0 0;
+		}
+		
+		.top_label {
+			font-size: 36px;
+			line-height: 36px;
+			font-family: 'Neucha';
+			color: $titleblue;
+			text-transform: uppercase;
+		}
+		
+		.bottom_label {
+			margin-top: 25px;
+			line-height: 30px;
+			
+			.r {
+				font-size: 14px;
+				line-height: 18px;
+				vertical-align: top;
+			}
+		}
+	}
+	
+	.europe_container {
+		height: 772px;
+		position: relative;
+		
+		&:before {
+			@include blue_bubbles;
+			top: -12px;
+		}
+		
+		.content {
+			&:after {
+				@include pseudo;
+				width: 389px;
+				height: 393px;
+				background: url('/img/user/1280/euro.png') no-repeat;
+				right: 0;
+				top: 177px;
+			}
+		}
+		
+		.europe_text {
+			@include border_boxed;
+			height: auto;
+			top: 245px;
+			left: 0;
+			position: absolute;
+			padding: 0 40px 0 0;
+		}
+		
+		.top_label {
+			font-size: 36px;
+			line-height: 36px;
+			font-family: 'Neucha';
+			color: white;
+			text-transform: uppercase;
+		}
+		
+		.bottom_label {
+			margin-top: 45px;
+			line-height: 30px;
+			
+			.r {
+				font-size: 14px;
+				line-height: 18px;
+				vertical-align: top;
+			}
+		}
+	}
+	
+	.map_container {
+		height: 742px;
+		background-color: $darkblue;
+		
+		.title {
+			height: 130px;
+			background-color: $darkblue;
+			font-size: 36px;
+			line-height: 50px;
+			color: white;
+			text-transform: uppercase;
+			font-family: 'Neucha';
+			
+			.adorable_cell {
+				padding: 0 60px;
+			}
+			
+			.r {
+				font-size: 18px;
+				line-height: 25px;
+				vertical-align: top;
+			}
+		}
+		
+		#map {
+			height: 612px;
+			position: relative;
+			
+			&:before {
+				@include pseudo;
+				height: 18px;
+				width: 100%;
+				background: url('/img/user/1280/map_arc.png') no-repeat center;
+				top: 0;
+				left: 0;
+				z-index: 1;
+			}
+		}
+	}
+	
+	.know_container {
+		height: 230px;
+		background-color: $blue;
+		color: #4d91ca;
+		
+		.top {
+			height: 122px;
+		}
+		
+		.cost {
+			height: 44px;
+			padding: 0 30px;
+			font-size: 20px;
+			color: $buttonblue;
+		}
+		
+		.bottom {
+			height: 108px;
+			background-color: white;
+			position: relative;
+			
+			&:before {
+				@include pseudo;
+				width: 100%;
+				height: 28px;
+				top: -27px;
+				background: url('/img/user/1280/white_arc.png') no-repeat center;
+				left: 0;
+			}
+		}
+		
+		.know_logo {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			margin: auto;
+		}
+		
+		.instruction {
+			font-size: 36px;
+			line-height: 36px;
+			text-transform: uppercase;
+			font-family: 'Neucha';
+		}
+		
+		.arrow {
+			@include absolute_horizontal_centered;
+			width: 12px;
+			height: 6px;
+			background: url('/img/user/1280/arrow.png') no-repeat;
+			bottom: 19px;
+		}
+		
+		.contacts {
+			position: absolute;
+			height: 100%;
+			right: 0;
+			top: 0;
+			font-size: 14px;
+			font-family: 'Roboto_Medium';
+			
+			.adorable_cell {
+				text-align: right;
+			}
+		}
+		
+		.icons {
+			@include my_inline_block;
+			position: relative;
+			margin-bottom: 8px;
+		}
+		
+		.icon {
+			&.fb {
+				background-position: 0 -31px;
+			}
+			
+			&.vk {
+				background-position: -32px -31px;
+			}
+		}
+	}
+	
+	.instruction_container {
+		background-color: $blue;
+		padding: 47px 50px;
+		
+		.item {
+			@include border_radius(5px);
+			border: 1px solid #abcae5;
+			padding: 8px 50px;
+			text-align: left;
+			color: white;
+			font-size: 14px;
+			position: relative;
+			margin-top: 7px;
+			
+			&.active {
+				.arrow {
+					background-position: -13px 0;
+				}
+				
+				.title {
+					color: white;
+				}
+			}
+		}
+		
+		.arrow {
+			position: absolute;
+			width: 12px;
+			height: 6px;
+			background: url('/img/user/item_arrow.png') no-repeat;
+			top: 16px;
+			left: 17px;
+			cursor: pointer;
+		}
+		
+		.title {
+			@include transition(color 0.3s ease-in-out);
+			color: #d3e3f1;
+			font-family: 'Roboto_Bold';
+			
+			span {
+				cursor: pointer;
+			}
+		}
+		
+		.text {
+			color: #fffefe;
+			font-family: 'Roboto_Light';
+			margin-top: 25px;
+			margin-bottom: 4px;
+		}
+		
+		.slide_up {
+			height: 44px;
+			padding: 0 30px;
+			font-size: 20px;
+			color: $buttonblue;
+			margin-top: 45px;
+		}
+	}
+	
+	.warning_container {
+		height: 1160px;
+		background-color: white;
+		position: relative;
+		
+		img {
+			@include absolute_horizontal_centered;
+			top: 116px;
+		}
+	}
+}

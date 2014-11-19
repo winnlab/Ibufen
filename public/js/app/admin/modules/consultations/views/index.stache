@@ -1,0 +1,47 @@
+<div class='panel panel-default {{#is display 'set'}}hidden{{/is}}'>
+    <div class='panel-heading'>
+        <div class='panel-title'>
+            Консультации
+        </div>
+        <div class='row'>
+            <div class='col-md-4'>
+                <button class='btn btn-primary addConsultation'>
+                    <i class="fa fa-plus"></i>
+                    &nbsp;
+                    <span>Добавить</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class='panel-body' id='consultationList'>
+        {{#if consultations.isResolved}}
+            {{#if consultations.length}}
+                {{#sortedBy consultations '_id'}}
+                    <div class='row consultation' {{data "consultations"}}>
+                        <div class='input-group'>
+                            <input type='text' class='form-control' disabled can-value='name' />
+                            <div class='input-group-btn'>
+                                <div class="btn btn-default editConsultation" title="Редактировать">
+                                    <i class="fa fa-edit"></i>
+                                </div>
+                                <div class="btn btn-danger removeConsultation" title="Удалить">
+                                    <i class="fa fa-trash-o"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {{/sortedBy}}
+            {{else}}
+                <div class="alert alert-info">
+                    <i class="fa fa-info"></i>
+                    <b>Примечание! </b>
+                    Данных, соответствующих указанным параметрам, нет
+                </div>
+            {{/if}}
+        {{/if}}
+    </div>
+</div>
+
+<articlefilter ages="{ages}" themes="{themes}" types="{types}" fn="{doFilter}" ></articlefilter>
+
+<div class="consultationForm {{#is display 'list'}}hidden{{/is}}"></div>
