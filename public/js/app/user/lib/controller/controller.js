@@ -73,11 +73,11 @@ export default can.Control.extend({
 		this.plugins();
 		$(window).trigger('custom_resize');
 		
+		this.after_init(data);
+		
 		if(this.server) {
 			$(window).trigger('custom_ready');
 		}
-		
-		this.after_init(data);
 	},
 	
 	after_init: function(data) {
