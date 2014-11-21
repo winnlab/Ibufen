@@ -17,6 +17,8 @@ export default Controller.extend(
 			
 			this.instruction_items = this.element.find('.instruction_container .item');
 			this.classname = 'active';
+			
+			this.fixed_topper = this.element.find('.fixed_topper');
 		},
 		
 		plugins: function() {
@@ -58,6 +60,18 @@ export default Controller.extend(
 			text.stop(true, false)[func](300);
 			
 			item.toggleClass(this.classname);
+		},
+		
+		'{window} scroll': function(el, ev){
+			var scroll_top = $(el).scrollTop(),
+				func = 'removeClass',
+				classname = 'scrolled';
+			
+			if(scroll_top) {
+				func = 'addClass';
+			}
+			
+			this.fixed_topper[func](classname);
 		}
     }
 );
