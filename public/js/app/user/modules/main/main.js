@@ -38,23 +38,23 @@ export default Controller.extend(
 			
 			var that = this;
 			
-			// navigator.geolocation.getCurrentPosition(function(position) {
-				// var data = {
-					// lat: position.coords.latitude,
-					// lng: position.coords.longitude
-				// };
+			navigator.geolocation.getCurrentPosition(function(position) {
+				var data = {
+					lat: position.coords.latitude,
+					lng: position.coords.longitude
+				};
 				
-				// that.location_request(data);
-			// }, function(error) {
-				// console.error(error);
-			// });
+				that.location_request(data);
+			}, function(error) {
+				console.error(error);
+			});
 			
-			var data = {
-				lat: 46.1858047,
-				lng: 30.3264845
-			};
+			// var data = {
+				// lat: 46.1858047,
+				// lng: 30.3264845
+			// };
 			
-			that.location_request(data);
+			// that.location_request(data);
 		},
 		
 		location_request: function(data) {
