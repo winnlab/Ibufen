@@ -14,11 +14,6 @@ export default Controller.extend(
 			
 			this.mapLatLng = new google.maps.LatLng(50.4300000, 30.389388);
 			this.vishnevoeLatLng = new google.maps.LatLng(50.3856838, 30.3471481);
-			
-			this.instruction_items = this.element.find('.instruction_container .item');
-			this.classname = 'active';
-			
-			this.fixed_topper = this.element.find('.fixed_topper');
 		},
 		
 		plugins: function() {
@@ -40,38 +35,12 @@ export default Controller.extend(
 			new google.maps.Marker({
 				position: this.vishnevoeLatLng,
 				map: this.map,
-				icon: this.base_url + '/img/user/1280/marker.png'
+				icon: this.base_url + '/img/user/640/marker.png'
 			});
 		},
 		
 		after_init: function(data) {
-			this.instruction_items.filter(':not(.active)').find('.text').hide();
-		},
-		
-		'.instruction_container .item span, .instruction_container .item .arrow click': function(el) {
-			var item  = el.closest('.item'),
-				text = item.find('.text'),
-				func = 'slideDown';
 			
-			if(item.hasClass(this.classname)) {
-				func = 'slideUp';
-			}
-			
-			text.stop(true, false)[func](300);
-			
-			item.toggleClass(this.classname);
-		},
-		
-		'{window} scroll': function(el, ev){
-			var scroll_top = $(el).scrollTop(),
-				func = 'removeClass',
-				classname = 'scrolled';
-			
-			if(scroll_top) {
-				func = 'addClass';
-			}
-			
-			this.fixed_topper[func](classname);
 		}
     }
 );

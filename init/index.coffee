@@ -20,25 +20,21 @@ async.waterfall [
 		Logger.init next
 	(next) ->
 		Logger.log 'info', 'Logger is initializated'
-
+		
 		ModelPreloader "#{process.cwd()}/models/", next
 	(next) ->
 		Logger.log 'info', 'Models are preloaded'
-
+		
 		Migrate.init next
 	(next) ->
 		Logger.log 'info', 'Migrate is initializated'
 		
-		Application.init next
-	(next) ->
-		Logger.log 'info', "Application is initializated"
-
+		Application.init port, next
+	(appPort, next) ->
+		Logger.log 'info', "Application is binded to #{appPort}"
+		
 		AuthStartegies.init next
 	(next) ->
 		Logger.log 'info', 'Auth is initializated'
-		
-		Application.listen port, next
-	(next) ->
-		Logger.log 'info', "Application is binded to #{port}"
 ], (err) ->
 	Logger.error 'Init error: ', err

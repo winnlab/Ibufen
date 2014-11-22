@@ -21,10 +21,343 @@ body {
 		min-width: $small_min_width;
 		font-size: 16px;
 		
+		.logo {
+			width: 127px;
+			height: 40px;
+			background: url('/img/user/640/logo.png') no-repeat center;
+		}
+		
+		.icons {
+			height: 26px;
+		}
+		
+		.icon {
+			width: 26px;
+			height: 26px;
+			background: url('/img/user/640/social.png') no-repeat;
+			
+			&.vk {
+				background-position: -27px 0;
+			}
+		}
+		
+		#fixed_topper {
+			max-width: $small_max_width;
+			height: 60px;
+		}
+		
+		.content {
+			width: 560px;
+		}
+		
 		button {
 			height: 26px;
 			padding: 0 30px;
 			font-size: 12px;
 		}
+		
+		.instruction_top_container {
+			height: 88px;
+			
+			&:before {
+				height: 7px;
+				top: -6px;
+				background: url('/img/user/640/white_arc.png') no-repeat center;
+			}
+			
+			.instruction {
+				font-size: 24px;
+				line-height: 24px;
+			}
+			
+			.contacts {
+				font-size: 12px;
+				line-height: 12px;
+			}
+			
+			.icons {
+				@include my_inline_block;
+				position: relative;
+				margin-bottom: 8px;
+			}
+			
+			.icon {
+				&.fb {
+					background-position: 0 -27px;
+				}
+				
+				&.vk {
+					background-position: -27px -27px;
+				}
+			}
+			
+			.text {
+				padding: 0 0 0 160px;
+			}
+		}
+		
+		.instruction_container {
+			background-color: $blue;
+			
+			.content {
+				padding: 29px 0px 45px;
+			}
+			
+			.slide_up {
+				height: 26px;
+				border: 1px solid white;
+				padding: 0 35px;
+				font-size: 13px;
+				color: $buttonblue;
+				margin-top: 45px;
+				background-color: #c0daef;
+			}
+		}
+		
+		.warning_container {
+			height: 820px;
+			
+			.warning_image {
+				top: 77px;
+				width: 462px;
+				height: 680px;
+				background: url('/img/user/640/warning.png') no-repeat;
+			}
+		}
+	}
+	
+	.logo {
+		width: 209px;
+		height: 66px;
+		background: url('/img/user/1280/logo.png') no-repeat center;
+	}
+	
+	.icons {
+		position: absolute;
+		height: 30px;
+		right: 0;
+		width: 240px;
+		text-align: right;
+	}
+	
+	.icon {
+		@include my_inline_block;
+		width: 31px;
+		height: 30px;
+		background: url('/img/user/1280/social.png') no-repeat;
+		cursor: pointer;
+		
+		&.fb {
+			margin-left: 39px;
+		}
+		
+		&.vk {
+			background-position: -32px 0;
+			margin-left: 10px;
+		}
+	}
+	
+	#fixed_topper {
+		@include transition(background-color 0.3s ease-in-out);
+		width: 100%;
+		max-width: $big_max_width;
+		position: fixed;
+		z-index: 5;
+		height: 78px;
+		top: 13px;
+		background-color: transparent;
+		
+		&.scrolled {
+			background-color: rgba(0, 0, 0, 0.1);
+		}
+		
+		.adorable_cell {
+			text-align: left;
+		}
+		
+		.logo {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		
+		.icons {
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		}
+		
+		.fever {
+			vertical-align: middle;
+			color: white;
+			font-size: 20px;
+			line-height: 20px;
+			font-family: 'PT_Sans_Caption';
+			margin-left: 18px;
+		}
+	}
+	
+	.content {
+		@include border_boxed;
+		margin: 0 auto;
+		width: 960px;
+		position: relative;
+		height: 100%;
+	}
+	
+	.instruction_top_container {
+		height: 108px;
+		background-color: white;
+		position: relative;
+		
+		&:before {
+			@include pseudo;
+			width: 100%;
+			height: 17px;
+			top: -16px;
+			background: url('/img/user/1280/white_arc.png') no-repeat center;
+			left: 0;
+		}
+		
+		.know_logo {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			margin: auto;
+			width: 149px;
+			height: 47px;
+			background: url('/img/user/know_logo.png') no-repeat;
+		}
+		
+		.instruction {
+			font-size: 36px;
+			line-height: 36px;
+			text-transform: uppercase;
+			font-family: 'Neucha';
+		}
+		
+		.arrow {
+			@include absolute_horizontal_centered;
+			width: 12px;
+			height: 6px;
+			background: url('/img/user/arrow.png') no-repeat;
+			bottom: 19px;
+		}
+		
+		.contacts {
+			position: absolute;
+			height: 100%;
+			right: 0;
+			top: 0;
+			font-size: 14px;
+			font-family: 'Roboto_Medium';
+			
+			.adorable_cell {
+				text-align: right;
+			}
+		}
+		
+		.icons {
+			@include my_inline_block;
+			position: relative;
+			margin-bottom: 8px;
+		}
+		
+		.icon {
+			&.fb {
+				background-position: 0 -31px;
+			}
+			
+			&.vk {
+				background-position: -32px -31px;
+			}
+		}
+	}
+	
+	.instruction_container {
+		background-color: $blue;
+		
+		.content {
+			@include border_boxed;
+			padding: 47px 50px;
+		}
+		
+		.item {
+			@include border_radius(5px);
+			border: 1px solid #abcae5;
+			padding: 8px 50px;
+			text-align: left;
+			color: white;
+			font-size: 14px;
+			position: relative;
+			margin-top: 7px;
+			
+			&.active {
+				.arrow {
+					background-position: -13px 0;
+				}
+				
+				.title {
+					color: white;
+				}
+			}
+		}
+		
+		.arrow {
+			position: absolute;
+			width: 12px;
+			height: 6px;
+			background: url('/img/user/item_arrow.png') no-repeat;
+			top: 16px;
+			left: 17px;
+			cursor: pointer;
+		}
+		
+		.title {
+			@include transition(color 0.3s ease-in-out);
+			color: #d3e3f1;
+			font-family: 'Roboto_Bold';
+			
+			span {
+				cursor: pointer;
+			}
+		}
+		
+		.text {
+			color: #fffefe;
+			font-family: 'Roboto_Light';
+			margin-top: 25px;
+			margin-bottom: 4px;
+		}
+		
+		.slide_up {
+			height: 44px;
+			padding: 0 30px;
+			font-size: 20px;
+			color: $buttonblue;
+			margin-top: 45px;
+		}
+	}
+	
+	.warning_container {
+		height: 1160px;
+		background-color: white;
+		position: relative;
+		
+		.warning_image {
+			@include absolute_horizontal_centered;
+			top: 116px;
+			width: 1138px;
+			height: 967px;
+			background: url('/img/user/1280/warning.png') no-repeat;
+		}
+	}
+}
+
+.module {
+	display: none;
+
+	&.active {
+		display: block;
 	}
 }

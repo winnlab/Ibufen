@@ -45,16 +45,15 @@ configure = () ->
 	@use '/admin', (req, res, next) ->
 		Ajax.isAjax req, res, next, adminController.layoutPage
 
-exports.init = (callback) ->
+exports.init = (port, callback) ->
 	exports.express = app = express()
-	exports.server = http.Server app
+	exports.server = @server = http.Server app
 
 	app.locals = locals
 
 	configure.apply app
 	routes.apply app
-
-	callback null
-
-exports.listen = (port, callback) ->
-	exports.server.listen port, callback
+	
+	@server.listen port
+	
+	callback null, port

@@ -1,0 +1,183 @@
+@charset "UTF-8";
+@import '../dynamic/dynamic';
+
+#main_container.small {
+	.module.advices {
+		
+	}
+}
+
+.module.advices {
+	.topper_container {
+		@include border_boxed;
+		
+		.top_label {
+			font-size: 36px;
+			line-height: 36px;
+			font-family: 'Neucha';
+			color: white;
+			margin-top: 35px;
+		}
+		
+		.bottom_label {
+			margin-top: 20px;
+			line-height: 30px;
+		}
+		
+		.how_to_help {
+			@include rounded;
+			@include transition(background-color 0.3s ease-in-out);
+			position: absolute;
+			height: 38px;
+			bottom: -10px;
+			left: 0;
+			width: 174px;
+			z-index: 1;
+			background-color: transparent;
+			
+			&.active {
+				background-color: white;
+				
+				&:before {
+					background-position: -13px 0;
+				}
+				
+				button {
+					color: #4e7f9d;
+				}
+			}
+			
+			&:before {
+				@include pseudo;
+				top: 19px;
+				left: 9px;
+				width: 12px;
+				height: 6px;
+				background: url('/img/user/advices/arrow.png') no-repeat;
+			}
+			
+			button {
+				@include border_boxed;
+				@include rounded;
+				width: 100%;
+				height: 100%;
+				color: white;
+				border: 2px solid white;
+				background-color: transparent;
+				padding: 0;
+				text-transform: none;
+				font-size: 18px;
+				font-family: 'Roboto_Medium';
+				padding: 0 0 0 30px;
+				text-align: left;
+				position: relative;
+				z-index: 1;
+			}
+		}
+	}
+	
+	.topper_container_1 {
+		height: 472px;
+		
+		.content {
+			padding: 84px 0 0;
+		}
+	}
+	
+	.help_container {
+		@include transition(background-color 0.3s ease-in-out);
+		background-color: transparent;
+		
+		&.active {
+			background-color: white;
+		}
+		
+		.content {
+			padding: 1px 0 28px;
+		}
+		
+		.help_item {
+			clear: both;
+			height: 102px;
+			font-family: 'Roboto_Light';
+			margin: 40px 0 0;
+		}
+		
+		.image_content {
+			width: 126px;
+			float: left;
+			height: 100%;
+			
+			.img {
+				height: 100%;	
+			}
+			
+			.glass {
+				width: 102px;
+				background: url('/img/user/advices/1280/glass.png') no-repeat;
+			}
+			
+			.hand {
+				width: 102px;
+				background: url('/img/user/advices/1280/hand.png') no-repeat;
+			}
+			
+			.window {
+				width: 102px;
+				background: url('/img/user/advices/1280/window.png') no-repeat;
+			}
+			
+			.shirt {
+				width: 101px;
+				background: url('/img/user/advices/1280/shirt.png') no-repeat;
+			}
+			
+			.towel {
+				width: 103px;
+				background: url('/img/user/advices/1280/towel.png') no-repeat;
+			}
+			
+			.pill {
+				width: 103px;
+				background: url('/img/user/advices/1280/pill.png') no-repeat left;
+			}
+		}
+		
+		.top_label {
+			font-size: 24px;
+			line-height: 24px;
+			color: $lightblue;
+		}
+		
+		.bottom_label {
+			margin-top: 2px;
+			line-height: 20px;
+		}
+	}
+	
+	.help_container_1 {
+		height: 745px;
+	}
+	
+	.topper_container_2 {
+		height: 255px;
+		
+		.content {
+			padding: 17px 0 0;
+		}
+	}
+	
+	.help_container_2 {
+		height: 315px;
+	}
+	
+	.notes_container {
+		height: 232px;
+		font-size: 12px;
+		font-family: 'Roboto_Light';
+		
+		.content {
+			padding: 52px 0 0;
+		}
+	}
+}

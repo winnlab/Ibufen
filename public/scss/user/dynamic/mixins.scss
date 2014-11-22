@@ -123,13 +123,32 @@ $large: 1600px;
 	letter-spacing: 0.5px;
 }
 
-@mixin column {
-	@include my_inline_block;
-	@include border_boxed;
-	margin: 10px;
-	width: 280px;
-	position: relative;
-	&.double {
-		width: 580px;
-	}
+@mixin blue_bubbles {
+	@include pseudo;
+	height: 25px;
+	width: 100%;
+	left: 0;
+	background: url('/img/user/1280/blue_bubbles.png') no-repeat center;
+	z-index: 1;
+}
+
+@mixin blue_bubbles_small {
+	@include blue_bubbles;
+	height: 17px;
+	background: url('/img/user/640/blue_bubbles.png') no-repeat center;
+}
+
+@mixin white_bubbles {
+	@include pseudo;
+	height: 27px;
+	width: 100%;
+	left: 0;
+	background: url('/img/user/1280/white_bubbles.png') no-repeat center;
+	z-index: 1;
+}
+
+@mixin white_bubbles_small {
+	@include blue_bubbles;
+	height: 17px;
+	background: url('/img/user/640/white_bubbles.png') no-repeat center;
 }

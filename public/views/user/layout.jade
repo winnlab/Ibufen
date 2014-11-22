@@ -11,8 +11,14 @@ html
 			img(src="/img/preloader.gif" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto;")
 		
 		#main_container.small
+			#topper
+				include topper
+			
 			#modules
 				block content
+			
+			#footer
+				include footer
 		
 		script(src="/js/plugins/steal/steal.js", config-path="/js/app/user/config.js", main="js/app/user/core/")
 		
