@@ -17,8 +17,8 @@ exports.init = (callback)->
 	async.parallel
 		core: (next) ->
 			async.each metaMigrate, checkMigration, next
-		pharmacy: (next) ->
-			async.eachSeries pharmacy, Pharmacy.addPharmacy, next
+		# pharmacy: (next) ->
+			# async.eachSeries pharmacy, Pharmacy.addPharmacy, next
 	, (err, results) ->
 		console.timeEnd 'Info: Migration took'
 		
