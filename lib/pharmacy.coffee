@@ -17,9 +17,15 @@ exports.addPharmacy = (data, callback) ->
 		(location, next) ->
 			console.log location
 			
-			_.extend data, location
+			searchData =
+				address: data.address
+				city: data.city
+				name: data.name
 			
-			Model 'Pharmacy', 'update', next, data, data, upsert: true
+			if location
+				data.loc = [location.lng, location.lat]
+			
+			Model 'Pharmacy', 'update', next, searchData, data, upsert: true
 		() ->
 			setTimeout callback, 3000
 	], callback

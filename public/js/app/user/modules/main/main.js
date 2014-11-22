@@ -14,6 +14,8 @@ export default Controller.extend(
 			
 			this.mapLatLng = new google.maps.LatLng(50.4300000, 30.389388);
 			this.vishnevoeLatLng = new google.maps.LatLng(50.3856838, 30.3471481);
+			
+			this.pharmacy = [];
 		},
 		
 		plugins: function() {
@@ -28,7 +30,26 @@ export default Controller.extend(
 			
 			this.map = new google.maps.Map(document.getElementById('map'), options);
 			
+			this.get_locations();
+			
 			this.draw_markers();
+		},
+		
+		get_locations: function() {
+			if(!navigator.geolocation) {
+				return console.error("Geolocation is not supported by this browser.");
+			}
+			
+			navigator.geolocation.getCurrentPosition(function(position) {
+				var data = {
+					lat: position.coords.latitude,
+					lon: position.coords.longitude
+				}
+				
+				console.log(data)
+			}, function(error) {
+				console.error(error);
+			});
 		},
 		
 		draw_markers: function() {

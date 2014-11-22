@@ -15,11 +15,13 @@ schema = new mongoose.Schema
 	address:
 		type: String
 		required: true
-	lat:
+	loc: [
 		type: Number
-	lng:
-		type: Number
+	]
 ,
 	collection: 'pharmacy'
+
+schema.index
+	loc: '2d'
 
 module.exports = mongoose.model 'Pharmacy', schema
