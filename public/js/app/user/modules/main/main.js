@@ -14,8 +14,6 @@ export default Controller.extend(
 			
 			this.mapLatLng = new google.maps.LatLng(50.4300000, 30.389388);
 			this.vishnevoeLatLng = new google.maps.LatLng(50.3856838, 30.3471481);
-			
-			this.pharmacy = [];
 		},
 		
 		plugins: function() {
@@ -31,8 +29,6 @@ export default Controller.extend(
 			this.map = new google.maps.Map(document.getElementById('map'), options);
 			
 			this.get_locations();
-			
-			this.draw_markers();
 		},
 		
 		get_locations: function() {
@@ -40,24 +36,62 @@ export default Controller.extend(
 				return console.error("Geolocation is not supported by this browser.");
 			}
 			
-			navigator.geolocation.getCurrentPosition(function(position) {
-				var data = {
-					lat: position.coords.latitude,
-					lon: position.coords.longitude
-				}
+			var that = this;
+			
+			// navigator.geolocation.getCurrentPosition(function(position) {
+				// var data = {
+					// lat: position.coords.latitude,
+					// lng: position.coords.longitude
+				// };
 				
-				console.log(data)
-			}, function(error) {
-				console.error(error);
+				// that.location_request(data);
+			// }, function(error) {
+				// console.error(error);
+			// });
+			
+			var data = {
+				lat: 46.1858047,
+				lng: 30.3264845
+			};
+			
+			that.location_request(data);
+		},
+		
+		location_request: function(data) {
+			var that = this;
+			
+			can.ajax({
+				type: 'POST',
+				url: '/pharmacy_near',
+				data: data,
+				success: function(data) {
+					that.success_location_request(data.data);
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.error(errorThrown);
+				}
 			});
 		},
 		
-		draw_markers: function() {
-			new google.maps.Marker({
-				position: this.vishnevoeLatLng,
-				map: this.map,
-				icon: this.base_url + '/img/user/640/marker.png'
-			});
+		success_location_request: function(data) {
+			var i, latlng, pharm,
+				bounds = new google.maps.LatLngBounds();
+			
+			for(i = data.pharmacy.length; i--;) {
+				pharm = data.pharmacy[i];
+				
+				latlng = new google.maps.LatLng(pharm.loc[1], pharm.loc[0]);
+				
+				bounds.extend(latlng);
+				
+				new google.maps.Marker({
+					position: latlng,
+					map: this.map,
+					icon: this.base_url + '/img/user/640/marker.png'
+				});
+			}
+			
+			this.map.fitBounds(bounds);
 		},
 		
 		after_init: function(data) {
