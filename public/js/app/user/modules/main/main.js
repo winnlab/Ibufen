@@ -1,7 +1,7 @@
 import Controller from 'controller';
 
-import googlemaps_api from 'googlemaps_api'
-import googlemaps_main from 'googlemaps_main'
+import 'googlemaps_api'
+import 'googlemaps_main'
 
 export default Controller.extend(
 	{
@@ -12,8 +12,7 @@ export default Controller.extend(
 		variables: function() {
 			this.base_url = window.location.protocol + '//' + window.location.host;
 			
-			this.mapLatLng = new google.maps.LatLng(50.4300000, 30.389388);
-			this.vishnevoeLatLng = new google.maps.LatLng(50.3856838, 30.3471481);
+			this.mapLatLng = new google.maps.LatLng(50.433, 30.517);
 		},
 		
 		plugins: function() {
@@ -36,18 +35,25 @@ export default Controller.extend(
 				return console.error("Geolocation is not supported by this browser.");
 			}
 			
-			var that = this;
+			var that = this,
+				data = null,
+				options = {
+					enableHighAccuracy: true,
+					timeout: 3000,
+					maximumAge: 0
+				};
 			
 			navigator.geolocation.getCurrentPosition(function(position) {
-				var data = {
+				data = {
 					lat: position.coords.latitude,
 					lng: position.coords.longitude
 				};
 				
 				that.location_request(data);
 			}, function(error) {
+				that.location_request(data);
 				console.error(error);
-			});
+			}, options);
 			
 			// var data = {
 				// lat: 46.1858047,
@@ -77,6 +83,8 @@ export default Controller.extend(
 			var i, latlng, pharm,
 				bounds = new google.maps.LatLngBounds();
 			
+			this.map.setCenter(new google.maps.LatLng(data.lng, data.lat));
+			
 			for(i = data.pharmacy.length; i--;) {
 				pharm = data.pharmacy[i];
 				
@@ -91,7 +99,9 @@ export default Controller.extend(
 				});
 			}
 			
-			this.map.fitBounds(bounds);
+			if(bounds.length) {
+				this.map.fitBounds(bounds);
+			}
 		},
 		
 		after_init: function(data) {

@@ -1,6 +1,6 @@
 async = require 'async'
 google_geocoding = require 'google-geocoding'
-_ = require 'lodash'
+iplocation = require 'iplocation'
 
 Model = require './model'
 Logger = require './logger'
@@ -33,17 +33,45 @@ exports.addPharmacy = (data, callback) ->
 	], callback
 
 exports.near = (req, res) ->
+	searchData =
+		loc:
+			$near: []
+			$maxDistance: 0.1
+	
+	data =
+		lng: 0
+		lat: 0
+		pharmacy: []
+	
 	async.waterfall [
 		(next) ->
-			searchData =
-				loc:
-					$near: [req.body.lng, req.body.lat]
-					$maxDistance: 0.1
+			if req.body.lng && req.body.lat
+				data.lng = req.body.lng
+				data.lat = req.body.lat
+				
+				return next null, null
+			
+			ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
+			timeout = true
+			
+			iplocation.get ip, (result) ->
+				timeout = false
+				next null, result
+			
+			setTimeout () ->
+				if timeout
+					return View.ajaxResponse res, null, data
+			, 3000
+		(iplocation, next) ->
+			if iplocation
+				data.lng = iplocation.longitude
+				data.lat = iplocation.latitude
+			
+			searchData.loc['$near'] = [data.lng, data.lat]
 			
 			Model 'Pharmacy', 'find', next, searchData, null, lean: true
 		(docs) ->
-			data =
-				pharmacy: docs
+			data.pharmacy = docs
 			
 			View.ajaxResponse res, null, data
 	], (err) ->
