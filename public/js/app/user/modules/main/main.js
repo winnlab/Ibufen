@@ -51,7 +51,7 @@ export default Controller.extend(
 				
 				that.location_request(data);
 			}, function(error) {
-				that.location_request(data);
+				// that.location_request(data);
 				console.error(error);
 			}, options);
 			
@@ -83,7 +83,9 @@ export default Controller.extend(
 			var i, latlng, pharm,
 				bounds = new google.maps.LatLngBounds();
 			
-			this.map.setCenter(new google.maps.LatLng(data.lng, data.lat));
+			if(data.lng && data.lat) {
+				this.map.setCenter(new google.maps.LatLng(data.lng, data.lat));
+			}
 			
 			for(i = data.pharmacy.length; i--;) {
 				pharm = data.pharmacy[i];
