@@ -33,6 +33,8 @@ exports.addPharmacy = (data, callback) ->
 	], callback
 
 exports.near = (req, res) ->
+	console.log ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
+	
 	searchData =
 		loc:
 			$near: []
