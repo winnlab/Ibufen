@@ -51,7 +51,7 @@ export default Controller.extend(
 				
 				that.location_request(data);
 			}, function(error) {
-				that.location_request(data);
+				// that.location_request(data);
 				console.error(error);
 			}, options);
 			
