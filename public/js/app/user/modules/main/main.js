@@ -84,7 +84,7 @@ export default Controller.extend(
 				bounds = new google.maps.LatLngBounds();
 			
 			if(data.lng && data.lat) {
-				this.map.setCenter(new google.maps.LatLng(data.lng, data.lat));
+				this.map.setCenter(new google.maps.LatLng(data.lat, data.lng));
 			}
 			
 			for(i = data.pharmacy.length; i--;) {
