@@ -13,6 +13,14 @@ export default Controller.extend(
 			this.base_url = window.location.protocol + '//' + window.location.host;
 			
 			this.mapLatLng = new google.maps.LatLng(50.433, 30.517);
+			
+			this.fixed_topper = $('#fixed_topper');
+			
+			this.topper_container = this.element.find('.topper_container');
+			this.video_container = this.element.find('.video_container');
+			this.dragon_container = this.element.find('.dragon_container');
+			this.safety_container = this.element.find('.safety_container');
+			this.europe_container = this.element.find('.europe_container');
 		},
 		
 		plugins: function() {
@@ -109,6 +117,19 @@ export default Controller.extend(
 		
 		after_init: function(data) {
 			
+		},
+		
+		'.topper_container .buy click': function() {
+			var scrollTop = 	this.topper_container.height() +
+							this.video_container.height() +
+							this.dragon_container.height() +
+							this.safety_container.height() +
+							this.europe_container.height() -
+							this.fixed_topper.height() - 13;
+			
+			$('html, body').stop().animate({
+				scrollTop: scrollTop
+			}, 1000);
 		}
     }
 );
