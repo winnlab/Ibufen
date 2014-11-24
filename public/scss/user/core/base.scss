@@ -121,13 +121,13 @@ body {
 		}
 		
 		.warning_container {
-			height: 820px;
+			height: 820px !important;
 			
 			.warning_image {
-				top: 77px;
-				width: 462px;
-				height: 680px;
-				background: url('/img/user/640/warning.png') no-repeat;
+				top: 77px !important;
+				width: 462px !important;
+				height: 680px !important;
+				background: url('/img/user/640/warning.png') no-repeat !important;
 			}
 		}
 	}
