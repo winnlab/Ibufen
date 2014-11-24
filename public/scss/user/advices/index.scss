@@ -3,7 +3,21 @@
 
 #main_container.small {
 	.module.advices {
+		.topper_container_1 {
+			height: 535px;
+		}
 		
+		.topper_container_2 {
+			height: 285px;
+		}
+		
+		.notes_container {
+			height: 285px;
+		}
+		
+		.help_container_1 {
+			height: 765px;
+		}
 	}
 }
 
@@ -97,15 +111,16 @@
 		}
 		
 		.help_item {
-			clear: both;
+			display: table;
 			height: 102px;
 			font-family: 'Roboto_Light';
 			margin: 40px 0 0;
 		}
 		
 		.image_content {
+			display: table-cell;
+			vertical-align: top;
 			width: 126px;
-			float: left;
 			height: 100%;
 			
 			.img {
@@ -141,6 +156,11 @@
 				width: 103px;
 				background: url('/img/user/advices/1280/pill.png') no-repeat left;
 			}
+		}
+		
+		.text {
+			display: table-cell;
+			vertical-align: top;
 		}
 		
 		.top_label {

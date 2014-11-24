@@ -36,6 +36,10 @@ body {
 			height: 26px;
 			background: url('/img/user/640/social.png') no-repeat;
 			
+			&.fb {
+				margin-left: 10px;
+			}
+			
 			&.vk {
 				background-position: -27px 0;
 			}
@@ -44,16 +48,22 @@ body {
 		#fixed_topper {
 			max-width: $small_max_width;
 			height: 60px;
+			
+			button {
+				height: 26px;
+				padding: 0 30px;
+				font-size: 12px;
+			}
+			
+			.fever {
+				font-size: 11px;
+				line-height: 11px;
+				margin-left: 8px;
+			}
 		}
 		
 		.content {
 			width: 560px;
-		}
-		
-		button {
-			height: 26px;
-			padding: 0 30px;
-			font-size: 12px;
 		}
 		
 		.instruction_top_container {
@@ -164,6 +174,10 @@ body {
 		
 		&.scrolled {
 			background-color: rgba(0, 0, 0, 0.1);
+			
+			.fever {
+				color: white;
+			}
 		}
 		
 		.adorable_cell {
@@ -182,8 +196,9 @@ body {
 		}
 		
 		.fever {
+			@include transition(color 0.3s ease-in-out);
 			vertical-align: middle;
-			color: white;
+			color: transparent;
 			font-size: 20px;
 			line-height: 20px;
 			font-family: 'PT_Sans_Caption';

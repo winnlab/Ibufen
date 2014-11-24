@@ -18,6 +18,12 @@
 
 #main_container.small {
 	.module.main {
+		button {
+			height: 26px;
+			padding: 0 30px;
+			font-size: 12px;
+		}
+		
 		.topper_container {
 			height: 491px;
 			background: url('/img/user/640/bed.jpg') no-repeat center;
@@ -43,8 +49,8 @@
 			}
 			
 			.top_label {
-				font-size: 35px;
-				line-height: 35px;
+				font-size: 31px;
+				line-height: 31px;
 			}
 			
 			.bottom_label {
@@ -65,6 +71,13 @@
 			.buy_label {
 				margin-left: 11px;
 				font-size: 15px;
+			}
+			
+			.note {
+				right: -55px;
+				top: -225px;
+				width: 225px;
+				height: 70px;
 			}
 		}
 		
@@ -150,12 +163,6 @@
 				background: url('/img/user/640/logo_2.png') no-repeat;
 			}
 			
-			.fever {
-				font-size: 11px;
-				line-height: 11px;
-				margin-left: 8px;
-			}
-			
 			.dragon_text_1 {
 				top: 293px;
 				width: 100%;
@@ -193,7 +200,6 @@
 			background: url('/img/user/640/safety.jpg') no-repeat center;
 			
 			.safety_text {
-				top: 40px;
 				padding: 0 5px 0 0;
 			}
 			
@@ -299,6 +305,7 @@
 		height: 749px;
 		background: url('/img/user/1280/bed.jpg') no-repeat right;
 		position: relative;
+		overflow: hidden;
 		
 		&:after {
 			@include pseudo;
@@ -328,7 +335,7 @@
 			bottom: 0;
 			font-family: 'PT_Sans_Caption';
 			color: white;
-			padding: 136px 0 0 165px;
+			padding: 136px 0 0 95px;
 		}
 		
 		.top_label {
@@ -372,6 +379,23 @@
 			font-family: 'Roboto_Black';
 			border-bottom: 2px dotted $black;
 			margin-left: 9px;
+		}
+		
+		.note {
+			width: 546px;
+			height: 70px;
+			position: absolute;
+			right: -337px;
+			top: -70px;
+			bottom: 0;
+			margin: auto;
+			font-size: 12px;
+			font-family: 'Roboto_Light';
+			color: white;
+			
+			.note_text {
+				@include transform(rotate(-90deg));
+			}
 		}
 	}
 	
@@ -487,6 +511,10 @@
 		.dragon_text_1 {
 			top: 113px;
 			left: 0;
+			
+			.dragon_top_label {
+				padding: 0 35px 0 0;
+			}
 		}
 		
 		.dragon_text_2 {
@@ -541,11 +569,12 @@
 		
 		.safety_text {
 			@include border_boxed;
-			height: auto;
-			top: 191px;
-			left: 0;
-			position: absolute;
+			height: 100%;
 			padding: 0 40px 0 0;
+			
+			.adorable_cell {
+				text-align: left;
+			}
 		}
 		
 		.top_label {
@@ -590,11 +619,10 @@
 		
 		.europe_text {
 			@include border_boxed;
-			height: auto;
-			top: 245px;
-			left: 0;
-			position: absolute;
-			padding: 0 40px 0 0;
+			
+			.adorable_cell {
+				text-align: left;
+			}
 		}
 		
 		.top_label {
@@ -608,12 +636,22 @@
 		.bottom_label {
 			margin-top: 45px;
 			line-height: 30px;
+			letter-spacing: -0.1px;
 			
 			.r {
 				font-size: 14px;
 				line-height: 18px;
 				vertical-align: top;
 			}
+		}
+		
+		.note {
+			position: absolute;
+			left: 0;
+			bottom: 49px;
+			height: auto;
+			width: 100%;
+			font-size: 12px;
 		}
 	}
 	
