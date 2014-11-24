@@ -1,5 +1,7 @@
 mongoose = require 'mongoose'
 
+pharmacy = require './pharmacy'
+
 module.exports = [
     modelName: 'permission'
     data: [
@@ -45,4 +47,7 @@ module.exports = [
         role: 'admin'
         status: 1
     ]
+,
+    modelName: 'pharmacy'
+    data: pharmacy
 ]

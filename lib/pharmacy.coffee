@@ -79,3 +79,14 @@ exports.near = (req, res) ->
 		error = err.message or err
 		Logger.log 'info', "Error in lib/pharmacy/near: #{error}"
 		View.ajaxResponse res, err
+
+exports.findAll = (req, res) ->
+	async.waterfall [
+		(next) ->
+			Model 'Pharmacy', 'find', next, null, 'address city name loc', lean: true
+		(docs) ->
+			res.send docs
+	], (err) ->
+		error = err.message or err
+		Logger.log 'info', "Error in lib/pharmacy/findAll: #{error}"
+		View.ajaxResponse res, err

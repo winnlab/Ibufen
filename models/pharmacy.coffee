@@ -4,7 +4,7 @@ Mixed = mongoose.Schema.Types.Mixed
 
 schema = new mongoose.Schema
 	_id:
-		type: String
+		type: ObjectId
 		required: true
 	name:
 		type: String
