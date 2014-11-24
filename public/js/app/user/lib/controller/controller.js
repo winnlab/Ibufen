@@ -9,6 +9,8 @@ export default can.Control.extend({
 	}
 }, {
 	init: function() {
+		this.bindings();
+		
 		var server = $('#modules').find('.module.server');
 		
 		this.server = server.length;
@@ -20,6 +22,10 @@ export default can.Control.extend({
 		}
 		
 		System.import(this.options.css_path + this.options.name + '/index.css!').then(can.proxy(this.request, this));
+	},
+	
+	bindings: function() {
+		
 	},
 	
 	request: function() {
@@ -74,8 +80,6 @@ export default can.Control.extend({
 		
 		this.after_init(data);
 		
-		$(window).trigger('custom_resize');
-		
 		if(this.server) {
 			$(window).trigger('custom_ready');
 		}
@@ -97,7 +101,6 @@ export default can.Control.extend({
 
 	},
 	
-	'{window} custom_resize': 'resize',
 	'{window} resize': 'resize',
 	
 	resize: function() {

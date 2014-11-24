@@ -41,8 +41,6 @@ export default can.Map.extend({
 		if(exists) {
 			this.activateModule(id);
 			
-			$(window).trigger('custom_resize');
-			
 			this.moduleActivated(id);
 		}
 		
@@ -55,6 +53,8 @@ export default can.Map.extend({
 		
 		module_tabs.removeClass(classname);
 		module_tabs.filter('.module_tab_' + id).addClass(classname);
+		
+		$('#' + id).trigger('custom_focus');
 	},
 	
 	addModule: function (module) {

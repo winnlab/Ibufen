@@ -9,6 +9,18 @@ export default Controller.extend(
 			
 		}
 	}, {
+		bindings: function() {
+			var that = this;
+			
+			this.element.on("custom_focus", function() {
+				if(!that.element.hasClass('active')) {
+					return false;
+				}
+				
+				$(window).trigger('custom_warning', 'big');
+			});
+		},
+		
 		variables: function() {
 			this.base_url = window.location.protocol + '//' + window.location.host;
 			
@@ -116,7 +128,15 @@ export default Controller.extend(
 		},
 		
 		after_init: function(data) {
+			var that = this;
 			
+			this.element.on("custom_focus", function() {
+				if(!that.element.hasClass('active')) {
+					return false;
+				}
+				
+				$(window).trigger('custom_warning', 'big');
+			});
 		},
 		
 		'.topper_container .buy click': function() {

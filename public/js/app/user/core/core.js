@@ -25,6 +25,8 @@ var Core = can.Control.extend(
 			this.instruction_container = this.element.find('.instruction_container');
 			this.instruction_items = this.instruction_container.find('.item');
 			
+			this.warning_container = this.element.find('.warning_container');
+			
 			this.active = 'active';
 			this.small = 'small';
 			
@@ -78,18 +80,24 @@ var Core = can.Control.extend(
 			$('#preloader').fadeOut(300);
 		},
 		
-		'{window} custom_resize': 'resize',
 		'{window} resize': 'resize',
 		
 		resize: function() {
 			var wnd_width = this.window.width(),
 				func = 'removeClass';
 			
-			if(wnd_width < 1174) {
+			if(wnd_width < 1200) {
 				func = 'addClass';
 			}
 			
 			this.main_container[func](this.small);
+		},
+		
+		// custom
+		
+		'{window} custom_warning': function(el, ev, classname) {
+			this.warning_container.removeClass();
+			this.warning_container.addClass('warning_container ' + classname);
 		}
 	}
 );

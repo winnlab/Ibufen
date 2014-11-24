@@ -361,16 +361,30 @@ body {
 	}
 	
 	.warning_container {
-		height: 1160px;
 		background-color: white;
 		position: relative;
 		
+		&.big {
+			height: 1485px;
+			
+			.warning_image {
+				height: 967px;
+				background: url('/img/user/1280/warning_big.png') no-repeat;
+			}
+		}
+		
+		&.small {
+			height: 789px;
+			
+			.warning_image {
+				height: 513px;
+				background: url('/img/user/1280/warning_small.png') no-repeat;
+			}
+		}
+		
 		.warning_image {
-			@include absolute_horizontal_centered;
-			top: 116px;
-			width: 1138px;
-			height: 967px;
-			background: url('/img/user/1280/warning.png') no-repeat;
+			@include absolute_centered;
+			width: 1179px;
 		}
 	}
 }

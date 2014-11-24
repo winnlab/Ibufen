@@ -6,6 +6,18 @@ export default Controller.extend(
 			
 		}
 	}, {
+		bindings: function() {
+			var that = this;
+			
+			this.element.on("custom_focus", function() {
+				if(!that.element.hasClass('active')) {
+					return false;
+				}
+				
+				$(window).trigger('custom_warning', 'small');
+			});
+		},
+		
 		variables: function() {
 			this.help_containers = this.element.find('.help_container');
 			
