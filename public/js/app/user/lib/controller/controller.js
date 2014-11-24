@@ -71,9 +71,10 @@ export default can.Control.extend({
 	after_request: function(data) {
 		this.variables();
 		this.plugins();
-		$(window).trigger('custom_resize');
 		
 		this.after_init(data);
+		
+		$(window).trigger('custom_resize');
 		
 		if(this.server) {
 			$(window).trigger('custom_ready');

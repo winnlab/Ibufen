@@ -90,10 +90,6 @@ body {
 					background-position: -27px -27px;
 				}
 			}
-			
-			.text {
-				padding: 0 0 0 160px;
-			}
 		}
 		
 		.instruction_container {
@@ -136,7 +132,6 @@ body {
 		position: absolute;
 		height: 30px;
 		right: 0;
-		width: 240px;
 		text-align: right;
 	}
 	
@@ -218,6 +213,12 @@ body {
 			left: 0;
 		}
 		
+		&.active {
+			.arrow {
+				background-position: -13px 0;
+			}
+		}
+		
 		.know_logo {
 			position: absolute;
 			top: 0;
@@ -236,6 +237,10 @@ body {
 			font-family: 'Neucha';
 		}
 		
+		.instruction_title {
+			cursor: pointer;
+		}
+		
 		.arrow {
 			@include absolute_horizontal_centered;
 			width: 12px;
@@ -251,6 +256,7 @@ body {
 			top: 0;
 			font-size: 14px;
 			font-family: 'Roboto_Medium';
+			width: 25%;
 			
 			.adorable_cell {
 				text-align: right;

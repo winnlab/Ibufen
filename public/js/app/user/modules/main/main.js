@@ -22,7 +22,8 @@ export default Controller.extend(
 		init_map: function() {
 			var	options = {
 					center: this.mapLatLng,
-					zoom: 12
+					zoom: 12,
+					scrollwheel: false
 				};
 			
 			this.map = new google.maps.Map(document.getElementById('map'), options);

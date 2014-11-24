@@ -15,16 +15,33 @@ var Core = can.Control.extend(
 	{
 		init: function() {
 			this.window = $(window);
+			
 			this.main_container = $('#main_container');
 			this.fixed_topper = $('#fixed_topper');
-			this.instruction_items = this.element.find('.instruction_container .item');
+			
+			this.instruction_top_container = this.element.find('.instruction_top_container');
+			this.instruction_title = this.instruction_top_container.find('.instruction_title');
+			
+			this.instruction_container = this.element.find('.instruction_container');
+			this.instruction_items = this.instruction_container.find('.item');
 			
 			this.active = 'active';
 			this.small = 'small';
 			
 			this.resize();
 			
+			this.instruction_container.hide();
 			this.instruction_items.filter(':not(.active)').find('.text').hide();
+		},
+		
+		'.instruction_title click': function(el) {
+			this.instruction_top_container.toggleClass(this.active);
+			this.instruction_container.stop(true, false).slideToggle(300);
+		},
+		
+		'.instruction_container .slide_up click': function() {
+			this.instruction_top_container.removeClass(this.active);
+			this.instruction_container.stop(true, false).slideUp(300);
 		},
 		
 		'.instruction_container .item span, .instruction_container .item .arrow click': function(el) {
@@ -68,7 +85,7 @@ var Core = can.Control.extend(
 			var wnd_width = this.window.width(),
 				func = 'removeClass';
 			
-			if(wnd_width < 1160) {
+			if(wnd_width < 1174) {
 				func = 'addClass';
 			}
 			
