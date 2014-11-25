@@ -566,7 +566,7 @@
 	
 	.safety_container {
 		height: 762px;
-		background: url('/img/user/1280/safety.jpg') no-repeat right;
+		background: url('/img/user/1280/safety.jpg') no-repeat center;
 		
 		.safety_text {
 			@include border_boxed;
