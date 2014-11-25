@@ -33,6 +33,12 @@ export default Controller.extend(
 			this.dragon_container = this.element.find('.dragon_container');
 			this.safety_container = this.element.find('.safety_container');
 			this.europe_container = this.element.find('.europe_container');
+			
+			this.instruction_button = this.element.find('button.instruction');
+			this.instruction_container = this.element.find('.instruction_container');
+			this.instruction_items = this.instruction_container.find('.item');
+			
+			this.active = 'active';
 		},
 		
 		plugins: function() {
@@ -130,13 +136,8 @@ export default Controller.extend(
 		after_init: function(data) {
 			var that = this;
 			
-			this.element.on("custom_focus", function() {
-				if(!that.element.hasClass('active')) {
-					return false;
-				}
-				
-				$(window).trigger('custom_warning', 'big');
-			});
+			this.instruction_container.hide();
+			this.instruction_items.filter(':not(.active)').find('.text').hide();
 		},
 		
 		'.topper_container .buy click': function() {
@@ -145,11 +146,33 @@ export default Controller.extend(
 							this.dragon_container.height() +
 							this.safety_container.height() +
 							this.europe_container.height() -
-							this.fixed_topper.height() - 13;
+							this.fixed_topper.height();
 			
 			$('html, body').stop().animate({
 				scrollTop: scrollTop
 			}, 1000);
+		},
+		
+		'button.instruction click': function(el) {
+			this.instruction_container.stop(true, false).slideToggle(300);
+		},
+		
+		'.instruction_container .slide_up click': function() {
+			this.instruction_container.stop(true, false).slideUp(300);
+		},
+		
+		'.instruction_container .item span, .instruction_container .item .arrow click': function(el) {
+			var item  = el.closest('.item'),
+				text = item.find('.text'),
+				func = 'slideDown';
+			
+			if(item.hasClass(this.active)) {
+				func = 'slideUp';
+			}
+			
+			text.stop(true, false)[func](300);
+			
+			item.toggleClass(this.active);
 		}
     }
 );

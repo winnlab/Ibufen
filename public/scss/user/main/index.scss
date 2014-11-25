@@ -37,7 +37,7 @@
 			.pack {
 				width: 202px;
 				height: 251px;
-				top: 255px;
+				bottom: 0;
 				left: -31px;
 				background: url('/img/user/640/pack.png') no-repeat;
 			}
@@ -297,15 +297,32 @@
 				font-size: 13px;
 			}
 		}
+		
+		.instruction_container {
+			background-color: $blue;
+			
+			.content {
+				padding: 29px 0px 45px;
+			}
+			
+			.slide_up {
+				height: 26px;
+				border: 1px solid white;
+				padding: 0 35px;
+				font-size: 13px;
+				color: $buttonblue;
+				margin-top: 45px;
+				background-color: #c0daef;
+			}
+		}
 	}
 }
 
 .module.main {
 	.topper_container {
-		height: 749px;
-		background: url('/img/user/1280/bed.jpg') no-repeat right;
+		height: 852px;
+		background: url('/img/user/1280/bed.jpg') no-repeat center;
 		position: relative;
-		overflow: hidden;
 		
 		&:after {
 			@include pseudo;
@@ -317,11 +334,15 @@
 			z-index: 1;
 		}
 		
+		.content {
+			overflow: hidden;
+		}
+		
 		.pack {
 			position: absolute;
 			width: 340px;
 			height: 422px;
-			top: 340px;
+			bottom: 0;
 			left: -51px;
 			background: url('/img/user/1280/pack.png') no-repeat;
 		}
@@ -329,28 +350,31 @@
 		.text {
 			@include border_boxed;
 			position: absolute;
-			width: 670px;
-			height: 410px;
+			width: 480px;
+			height: 470px;
 			right: 0;
 			bottom: 0;
 			font-family: 'PT_Sans_Caption';
 			color: white;
-			padding: 136px 0 0 95px;
+			padding: 212px 0 0 0;
 		}
 		
 		.top_label {
-			font-size: 48px;
-			line-height: 48px;
+			font-size: 35px;
+			line-height: 40px;
+			font-family: 'PT_Sans_Bold';
+			text-transform: uppercase;
 		}
 		
 		.bottom_label {
-			font-size: 28px;
-			line-height: 28px;
+			font-size: 24px;
+			line-height: 24px;
 			margin-top: 15px;
+			font-family: 'PT_Sans_Regular';
 		}
 		
 		.buy {
-			height: 68px;
+			height: 90px;
 			width: 170px;
 			position: absolute;
 			bottom: 0;
@@ -401,7 +425,7 @@
 	}
 	
 	.video_container {
-		height: 775px;
+		height: 761px;
 		position: relative;
 		background-color: $blue;
 		
@@ -409,12 +433,13 @@
 			@include pseudo;
 			width: 100%;
 			height: 100%;
-			background: url('/img/user/1280/sky.png') no-repeat center top;
+			background: url('/img/user/1280/sky.png') no-repeat center;
 			opacity: 0.58;
 		}
 		
 		.player {
 			@include absolute_horizontal_centered;
+			@include border_boxed;
 			width: 825px;
 			height: 472px;
 			top: 100px;
@@ -430,24 +455,26 @@
 		
 		.vimeo {
 			position: relative;
+			border: 2px solid white;
+			z-index: 1;
 		}
 		
 		.know_more {
 			position: absolute;
-			bottom: 137px;
+			bottom: 125px;
 			width: 100%;
 			left: 0;
 			text-align: center;
-			font-family: 'Roboto_Black';
+			font-family: 'PT_Sans_Bold';
 			color: white;
-			font-size: 15px;
-			line-height: 15px;
+			font-size: 18px;
+			line-height: 18px;
 			text-transform: uppercase;
 		}
 	}
 	
 	.dragon_container {
-		height: 1672px;
+		height: 2331px;
 		position: relative;
 		
 		&:before {
@@ -463,10 +490,10 @@
 		.dragon_content {
 			&:before {
 				@include pseudo;
-				width: 972px;
-				height: 1340px;
-				top: -118px;
-				left: -64px;
+				width: 659px;
+				height: 2159px;
+				top: -93px;
+				left: 100px;
 				background: url('/img/user/1280/line.png') no-repeat;
 				z-index: 1;
 			}
@@ -474,10 +501,10 @@
 		
 		.dragon_1 {
 			position: absolute;
-			width: 657px;
-			height: 392px;
-			top: 0;
-			right: -39px;
+			width: 620px;
+			height: 521px;
+			top: 177px;
+			right: -70px;
 			background: url('/img/user/1280/dragon_1.png') no-repeat;
 			z-index: 2;
 		}
@@ -485,19 +512,19 @@
 		.dragon_2 {
 			position: absolute;
 			width: 480px;
-			height: 514px;
-			top: 386px;
-			left: -8px;
+			height: 640px;
+			top: 749px;
+			left: 14px;
 			background: url('/img/user/1280/dragon_2.png') no-repeat;
 			z-index: 2;
 		}
 		
 		.dragon_3 {
 			position: absolute;
-			width: 444px;
-			height: 413px;
-			top: 973px;
-			right: -7px;
+			width: 480px;
+			height: 521px;
+			top: 1465px;
+			right: 0px;
 			background: url('/img/user/1280/dragon_3.png') no-repeat;
 			z-index: 2;
 		}
@@ -510,7 +537,7 @@
 		}
 		
 		.dragon_text_1 {
-			top: 113px;
+			top: 298px;
 			left: 0;
 			
 			.dragon_top_label {
@@ -519,13 +546,17 @@
 		}
 		
 		.dragon_text_2 {
-			top: 616px;
+			top: 955px;
 			right: 0;
 		}
 		
 		.dragon_text_3 {
-			top: 1092px;
+			top: 1606px;
 			left: 0;
+			
+			.dragon_bottom_label {
+				padding: 0 70px 0 0;
+			}
 		}
 		
 		.dragon_top_label {
@@ -533,11 +564,15 @@
 			font-size: 36px;
 			line-height: 40px;
 			color: white;
+			letter-spacing: 1.5px;
 		}
 		
 		.dragon_bottom_label {
 			margin-top: 20px;
 			line-height: 30px;
+			font-family: 'PT_Sans_Regular';
+			font-size: 20px;
+			color: #295266;
 			
 			.r {
 				font-size: 14px;
@@ -549,11 +584,17 @@
 		.notes {
 			position: absolute;
 			width: 100%;
-			height: 205px;
+			height: 270px;
 			bottom: 0;
 			left: 0;
-			font-size: 12px;
-			font-family: 'Roboto_Light';
+			font-size: 10px;
+			font-family: 'PT_Sans_Regular';
+			color: white;
+			line-height: 16px;
+			
+			.adorable_cell {
+				text-align: left;
+			}
 			
 			.r {
 				font-size: 9px;
@@ -582,13 +623,17 @@
 			font-size: 36px;
 			line-height: 36px;
 			font-family: 'Neucha';
-			color: $titleblue;
+			color: #175fa9;
 			text-transform: uppercase;
+			letter-spacing: 3px;
 		}
 		
 		.bottom_label {
 			margin-top: 25px;
 			line-height: 30px;
+			color: #4c4c4c;
+			font-family: 'PT_Sans_Regular';
+			font-size: 20px;
 			
 			.r {
 				font-size: 14px;
@@ -610,16 +655,19 @@
 		.content {
 			&:after {
 				@include pseudo;
+				top: 0;
+				bottom: 0;
+				margin: auto;
 				width: 389px;
 				height: 393px;
 				background: url('/img/user/1280/euro.png') no-repeat;
-				right: 0;
-				top: 177px;
+				left: 0;
 			}
 		}
 		
 		.europe_text {
 			@include border_boxed;
+			float: right;
 			
 			.adorable_cell {
 				text-align: left;
@@ -632,12 +680,15 @@
 			font-family: 'Neucha';
 			color: white;
 			text-transform: uppercase;
+			letter-spacing: 3px;
 		}
 		
 		.bottom_label {
 			margin-top: 45px;
 			line-height: 30px;
-			letter-spacing: -0.1px;
+			color: #295266;
+			font-size: 20px;
+			font-family: 'PT_Sans_Regular';
 			
 			.r {
 				font-size: 14px;
@@ -648,30 +699,27 @@
 		
 		.note {
 			position: absolute;
-			left: 0;
-			bottom: 49px;
+			right: 0;
+			bottom: 62px;
 			height: auto;
-			width: 100%;
-			font-size: 12px;
+			width: 50%;
+			font-size: 10px;
+			font-family: 'PT_Sans_Regular';
+			color: white;
 		}
 	}
 	
 	.map_container {
-		height: 742px;
 		background-color: $darkblue;
 		
 		.title {
-			height: 130px;
+			height: 90px;
 			background-color: $darkblue;
-			font-size: 36px;
-			line-height: 50px;
+			font-size: 24px;
+			line-height: 24px;
 			color: white;
 			text-transform: uppercase;
-			font-family: 'Neucha';
-			
-			.adorable_cell {
-				padding: 0 60px;
-			}
+			font-family: 'PT_Sans_Bold';
 			
 			.r {
 				font-size: 18px;
@@ -681,14 +729,14 @@
 		}
 		
 		#map {
-			height: 612px;
+			height: 670px;
 			position: relative;
 			
 			&:before {
 				@include pseudo;
-				height: 17px;
+				height: 46px;
 				width: 100%;
-				background: url('/img/user/1280/map_arc.png') no-repeat center;
+				background: url('/img/user/1280/blue_arc.png') no-repeat center;
 				top: -1px;
 				left: 0;
 				z-index: 1;
@@ -697,15 +745,92 @@
 	}
 	
 	.know_container {
-		height: 122px;
+		height: 90px;
 		background-color: $blue;
 		color: #4d91ca;
 		
+		button {
+			height: 40px;
+			padding: 0 25px;
+			font-size: 16px;
+			font-family: 'PT_Sans_Bold';
+			width: 210px;
+		}
+		
 		.cost {
+			color: $darkblue;
+		}
+		
+		.instruction {
+			color: white;
+			background-color: transparent;
+			border: 2px solid #9db7d8;
+			margin-left: 29px;
+		}
+	}
+	
+	.instruction_container {
+		background-color: $blue;
+		
+		.content {
+			@include border_boxed;
+			padding: 47px 50px;
+		}
+		
+		.item {
+			@include border_radius(5px);
+			border: 1px solid #abcae5;
+			padding: 8px 50px;
+			text-align: left;
+			color: white;
+			font-size: 14px;
+			position: relative;
+			margin-top: 7px;
+			
+			&.active {
+				.arrow {
+					background-position: -13px 0;
+				}
+				
+				.title {
+					color: white;
+				}
+			}
+		}
+		
+		.arrow {
+			position: absolute;
+			width: 12px;
+			height: 6px;
+			background: url('/img/user/item_arrow.png') no-repeat;
+			top: 16px;
+			left: 17px;
+			cursor: pointer;
+		}
+		
+		.title {
+			@include transition(color 0.3s ease-in-out);
+			color: #d3e3f1;
+			font-family: 'Roboto_Bold';
+			
+			span {
+				cursor: pointer;
+			}
+		}
+		
+		.text {
+			color: #fffefe;
+			font-family: 'Roboto_Light';
+			margin-top: 25px;
+			margin-bottom: 4px;
+		}
+		
+		.slide_up {
 			height: 44px;
 			padding: 0 30px;
 			font-size: 20px;
 			color: $buttonblue;
+			margin-top: 45px;
 		}
 	}
 }
