@@ -387,6 +387,15 @@
 			right: 0;
 			color: $black;
 			cursor: pointer;
+			opacity: 0.9;
+			
+			&:hover {
+				opacity: 0.8;
+			}
+			
+			&:active {
+				opacity: 1;
+			}
 			
 			.adorable_cell {
 				text-align: right;
@@ -756,21 +765,23 @@
 		color: #4d91ca;
 		
 		button {
+			background: url('/img/user/1280/dashed_button.png') no-repeat;
+			background-color: transparent;
 			height: 40px;
 			padding: 0 25px;
 			font-size: 16px;
 			font-family: 'PT_Sans_Bold';
 			width: 210px;
-		}
-		
-		.cost {
-			color: $darkblue;
+			color: white;
+			
+			&:hover, &:active {
+				color: $darkblue;
+				background-image: none;
+				background-color: white;
+			}
 		}
 		
 		.instruction {
-			background: url('/img/user/1280/dashed_button.png') no-repeat;
-			color: white;
-			background-color: transparent;
 			margin-left: 29px;
 		}
 	}

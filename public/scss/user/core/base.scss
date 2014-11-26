@@ -113,10 +113,26 @@ body {
 		}
 	}
 	
+	button {
+		opacity: 0.9;
+		
+		&:hover {
+			opacity: 0.8;
+		}
+		
+		&:active {
+			opacity: 1;
+		}
+	}
+	
 	.logo {
 		width: 210px;
 		height: 51px;
 		background: url('/img/user/1280/logo.png') no-repeat center;
+		
+		&:hover {
+			opacity: 0.9;
+		}
 	}
 	
 	.icons {
@@ -234,6 +250,10 @@ body {
 			width: 145px;
 			height: 40px;
 			background: url('/img/user/640/logo.png') no-repeat;
+			
+			&:hover {
+				opacity: 0.9;
+			}
 		}
 		
 		.instruction {

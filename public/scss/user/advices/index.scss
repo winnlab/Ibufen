@@ -41,15 +41,17 @@
 		.how_to_help {
 			@include rounded;
 			@include transition(background-color 0.3s ease-in-out);
+			background: url('/img/user/1280/dashed_button.png') no-repeat;
 			position: absolute;
-			height: 38px;
+			height: 40px;
 			bottom: -10px;
 			left: 0;
-			width: 174px;
+			width: 210px;
 			z-index: 1;
 			background-color: transparent;
 			
 			&.active {
+				background-image: none;
 				background-color: white;
 				
 				&:before {
@@ -57,10 +59,11 @@
 				}
 				
 				button {
-					color: #4e7f9d;
+					color: $darkblue;
 				}
 			}
 			
+			/*
 			&:before {
 				@include pseudo;
 				top: 19px;
@@ -69,6 +72,7 @@
 				height: 6px;
 				background: url('/img/user/advices/arrow.png') no-repeat;
 			}
+			*/
 			
 			button {
 				@include border_boxed;
@@ -76,16 +80,19 @@
 				width: 100%;
 				height: 100%;
 				color: white;
-				border: 2px solid white;
 				background-color: transparent;
 				padding: 0;
-				text-transform: none;
-				font-size: 18px;
-				font-family: 'Roboto_Medium';
+				font-size: 16px;
 				padding: 0 0 0 30px;
-				text-align: left;
 				position: relative;
 				z-index: 1;
+				padding: 0 25px;
+				
+				&:hover, &:active {
+					color: $darkblue;
+					background-image: none;
+					background-color: white;
+				}
 			}
 		}
 	}
