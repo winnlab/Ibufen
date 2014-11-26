@@ -33,6 +33,7 @@ export default Controller.extend(
 			this.dragon_container = this.element.find('.dragon_container');
 			this.safety_container = this.element.find('.safety_container');
 			this.europe_container = this.element.find('.europe_container');
+			this.map_container = this.element.find('.map_container');
 			
 			this.instruction_button = this.element.find('button.instruction');
 			this.instruction_container = this.element.find('.instruction_container');
@@ -108,6 +109,7 @@ export default Controller.extend(
 		
 		success_location_request: function(data) {
 			var i, latlng, pharm,
+				that = this,
 				bounds = new google.maps.LatLngBounds();
 			
 			if(data.lng && data.lat) {
@@ -115,17 +117,27 @@ export default Controller.extend(
 			}
 			
 			for(i = data.pharmacy.length; i--;) {
-				pharm = data.pharmacy[i];
-				
-				latlng = new google.maps.LatLng(pharm.loc[1], pharm.loc[0]);
-				
-				bounds.extend(latlng);
-				
-				new google.maps.Marker({
-					position: latlng,
-					map: this.map,
-					icon: this.base_url + '/img/user/640/marker.png'
-				});
+				(function(i) {
+					pharm = data.pharmacy[i];
+					
+					latlng = new google.maps.LatLng(pharm.loc[1], pharm.loc[0]);
+					
+					bounds.extend(latlng);
+					
+					var marker = new google.maps.Marker({
+						position: latlng,
+						map: that.map,
+						icon: that.base_url + '/img/user/640/marker.png'
+					});
+					
+					var infowindow = new google.maps.InfoWindow({
+						content: pharm.address
+					});
+					
+					google.maps.event.addListener(marker, 'click', function() {
+						infowindow.open(that.map, marker);
+					});
+				})(i);
 			}
 			
 			if(bounds.length) {
@@ -154,25 +166,42 @@ export default Controller.extend(
 		},
 		
 		'button.instruction click': function(el) {
-			this.instruction_container.stop(true, false).slideToggle(300);
+			var func = 'slideUp',
+				visible = this.instruction_container.css('display') == 'block',
+				scrollTop = 	this.topper_container.height() +
+							this.video_container.height() +
+							this.dragon_container.height() +
+							this.safety_container.height() +
+							this.europe_container.height() +
+							this.map_container.height() -
+							this.fixed_topper.height();
+			
+			if(!visible) {
+				func = 'slideDown';
+				
+				$('html, body').stop().animate({
+					scrollTop: scrollTop
+				}, 500);
+			}
+			
+			this.instruction_container.stop(true, false)[func](300);
 		},
 		
 		'.instruction_container .slide_up click': function() {
 			this.instruction_container.stop(true, false).slideUp(300);
 		},
 		
-		'.instruction_container .item span, .instruction_container .item .arrow click': function(el) {
-			var item  = el.closest('.item'),
-				text = item.find('.text'),
+		'.instruction_container .item click': function(el) {
+			var text = el.find('.text'),
 				func = 'slideDown';
 			
-			if(item.hasClass(this.active)) {
+			if(el.hasClass(this.active)) {
 				func = 'slideUp';
 			}
 			
 			text.stop(true, false)[func](300);
 			
-			item.toggleClass(this.active);
+			el.toggleClass(this.active);
 		}
     }
 );

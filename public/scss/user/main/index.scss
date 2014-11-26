@@ -334,9 +334,13 @@
 			z-index: 1;
 		}
 		
-		.inner {
+		
+		.note_content {
+			top: 0;
+			left: 0;
 			width: 100%;
 			height: 100%;
+			position: absolute;
 			overflow: hidden;
 		}
 		
@@ -412,7 +416,7 @@
 			width: 555px;
 			height: 70px;
 			position: absolute;
-			right: -355px;
+			right: -235px;
 			top: -70px;
 			bottom: 0;
 			margin: auto;
@@ -764,9 +768,9 @@
 		}
 		
 		.instruction {
+			background: url('/img/user/1280/dashed_button.png') no-repeat;
 			color: white;
 			background-color: transparent;
-			border: 2px solid #9db7d8;
 			margin-left: 29px;
 		}
 	}
@@ -788,6 +792,7 @@
 			font-size: 14px;
 			position: relative;
 			margin-top: 7px;
+			cursor: pointer;
 			
 			&.active {
 				.arrow {
@@ -807,17 +812,12 @@
 			background: url('/img/user/item_arrow.png') no-repeat;
 			top: 16px;
 			left: 17px;
-			cursor: pointer;
 		}
 		
 		.title {
 			@include transition(color 0.3s ease-in-out);
 			color: #d3e3f1;
 			font-family: 'Roboto_Bold';
-			
-			span {
-				cursor: pointer;
-			}
 		}
 		
 		.text {
@@ -828,9 +828,9 @@
 		}
 		
 		.slide_up {
-			height: 44px;
-			padding: 0 30px;
-			font-size: 20px;
+			height: 40px;
+			padding: 0 38px;
+			font-size: 16px;
 			color: $buttonblue;
 			margin-top: 45px;
 		}
