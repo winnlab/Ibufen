@@ -64,6 +64,10 @@ var Core = can.Control.extend(
 		'{window} custom_warning': function(el, ev, classname) {
 			this.warning_container.removeClass();
 			this.warning_container.addClass('warning_container ' + classname);
+		},
+		
+		'.logo, .know_logo click': function() {
+			$('html, body').scrollTop(0);
 		}
 	}
 );

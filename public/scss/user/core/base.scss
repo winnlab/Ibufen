@@ -126,9 +126,11 @@ body {
 	}
 	
 	.logo {
+		@include box_shadow(0 0 0 rgba(0, 0, 0, 0));
 		width: 210px;
 		height: 51px;
 		background: url('/img/user/1280/logo.png') no-repeat center;
+		outline: none;
 		
 		&:hover {
 			opacity: 0.9;
@@ -249,6 +251,7 @@ body {
 		}
 		
 		.know_logo {
+			@include box_shadow(0 0 0 rgba(0, 0, 0, 0));
 			position: absolute;
 			top: 0;
 			bottom: 0;
@@ -257,6 +260,7 @@ body {
 			width: 145px;
 			height: 40px;
 			background: url('/img/user/640/logo.png') no-repeat;
+			outline: none;
 			
 			&:hover {
 				opacity: 0.9;
@@ -315,26 +319,15 @@ body {
 		position: relative;
 		
 		&.big {
-			height: 1485px;
-			
-			.warning_image {
-				height: 967px;
-				background: url('/img/user/1280/warning_big.png') no-repeat;
-			}
+			display: none;
 		}
 		
 		&.small {
-			height: 789px;
 			
-			.warning_image {
-				height: 513px;
-				background: url('/img/user/1280/warning_small.png') no-repeat;
-			}
 		}
 		
-		.warning_image {
-			@include absolute_centered;
-			width: 1179px;
+		img {
+			max-width: 100%;
 		}
 	}
 }

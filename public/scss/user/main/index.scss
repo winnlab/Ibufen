@@ -456,7 +456,7 @@
 			@include absolute_horizontal_centered;
 			@include border_boxed;
 			width: 825px;
-			height: 472px;
+			height: 484px;
 			top: 100px;
 			
 			&:before {
@@ -844,6 +844,22 @@
 			font-size: 16px;
 			color: $buttonblue;
 			margin-top: 45px;
+		}
+	}
+	
+	.fixed_footer {
+		background-color: rgba(255, 255, 255, 0.7);
+		bottom: 0;
+		height: 15%;
+		left: 0;
+		position: fixed;
+		z-index: 1;
+		width: 100%;
+		
+		img {
+			@include absolute_centered;
+			max-height: 100%;
+			max-width: 100%;
 		}
 	}
 }
