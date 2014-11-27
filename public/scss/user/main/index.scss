@@ -315,6 +315,10 @@
 				background-color: #c0daef;
 			}
 		}
+		
+		.fixed_footer {
+			max-width: $small_max_width;
+		}
 	}
 }
 
@@ -848,18 +852,18 @@
 	}
 	
 	.fixed_footer {
+		max-width: $big_max_width;
 		background-color: rgba(255, 255, 255, 0.7);
 		bottom: 0;
 		height: 15%;
-		left: 0;
 		position: fixed;
 		z-index: 5;
 		width: 100%;
 		
 		img {
 			@include absolute_centered;
-			max-height: 100%;
 			max-width: 100%;
+			height: 100%;
 		}
 	}
 }

@@ -19,6 +19,8 @@ var Core = can.Control.extend(
 			this.main_container = $('#main_container');
 			this.fixed_topper = $('#fixed_topper');
 			
+			this.footer = $('#footer');
+			
 			this.warning_container = this.element.find('.warning_container');
 			
 			this.small = 'small';
@@ -57,6 +59,8 @@ var Core = can.Control.extend(
 			}
 			
 			this.main_container[func](this.small);
+			
+			this.change_warning_height();
 		},
 		
 		// custom
@@ -64,10 +68,22 @@ var Core = can.Control.extend(
 		'{window} custom_warning': function(el, ev, classname) {
 			this.warning_container.removeClass();
 			this.warning_container.addClass('warning_container ' + classname);
+			
+			this.change_warning_height();
 		},
 		
 		'.logo, .know_logo click': function() {
 			$('html, body').scrollTop(0);
+		},
+		
+		change_warning_height: function() {
+			var height = 'auto';
+			
+			if(this.warning_container.hasClass('big')) {
+				height = (this.window.height() * 0.15) | 0
+			}
+			
+			this.warning_container.height(height);
 		}
 	}
 );

@@ -319,7 +319,9 @@ body {
 		position: relative;
 		
 		&.big {
-			display: none;
+			img {
+				display: none;
+			}
 		}
 		
 		&.small {
