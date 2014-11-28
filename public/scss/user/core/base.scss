@@ -22,13 +22,14 @@ body {
 		font-size: 16px;
 		
 		.logo {
-			width: 145px;
-			height: 40px;
+			width: 168px;
+			height: 41px;
 			background: url('/img/user/640/logo.png') no-repeat center;
 		}
 		
 		.icons {
-			height: 26px;
+			height: 100%;
+			width: 203px;
 		}
 		
 		.icon {
@@ -50,65 +51,50 @@ body {
 			height: 60px;
 			
 			button {
-				height: 26px;
-				padding: 0 30px;
-				font-size: 12px;
+				@include border_radius(0);
+				height: 100%;
+				width: 100%;
+				font-size: 14px;
+			}
+			
+			.content {
+				padding: 0 0 0 30px;
+				width: 100%;
 			}
 			
 			.fever {
-				font-size: 11px;
-				line-height: 11px;
-				margin-left: 8px;
+				font-size: 14px;
+				line-height: 14px;
 			}
 		}
 		
 		.content {
-			width: 560px;
+			width: $small_min_width;
 		}
 		
 		.instruction_top_container {
-			height: 88px;
-			
-			&:before {
-				height: 7px;
-				top: -6px;
-				background: url('/img/user/640/white_arc.png') no-repeat center;
-			}
-			
-			.instruction {
-				font-size: 24px;
-				line-height: 24px;
-			}
-			
-			.contacts {
-				font-size: 12px;
-				line-height: 12px;
+			.know_logo {
+				background: url('/img/user/640/know_logo.png') no-repeat;
 			}
 			
 			.icons {
-				@include my_inline_block;
-				position: relative;
-				margin-bottom: 8px;
-			}
-			
-			.icon {
-				&.fb {
-					background-position: 0 -27px;
-				}
-				
-				&.vk {
-					background-position: -27px -27px;
-				}
+				height: auto;
 			}
 		}
 		
 		.warning_container {
-			height: 820px !important;
+			height: 700px !important;
 			
-			.warning_image {
-				width: 462px !important;
-				height: 680px !important;
+			&:after {
+				@include pseudo;
+				@include absolute_centered;
+				width: 707px !important;
+				height: 636px !important;
 				background: url('/img/user/640/warning.png') no-repeat !important;
+			}
+			
+			img {
+				display: none;
 			}
 		}
 	}
@@ -240,9 +226,11 @@ body {
 	}
 	
 	.instruction_top_container {
+		@include box_shadow(0px 4px 8px 0px rgba(0, 0, 0, 0.12));
 		height: 135px;
 		background-color: white;
 		position: relative;
+		z-index: 1;
 		
 		&.active {
 			.arrow {
@@ -302,7 +290,6 @@ body {
 		.icons {
 			@include my_inline_block;
 			position: relative;
-			margin-bottom: 8px;
 		}
 		
 		.text {

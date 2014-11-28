@@ -90,8 +90,10 @@ $large: 1600px;
 @mixin background_cover {
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: cover;
+	-webkit-background-size: cover;
 	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 @mixin my_inline_block {
@@ -118,14 +120,14 @@ $large: 1600px;
 
 /* base */
 
-@mixin bold {
+@mixin pt_sans_bold {
 	font-family: 'PT_Sans_Bold';
 	letter-spacing: 0.5px;
 }
 
 @mixin blue_bubbles {
 	@include pseudo;
-	height: 25px;
+	height: 17px;
 	width: 100%;
 	left: 0;
 	background: url('/img/user/1280/blue_bubbles.png') no-repeat center;
@@ -134,8 +136,20 @@ $large: 1600px;
 
 @mixin blue_bubbles_small {
 	@include blue_bubbles;
-	height: 17px;
 	background: url('/img/user/640/blue_bubbles.png') no-repeat center;
+}
+
+@mixin blue_bubbles_top_small {
+	@include blue_bubbles;
+	background: url('/img/user/640/blue_bubbles_top.png') no-repeat center;
+	top: -13px;
+}
+
+@mixin blue_bubbles_bottom_small {
+	@include blue_bubbles;
+	background: url('/img/user/640/blue_bubbles_bottom.png') no-repeat center;
+	bottom: -12px;
+	height: 13px;
 }
 
 @mixin white_bubbles {
@@ -148,7 +162,7 @@ $large: 1600px;
 }
 
 @mixin white_bubbles_small {
-	@include blue_bubbles;
-	height: 17px;
+	@include white_bubbles;
+	height: 14px;
 	background: url('/img/user/640/white_bubbles.png') no-repeat center;
 }
