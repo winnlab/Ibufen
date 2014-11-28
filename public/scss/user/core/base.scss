@@ -73,10 +73,6 @@ body {
 		}
 		
 		.instruction_top_container {
-			.know_logo {
-				background: url('/img/user/640/know_logo.png') no-repeat;
-			}
-			
 			.icons {
 				height: auto;
 			}
@@ -247,7 +243,7 @@ body {
 			margin: auto;
 			width: 145px;
 			height: 40px;
-			background: url('/img/user/640/logo.png') no-repeat;
+			background: url('/img/user/640/know_logo.png') no-repeat;
 			outline: none;
 			
 			&:hover {
