@@ -4,8 +4,10 @@
 #main_container.small {
 	.module.main {		
 		.topper_container {
-			height: 700px;
-			background: url('/img/user/640/bed.jpg') no-repeat center;
+			min-height: 570px;
+			max-height: 700px;
+			height: auto;
+			background: url('/img/user/640/bed.jpg') no-repeat center bottom;
 			
 			&:after {
 				@include white_bubbles_small;
@@ -262,9 +264,13 @@
 }
 
 .module.main {
+	height: 100%;
+	
 	.topper_container {
+		min-height: 770px;
+		max-height: 852px;
 		height: 852px;
-		background: url('/img/user/1280/bed.jpg') no-repeat center;
+		background: url('/img/user/1280/bed.jpg') no-repeat center bottom;
 		position: relative;
 		
 		&:after {
@@ -324,7 +330,7 @@
 		
 		.buy {
 			height: 90px;
-			width: 170px;
+			width: auto;
 			position: absolute;
 			bottom: 0;
 			right: 0;
@@ -729,9 +735,13 @@
 			}
 		}
 		
+		/*
+		
 		.instruction {
 			margin-left: 29px;
 		}
+		
+		*/
 	}
 	
 	.instruction_container {
@@ -797,7 +807,7 @@
 	
 	.fixed_footer {
 		max-width: $big_max_width;
-		background-color: rgba(255, 255, 255, 0.7);
+		background-color: rgba(255, 255, 255, 1);
 		bottom: 0;
 		height: 15%;
 		position: fixed;

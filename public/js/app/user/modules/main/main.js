@@ -28,6 +28,9 @@ export default Controller.extend(
 			
 			this.fixed_topper = $('#fixed_topper');
 			
+			this.window = $(window);
+			this.main_container = $('#main_container');
+			
 			this.topper_container = this.element.find('.topper_container');
 			this.video_container = this.element.find('.video_container');
 			this.dragon_container = this.element.find('.dragon_container');
@@ -44,6 +47,10 @@ export default Controller.extend(
 		
 		plugins: function() {
 			this.init_map();
+		},
+		
+		sizes: function() {
+			this.topper_container.height(this.window.height());
 		},
 		
 		init_map: function() {

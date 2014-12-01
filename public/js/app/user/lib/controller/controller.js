@@ -77,6 +77,7 @@ export default can.Control.extend({
 	after_request: function(data) {
 		this.variables();
 		this.plugins();
+		this.sizes();
 		
 		this.after_init(data);
 		
