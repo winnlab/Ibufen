@@ -809,6 +809,7 @@
 		
 		img {
 			max-width: 100%;
+			display: block;
 		}
 	}
 	
@@ -832,12 +833,5 @@
 		&:active {
 			opacity: 0.8;
 		}
-	}
-}
-
-.healthWarning {
-
-	.img {
-		width: 100%;
 	}
 }
