@@ -264,8 +264,6 @@
 }
 
 .module.main {
-	height: 100%;
-	
 	.topper_container {
 		min-height: 770px;
 		max-height: 852px;
@@ -813,7 +811,28 @@
 			max-width: 100%;
 		}
 	}
-
+	
+	.up_arrow {
+		@include box_shadow(0 0 0 transparent);
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		width: 111px;
+		height: 142px;
+		right: 11px;
+		background: url('/img/user/up_arrow.png') no-repeat;
+		cursor: pointer;
+		z-index: 10;
+		
+		&:hover, &:active {
+			background-position: -112px 0;
+		}
+		
+		&:active {
+			opacity: 0.8;
+		}
+	}
 }
 
 .healthWarning {

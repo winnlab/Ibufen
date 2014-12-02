@@ -42,6 +42,8 @@ export default Controller.extend(
 			this.instruction_container = this.element.find('.instruction_container');
 			this.instruction_items = this.instruction_container.find('.item');
 			
+			this.up_arrow = this.element.find('.up_arrow');
+			
 			this.active = 'active';
 		},
 		
@@ -155,6 +157,8 @@ export default Controller.extend(
 		after_init: function(data) {
 			var that = this;
 			
+			this.check_up_arrow(window);
+			
 			this.instruction_container.hide();
 			this.instruction_items.filter(':not(.active)').find('.text').hide();
 		},
@@ -209,6 +213,27 @@ export default Controller.extend(
 			text.stop(true, false)[func](300);
 			
 			el.toggleClass(this.active);
+		},
+		
+		'.up_arrow click': function(el) {
+			$('html, body').scrollTop(0);
+		},
+		
+		'{window} scroll': 'check_up_arrow',
+		
+		'check_up_arrow': function(el, ev) {
+			var scroll_top = $(el).scrollTop(),
+				wnd_height = this.window.height(),
+				comparison = this.topper_container.height() +
+							this.video_container.height() -
+							this.window.height(),
+				func = 'show';
+			
+			if(scroll_top < comparison) {
+				func = 'hide';
+			}
+			
+			this.up_arrow[func]();
 		}
     }
 );
