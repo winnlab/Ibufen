@@ -441,12 +441,12 @@
 		
 		&:before {
 			@include blue_bubbles;
-			top: -12px;
+			top: -8px;
 		}
 		
 		&:after {
 			@include blue_bubbles;
-			bottom: -12px;
+			bottom: -8px;
 		}
 		
 		.dragon_content {
