@@ -26,7 +26,7 @@ var Core = can.Control.extend(
 			this.classes = [
 				'mini',
 				'small',
-				'normal',
+				'big',
 				'huge'
 			];
 			

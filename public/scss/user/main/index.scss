@@ -1,8 +1,335 @@
 @charset "UTF-8";
 @import '../dynamic/dynamic';
 
+#main_container.mini {
+	.module.main {
+		.content {
+			padding: 0 20px;
+		}
+		
+		.topper_container {
+			min-height: 420px;
+			max-height: 420px;
+			background: url('/img/user/320/bed.jpg') no-repeat center bottom;
+			
+			&:after {
+				@include white_bubbles_small;
+			}
+			
+			.content {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+			}
+			
+			.pack {
+				width: 150px;
+				height: 181px;
+				bottom: 16px;
+				left: 0px;
+				background: url('/img/user/320/pack.png') no-repeat;
+			}
+			
+			.text {
+				width: 160px;
+				height: 146px;
+				padding: 0;
+			}
+			
+			.top_label {
+				@include border_boxed;
+				font-size: 16px;
+				line-height: 18px;
+				padding: 0 5px 0 0;
+			}
+			
+			.bottom_label {
+				@include border_boxed;
+				font-size: 12px;
+				line-height: 12px;
+				margin-top: 9px;
+				padding: 0 15px 0 0;
+			}
+			
+			.buy {
+				height: 36px;
+				right: 20px;
+			}
+			
+			.buy_label {
+				font-size: 12px;
+			}
+			
+			.note_content {
+				height: 50%;
+				z-index: 1;
+			}
+			
+			.note {
+				@include absolute_horizontal_centered;
+				top: 52px;
+				width: 280px;
+				height: auto;
+				letter-spacing: 0.1px;
+				font-size: 8px;
+				
+				.note_text {
+					transform: none;
+				}
+			}
+		}
+		
+		.video_container {
+			height: 420px;
+			
+			&:before {
+				background: url('/img/user/320/sky.png') no-repeat right center;
+			}
+			
+			.player {
+				width: 288px;
+				height: 175px;
+				top: 70px;
+				
+				&:before {
+					height: 11px;
+					bottom: -9px;
+					background: url('/img/user/320/player_shadow.png') no-repeat center;
+				}
+			}
+			
+			.know_more {
+				bottom: 127px;
+			}
+		}
+		
+		.dragon_container {
+			height: 1440px;
+			
+			&:before {
+				@include blue_bubbles_top_small;
+			}
+			
+			&:after {
+				@include blue_bubbles_bottom_small;
+			}
+			
+			.dragon_content {
+				&:before {
+					width: 282px;
+					height: 1159px;
+					top: -105px;
+					left: 18px;
+					background: url('/img/user/320/line.png') no-repeat;
+				}
+			}
+			
+			.dragon_1 {
+				width: 320px;
+				height: 261px;
+				top: 0;
+				right: 0;
+				background: url('/img/user/320/dragon_1.png') no-repeat;
+			}
+			
+			.dragon_2 {
+				width: 320px;
+				height: 261px;
+				top: 420px;
+				left: 0;
+				background: url('/img/user/320/dragon_2.png') no-repeat;
+			}
+			
+			.dragon_3 {
+				width: 320px;
+				height: 261px;
+				top: 841px;
+				left: 0;
+				right: auto;
+				background: url('/img/user/320/dragon_3.png') no-repeat;
+			}
+			
+			.dragon_text {
+				padding: 0 20px;
+			}
+			
+			.dragon_text_1 {
+				top: 241px;
+				width: 100%;
+				
+				.dragon_top_label {
+					padding: 0 80px 0 0;
+				}
+			}
+			
+			.dragon_text_2 {
+				top: 691px;
+				width: 100%;
+			}
+			
+			.dragon_text_3 {
+				top: 1070px;
+				width: 100%;
+				
+				.dragon_bottom_label {
+					padding: 0;
+				}
+			}
+			
+			.dragon_top_label {
+				font-size: 22px;
+				letter-spacing: 0px;
+				line-height: 24px;
+				text-align: left;
+			}
+			
+			.dragon_bottom_label {
+				margin-top: 15px;
+				line-height: 18px;
+				font-size: 14px;
+				
+				.r {
+					font-size: 12px;
+					line-height: 16px;
+				}
+			}
+			
+			.notes {
+				@include border_boxed;
+				height: 210px;
+				line-height: 12px;
+				padding: 0 20px;
+				
+				.adorable_cell {
+					vertical-align: top;
+				}
+			}
+		}
+		
+		.safety_container {
+			height: 420px;
+			background: url('/img/user/320/safety.jpg') no-repeat center;
+			
+			.top_label {
+				font-size: 22px;
+				line-height: 24px;
+			}
+			
+			.bottom_label {
+				font-size: 14px;
+				line-height: 16px;
+				
+				.r {
+					font-size: 12px;
+					line-height: 14px;
+				}
+			}
+		}
+		
+		.europe_container {
+			height: 420px;
+			overflow: hidden;
+			
+			&:before {
+				@include blue_bubbles;
+				top: -8px;
+			}
+			
+			.content {
+				&:after {
+					width: 135px;
+					height: 272px;
+					background: url('/img/user/320/euro.png') no-repeat;
+					left: 0;
+				}
+			}
+			
+			.top_label {
+				font-size: 22px;
+				line-height: 24px;
+			}
+			
+			.bottom_label {
+				color: #4c4c4c;
+				margin-top: 24px;
+				font-size: 14px;
+				line-height: 16px;
+				
+				.r {
+					font-size: 12px;
+					line-height: 14px;
+				}
+			}
+			
+			.note {
+				@include border_boxed;
+				bottom: 33px;
+				left: 0;
+				width: 100%;
+				padding: 0 20px;
+				line-height: 12px;
+			}
+		}
+		
+		.map_container {
+			height: 420px;
+			
+			.title {
+				height: 43px;
+				font-size: 14px;
+				line-height: 16px;
+				
+				.adorable_cell {
+					padding: 0 25px;
+				}
+				
+				.r {
+					font-size: 12px;
+					line-height: 16px;
+				}
+			}
+			
+			#map {
+				height: 377px;
+			}
+		}
+		
+		.know_container {
+			height: 45px;
+			
+			.instruction {
+				@include border_radius(0);
+				font-size: 14px;
+				height: 100%;
+				width: 100%;
+				background: #2969ab;
+				color: $white;
+			}
+		}
+		
+		.instruction_container {
+			background-color: $blue;
+			
+			.content {
+				padding: 29px 0px 45px;
+			}
+			
+			.slide_up {
+				height: 26px;
+				border: 1px solid white;
+				padding: 0 35px;
+				font-size: 13px;
+				color: $buttonblue;
+				margin-top: 45px;
+				background-color: #c0daef;
+			}
+		}
+	}
+}
+
 #main_container.small {
-	.module.main {		
+	.module.main {
 		.topper_container {
 			min-height: 570px;
 			max-height: 700px;
@@ -135,17 +462,6 @@
 				background: url('/img/user/640/dragon_3.png') no-repeat;
 			}
 			
-			.topper {
-				height: 60px;
-				top: 65px;
-			}
-			
-			.logo {
-				width: 104px;
-				height: 34px;
-				background: url('/img/user/640/logo_2.png') no-repeat;
-			}
-			
 			.dragon_text_1 {
 				top: 496px;
 				width: 100%;
@@ -225,6 +541,10 @@
 					font-size: 16px;
 					line-height: 14px;
 				}
+			}
+			
+			#map {
+				height: 610px;
 			}
 		}
 		
@@ -350,9 +670,9 @@
 		.marker {
 			display: inline-block;
 			vertical-align: middle;
-			width: 42px;
-			height: 42px;
-			background: url('/img/user/1280/marker.png') no-repeat;
+			width: 26px;
+			height: 26px;
+			background: url('/img/user/320/marker.png') no-repeat;
 		}
 		
 		.buy_label {
@@ -809,6 +1129,7 @@
 	
 	.up_arrow {
 		@include box_shadow(0 0 0 transparent);
+		@include border_radius(50px);
 		position: fixed;
 		top: 0;
 		bottom: 0;

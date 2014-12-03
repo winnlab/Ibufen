@@ -16,6 +16,92 @@ body {
 	max-width: $big_max_width;
 	min-width: $big_min_width;
 	
+	&.mini {
+		min-width: $mini_min_width;
+		max-width: $mini_max_width;
+		font-size: 14px;
+		
+		.logo {
+			width: 105px;
+			height: 25px;
+			background: url('/img/user/320/logo.png') no-repeat center;
+		}
+		
+		.icons {
+			height: 100%;
+			width: 112px;
+		}
+		
+		.icon {
+			width: 26px;
+			height: 26px;
+			background: url('/img/user/640/social.png') no-repeat;
+			
+			&.fb {
+				margin-left: 10px;
+			}
+			
+			&.vk {
+				background-position: -27px 0;
+			}
+		}
+		
+		#fixed_topper {
+			height: 45px;
+			
+			button {
+				@include border_radius(0);
+				height: 100%;
+				width: 100%;
+				font-size: 14px;
+			}
+			
+			.content {
+				width: 100%;
+			}
+			
+			.adorable_cell {
+				padding: 0 0 0 30px;
+			}
+			
+			.fever {
+				display: none;
+			}
+		}
+		
+		.content {
+			width: $mini_content_width;
+		}
+		
+		.instruction_top_container {
+			height: 68px;
+			
+			.know_logo {
+				left: 20px;
+				width: 73px;
+				height: 20px;
+				background: url('/img/user/320/know_logo.png') no-repeat;
+			}
+			
+			.contacts {
+				width: 60%;
+				
+				.adorable_cell {
+					padding: 0 20px 0 0;
+				}
+			}
+			
+			.icons {
+				height: auto;
+				width: 100%;
+			}
+			
+			.text {
+				font-size: 12px;
+			}
+		}
+	}
+	
 	&.small {
 		min-width: $small_min_width;
 		font-size: 16px;
