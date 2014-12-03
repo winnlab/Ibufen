@@ -78,22 +78,6 @@ body {
 				height: auto;
 			}
 		}
-		
-		.warning_container {
-			height: 700px !important;
-			
-			&:after {
-				@include pseudo;
-				@include absolute_centered;
-				width: 707px !important;
-				height: 636px !important;
-				background: url('/img/user/640/warning.png') no-repeat !important;
-			}
-			
-			img {
-				display: none;
-			}
-		}
 	}
 	
 	button {

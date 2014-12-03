@@ -7,7 +7,6 @@
 			min-height: 570px;
 			max-height: 700px;
 			height: auto;
-			background: url('/img/user/640/bed.jpg') no-repeat center bottom;
 			
 			&:after {
 				@include white_bubbles_small;
@@ -190,7 +189,6 @@
 		
 		.safety_container {
 			height: 700px;
-			background: url('/img/user/640/safety.jpg') no-repeat center;
 		}
 		
 		.europe_container {
@@ -228,15 +226,6 @@
 					line-height: 14px;
 				}
 			}
-			
-			#map {
-				height: 610px;
-				
-				&:before {
-					height: 26px;
-					background: url('/img/user/640/blue_arc.png') no-repeat;
-				}
-			}
 		}
 		
 		.instruction_container {
@@ -255,10 +244,6 @@
 				margin-top: 45px;
 				background-color: #c0daef;
 			}
-		}
-		
-		.fixed_footer {
-			display: none;
 		}
 	}
 }
