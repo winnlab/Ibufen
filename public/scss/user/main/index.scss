@@ -229,11 +229,9 @@
 		
 		.europe_container {
 			height: 420px;
-			overflow: hidden;
 			
 			&:before {
-				@include blue_bubbles;
-				top: -8px;
+				@include blue_bubbles_top_small;
 			}
 			
 			.content {
@@ -509,14 +507,14 @@
 		
 		.europe_container {
 			height: 700px;
-			overflow: hidden;
 			
 			&:before {
-				@include blue_bubbles;
-				top: -8px;
+				@include blue_bubbles_top_small;
 			}
 			
 			.content {
+				overflow: hidden;
+				
 				&:after {
 					width: 227px;
 					height: 393px;
@@ -929,7 +927,7 @@
 		
 		&:before {
 			@include blue_bubbles;
-			top: -12px;
+			top: -8px;
 		}
 		
 		.content {
