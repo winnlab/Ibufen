@@ -17,7 +17,6 @@ body {
 	min-width: $big_min_width;
 	
 	&.small {
-		max-width: $small_max_width;
 		min-width: $small_min_width;
 		font-size: 16px;
 		
@@ -47,7 +46,6 @@ body {
 		}
 		
 		#fixed_topper {
-			max-width: $small_max_width;
 			height: 60px;
 			
 			button {
@@ -58,8 +56,11 @@ body {
 			}
 			
 			.content {
-				padding: 0 0 0 30px;
 				width: 100%;
+			}
+			
+			.adorable_cell {
+				padding: 0 0 0 30px;
 			}
 			
 			.fever {

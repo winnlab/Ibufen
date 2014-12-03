@@ -266,6 +266,7 @@
 #main_container.huge {
 	.module.main {		
 		.topper_container {
+			max-height: 852px;
 			background: url('/img/user/1360/bed.jpg') no-repeat center bottom;
 		}
 	}
@@ -274,8 +275,8 @@
 .module.main {
 	.topper_container {
 		min-height: 630px;
-		max-height: 852px;
-		height: 852px;
+		max-height: 693px;
+		height: 693px;
 		background: url('/img/user/1280/bed.jpg') no-repeat center bottom;
 		position: relative;
 		
