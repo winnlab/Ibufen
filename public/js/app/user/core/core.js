@@ -23,7 +23,12 @@ var Core = can.Control.extend(
 			
 			this.warning_container = this.element.find('.warning_container');
 			
-			this.small = 'small';
+			this.classes = [
+				'mini',
+				'small',
+				'normal',
+				'huge'
+			];
 			
 			this.resize();
 		},
@@ -52,13 +57,18 @@ var Core = can.Control.extend(
 		
 		resize: function() {
 			var wnd_width = this.window.width(),
-				func = 'removeClass';
+				class_index = 2;
 			
-			if(wnd_width < 1200) {
-				func = 'addClass';
+			if(wnd_width < 768) {
+				class_index = 0;
+			} else if(wnd_width < 1200) {
+				class_index = 1;
+			} else if(wnd_width > 1360) {
+				class_index = 3;
 			}
 			
-			this.main_container[func](this.small);
+			this.main_container.removeClass();
+			this.main_container.addClass(this.classes[class_index]);
 			
 			this.change_warning_height();
 		},

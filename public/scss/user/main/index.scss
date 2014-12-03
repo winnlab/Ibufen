@@ -263,6 +263,14 @@
 	}
 }
 
+#main_container.huge {
+	.module.main {		
+		.topper_container {
+			background: url('/img/user/1360/bed.jpg') no-repeat center bottom;
+		}
+	}
+}
+
 .module.main {
 	.topper_container {
 		min-height: 630px;
@@ -309,7 +317,7 @@
 			bottom: 0;
 			font-family: 'PT_Sans_Caption';
 			color: white;
-			padding: 212px 0 0 0;
+			padding: 220px 0 0 0;
 		}
 		
 		.top_label {
