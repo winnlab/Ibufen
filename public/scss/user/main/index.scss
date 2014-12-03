@@ -368,6 +368,11 @@
 				line-height: 18px;
 			}
 			
+			.buy {
+				margin: 0;
+				left: auto;
+			}
+			
 			.buy_label {
 				font-size: 18px;
 			}
@@ -571,6 +576,20 @@
 		.topper_container {
 			max-height: 852px;
 			background: url('/img/user/1360/bed.jpg') no-repeat center bottom;
+			
+			.text {
+				padding: 230px 0 0 0;
+			}
+			
+			.top_label {
+				font-size: 35px;
+				line-height: 40px;
+			}
+			
+			.bottom_label {
+				font-size: 24px;
+				line-height: 24px;
+			}
 		}
 	}
 }
@@ -592,7 +611,6 @@
 			background: url('/img/user/1280/white_bubbles.png') no-repeat center;
 			z-index: 1;
 		}
-		
 		
 		.note_content {
 			top: 0;
@@ -621,19 +639,19 @@
 			bottom: 0;
 			font-family: 'PT_Sans_Caption';
 			color: white;
-			padding: 220px 0 0 0;
+			padding: 260px 0 0 0;
 		}
 		
 		.top_label {
-			font-size: 35px;
-			line-height: 40px;
+			font-size: 25px;
+			line-height: 28px;
 			font-family: 'PT_Sans_Bold';
 			text-transform: uppercase;
 		}
 		
 		.bottom_label {
-			font-size: 24px;
-			line-height: 24px;
+			font-size: 17px;
+			line-height: 17px;
 			margin-top: 15px;
 			font-family: 'PT_Sans_Regular';
 		}
@@ -647,6 +665,8 @@
 			color: $black;
 			cursor: pointer;
 			opacity: 0.9;
+			margin: auto;
+			left: 0;
 			
 			&:hover {
 				opacity: 0.8;
