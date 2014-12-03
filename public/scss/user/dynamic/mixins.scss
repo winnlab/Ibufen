@@ -136,18 +136,19 @@ $large: 1600px;
 
 @mixin blue_bubbles_small {
 	@include blue_bubbles;
-	background: url('/img/user/640/blue_bubbles.png') no-repeat center;
+	background: url('/img/user/640/blue_bubbles.png') repeat-x center;
 }
 
 @mixin blue_bubbles_top_small {
 	@include blue_bubbles;
-	background: url('/img/user/640/blue_bubbles_top.png') no-repeat center;
-	top: -13px;
+	background: url('/img/user/640/blue_bubbles_top.png') repeat-x center;
+	top: -12px;
+	height: 13px;
 }
 
 @mixin blue_bubbles_bottom_small {
 	@include blue_bubbles;
-	background: url('/img/user/640/blue_bubbles_bottom.png') no-repeat center;
+	background: url('/img/user/640/blue_bubbles_bottom.png') repeat-x center;
 	bottom: -12px;
 	height: 13px;
 }
@@ -164,5 +165,5 @@ $large: 1600px;
 @mixin white_bubbles_small {
 	@include white_bubbles;
 	height: 14px;
-	background: url('/img/user/640/white_bubbles.png') no-repeat center;
+	background: url('/img/user/640/white_bubbles.png') repeat-x center;
 }
