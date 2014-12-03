@@ -1,7 +1,7 @@
 async = require 'async'
 
 metaMigrate = require '../meta/migrate'
-pharmacy = require '../meta/pharmacy'
+# pharmacy = require '../meta/pharmacy'
 
 Pharmacy = require '../lib/pharmacy'
 
