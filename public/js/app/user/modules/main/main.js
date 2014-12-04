@@ -44,6 +44,8 @@ export default Controller.extend(
 			
 			this.up_arrow = this.element.find('.up_arrow');
 			
+			this.location_container = this.element.find('.location_container');
+			
 			this.active = 'active';
 		},
 		
@@ -89,6 +91,7 @@ export default Controller.extend(
 				that.location_request(data);
 			}, function(error) {
 				// that.location_request(data);
+				that.show_location_input();
 				console.error(error);
 			}, options);
 			
@@ -98,6 +101,22 @@ export default Controller.extend(
 			// };
 			
 			// that.location_request(data);
+		},
+		
+		show_location_input: function() {
+			var autocomplete = new google.maps.places.Autocomplete((document.getElementById('location_input')),
+				{
+					types: ['geocode']
+				}
+			);
+			
+			google.maps.event.addListener(autocomplete, 'place_changed', function() {
+				console.log(1)
+			});
+			
+			this.location_container.addClass(this.active);
+			
+			this.scroll_to_map();
 		},
 		
 		location_request: function(data) {
@@ -111,6 +130,7 @@ export default Controller.extend(
 					that.success_location_request(data.data);
 				},
 				error: function(jqXHR, textStatus, errorThrown) {
+					that.show_location_input();
 					console.error(errorThrown);
 				}
 			});
@@ -163,7 +183,9 @@ export default Controller.extend(
 			this.instruction_items.filter(':not(.active)').find('.text').hide();
 		},
 		
-		'.topper_container .buy click': function() {
+		'.topper_container .buy click': 'scroll_to_map',
+		
+		scroll_to_map: function() {
 			var scrollTop = 	this.topper_container.height() +
 							this.video_container.height() +
 							this.dragon_container.height() +

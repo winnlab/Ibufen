@@ -1010,6 +1010,7 @@
 	
 	.map_container {
 		background-color: $darkblue;
+		position: relative;
 		
 		.title {
 			height: 90px;
@@ -1040,6 +1041,65 @@
 				left: 0;
 				z-index: 1;
 			}
+		}
+		
+		.location_container {
+			@include absolute_horizontal_centered;
+			@include border_radius(4px);
+			width: 720px;
+			height: 60px;
+			top: 140px;
+			background-color: white;
+			font-family: 'PT_Sans_Regular';
+			display: none;
+			
+			&.active {
+				display: block;
+			}
+			
+			.half {
+				height: 100%;
+			}
+			
+			.left {
+				width: 570px;
+			}
+			
+			.right {
+				width: 150px;
+				background-color: #2e6fb1;
+				border-top-right-radius: 4px;
+				border-bottom-right-radius: 4px;
+				
+				&:hover {
+					background-color: #457fba;
+				}
+				
+				&:active {
+					background-color: #175fa9;
+				}
+			}
+		}
+		
+		.location_input {
+			width: 560px;
+			margin: 10px 0 3px 10px;
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+		
+		.label {
+			font-size: 10px;
+			color: #a6a6a6;
+			padding: 0 0 0 20px;
+		}
+		
+		.find {
+			@include border_radius(0);
+			height: 100%;
+			width: 100%;
+			background-color: transparent;
+			color: white;
 		}
 	}
 	
