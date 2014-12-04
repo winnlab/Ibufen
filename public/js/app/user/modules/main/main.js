@@ -103,12 +103,10 @@ export default Controller.extend(
 					lng: position.coords.longitude
 				};
 				
-				that.scroll_to_map();
 				that.location_request(data);
 			}, function(error) {
 				// that.location_request(data);
 				
-				that.scroll_to_map();
 				that.show_location_input();
 				console.error(error);
 			}, options);
