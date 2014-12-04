@@ -182,7 +182,19 @@ export default Controller.extend(
 					});
 					
 					var infowindow = new google.maps.InfoWindow({
-						content: '<div style="overflow:hidden;line-height:1.35;min-width:200px;min-height:40px;">' + pharm.address + '</div>'
+						content:	'<div style="overflow:hidden;line-height:1.35;width:auto;min-width:200px;height:auto;min-height:80px;">' +
+										'<div>' + 
+											pharm.name +
+										'</div>' +
+										
+										'<div>' + 
+											pharm.city +
+										'</div>' +
+										
+										'<div>' + 
+											pharm.address +
+										'</div>' +
+									'</div>'
 					});
 					
 					google.maps.event.addListener(marker, 'click', function() {
