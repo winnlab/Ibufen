@@ -7,9 +7,6 @@ System.config({
 		'jade': 'js/plugins/jade/runtime.js',
 		// 'select2': 'js/plugins/select2/select2.js',
 		'knob': 'js/plugins/jquery-knob/dist/jquery.knob.min.js',
-		'vkontakte': 'js/plugins/social/vk.openapi.js',
-		// 'odnoklasniki': 'js/plugins/social/ok.connect.js',
-		'google': 'js/plugins/social/google.plusone.js',
 		'googlemaps_api': 'js/plugins/google/googlemaps_api.js',
 		'googlemaps_main': 'js/plugins/google/googlemaps_main.js',
 		// 'moment': 'js/plugins/moment/moment.js',
@@ -55,9 +52,7 @@ System.config({
 		},
 		'helpers': {
 			deps: [
-				'jade',
-				'vkontakte',
-				'google'
+				'jade'
 			]
 		}
 	},
