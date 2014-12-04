@@ -9,6 +9,7 @@ System.config({
 		'knob': 'js/plugins/jquery-knob/dist/jquery.knob.min.js',
 		'googlemaps_api': 'js/plugins/google/googlemaps_api.js',
 		'googlemaps_main': 'js/plugins/google/googlemaps_main.js',
+		'youtube_iframe_api': 'js/plugins/youtube/iframe_api.js',
 		// 'moment': 'js/plugins/moment/moment.js',
 		'router': 'js/app/user/router/router.js',
 		'placeholder': 'js/app/user/router/placeholder.js',

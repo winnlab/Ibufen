@@ -45,28 +45,39 @@ exports.near = (req, res) ->
 	
 	async.waterfall [
 		(next) ->
+			if req.body.address
+				str = string.escape data.city + ', ' + req.body.address
+				
+				return google_geocoding.geocode str, next
+			
 			if req.body.lng && req.body.lat
 				data.lng = req.body.lng
 				data.lat = req.body.lat
-				
-				return next null, null
 			
-			ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
-			timeout = true
+			next null, null
 			
-			iplocation.get ip, (result) ->
-				console.log result
-				timeout = false
-				next null, result
+			# ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
+			# timeout = true
 			
-			setTimeout () ->
-				if timeout
-					return View.ajaxResponse res, null, data
-			, 3000
-		(iplocation, next) ->
-			if iplocation
-				data.lng = iplocation.longitude
-				data.lat = iplocation.latitude
+			# iplocation.get ip, (result) ->
+			# 	console.log result
+			# 	timeout = false
+			# 	next null, result
+			
+			# setTimeout () ->
+			# 	if timeout
+			# 		return View.ajaxResponse res, null, data
+			# , 3000
+		
+		(location, next) ->
+			if location
+				data.lng = location.lng
+				data.lat = location.lat
+			
+		# (iplocation, next) ->
+		#	if iplocation
+		#		data.lng = iplocation.longitude
+		#		data.lat = iplocation.latitude
 			
 			searchData.loc['$near'] = [data.lng, data.lat]
 			

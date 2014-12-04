@@ -2,6 +2,7 @@ import Controller from 'controller';
 
 import 'googlemaps_api'
 import 'googlemaps_main'
+import 'youtube_iframe_api'
 
 export default Controller.extend(
 	{
@@ -30,6 +31,8 @@ export default Controller.extend(
 			
 			this.window = $(window);
 			this.main_container = $('#main_container');
+			
+			this.location_input = this.element.find('#location_input');
 			
 			this.topper_container = this.element.find('.topper_container');
 			this.video_container = this.element.find('.video_container');
@@ -90,7 +93,7 @@ export default Controller.extend(
 				data = null,
 				options = {
 					enableHighAccuracy: true,
-					timeout: 3000,
+					timeout: 1000,
 					maximumAge: 0
 				};
 			
@@ -119,18 +122,26 @@ export default Controller.extend(
 		},
 		
 		show_location_input: function() {
-			var autocomplete = new google.maps.places.Autocomplete((document.getElementById('location_input')),
+			var that = this;
+			
+			this.autocomplete = new google.maps.places.Autocomplete((document.getElementById('location_input')),
 				{
 					types: ['geocode']
 				}
 			);
 			
-			google.maps.event.addListener(autocomplete, 'place_changed', function() {
-				console.log(1)
-			});
+			// google.maps.event.addListener(this.autocomplete, 'place_changed', function() {
+				// that.process_google_place();
+			// });
 			
 			this.location_container.addClass(this.active);
 		},
+		
+		// process_google_place: function() {
+			// var place = this.autocomplete.getPlace();
+			
+			// console.log(place)
+		// },
 		
 		location_request: function(data) {
 			var that = this;
@@ -185,6 +196,8 @@ export default Controller.extend(
 			if(bounds.length) {
 				this.map.fitBounds(bounds);
 			}
+			
+			this.location_container.removeClass(this.active);
 		},
 		
 		after_init: function(data) {
@@ -268,6 +281,12 @@ export default Controller.extend(
 		
 		'.map_container .find click': function(el) {
 			_gaq.push(['_trackEvent', 'FindClick']);
+			
+			var data = {
+				address: this.location_input.val()
+			};
+			
+			this.location_request(data);
 		},
 		
 		'{window} scroll': function(el, ev) {
