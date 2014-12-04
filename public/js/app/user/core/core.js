@@ -85,13 +85,13 @@ var Core = can.Control.extend(
 		'.logo, .know_logo click': function(el) {
 			$('html, body').scrollTop(0);
 			
-			_gaq.push(['_trackEvent', 'LogoClick']);
+			ga('send', 'event', 'LogoClick');
 		},
 		
 		'button.advices click': function(el) {
 			$('html, body').scrollTop(0);
 			
-			_gaq.push(['_trackEvent', 'AdvicesClick']);
+			ga('send', 'event', 'AdvicesClick');
 		},
 		
 		change_warning_height: function() {

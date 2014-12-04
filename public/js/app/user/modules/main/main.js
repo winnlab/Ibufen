@@ -220,7 +220,7 @@ export default Controller.extend(
 		},
 		
 		'.topper_container .buy click': function(el) {
-			_gaq.push(['_trackEvent', 'NearestPharmacyClick']); 
+			ga('send', 'event', 'NearestPharmacyClick');
 			
 			this.scroll_to_map();
 		},
@@ -239,7 +239,7 @@ export default Controller.extend(
 		},
 		
 		'button.instruction click': function(el) {
-			_gaq.push(['_trackEvent', 'InstructionClick']);
+			ga('send', 'event', 'InstructionClick');
 			
 			var func = 'slideUp',
 				visible = this.instruction_container.css('display') == 'block',
@@ -282,7 +282,7 @@ export default Controller.extend(
 		'.up_arrow click': function(el) {
 			$('html, body').scrollTop(0);
 			
-			_gaq.push(['_trackEvent', 'UpArrowClick']);
+			ga('send', 'event', 'UpArrowClick');
 		},
 		
 		'.vimeo click': function(el) {
@@ -290,7 +290,7 @@ export default Controller.extend(
 		},
 		
 		'.map_container .find click': function(el) {
-			_gaq.push(['_trackEvent', 'FindClick']);
+			ga('send', 'event', 'FindClick');
 			
 			var data = {
 				address: this.location_input.val()
@@ -316,7 +316,7 @@ export default Controller.extend(
 			var scroll_top = el.scrollTop();
 			
 			if(scroll_top >= this.topper_container_height) {
-				_gaq.push(['_trackEvent', 'FirstScreenScrolled']);
+				ga('send', 'event', 'FirstScreenScrolled');
 				
 				this.scrolled_first_screen = true;
 			}
