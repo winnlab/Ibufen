@@ -39,6 +39,14 @@ export default Controller.extend(
 			help_container.stop(true, false).slideToggle(300);
 			help_container.toggleClass(this.active);
 			el.toggleClass(this.active);
+		},
+		
+		'.topper_container_1 .how_to_help click': function(el) {
+			_gaq.push(['_trackEvent', 'PinkHelpClick']);
+		},
+		
+		'.topper_container_2 .how_to_help click': function(el) {
+			_gaq.push(['_trackEvent', 'PaleHelpClick']);
 		}
     }
 );

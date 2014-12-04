@@ -47,6 +47,8 @@ export default Controller.extend(
 			this.location_container = this.element.find('.location_container');
 			
 			this.active = 'active';
+			
+			this.scrolled_first_screen = false;
 		},
 		
 		plugins: function() {
@@ -54,7 +56,17 @@ export default Controller.extend(
 		},
 		
 		sizes: function() {
-			this.topper_container.height(this.window.height());
+			this.window_height = this.window.height();
+			
+			this.topper_container.height(this.window_height);
+			
+			this.topper_container_height = this.topper_container.height();
+			this.video_container_height = this.video_container.height();
+			this.dragon_container_height = this.dragon_container.height();
+			this.safety_container_height = this.safety_container.height();
+			this.europe_container_height = this.europe_container.height();
+			this.map_container_height = this.map_container.height();
+			this.fixed_topper_height = this.fixed_topper.height();
 		},
 		
 		init_map: function() {
@@ -88,9 +100,12 @@ export default Controller.extend(
 					lng: position.coords.longitude
 				};
 				
+				that.scroll_to_map();
 				that.location_request(data);
 			}, function(error) {
 				// that.location_request(data);
+				
+				that.scroll_to_map();
 				that.show_location_input();
 				console.error(error);
 			}, options);
@@ -115,8 +130,6 @@ export default Controller.extend(
 			});
 			
 			this.location_container.addClass(this.active);
-			
-			this.scroll_to_map();
 		},
 		
 		location_request: function(data) {
@@ -177,21 +190,25 @@ export default Controller.extend(
 		after_init: function(data) {
 			var that = this;
 			
-			this.check_up_arrow(window);
+			this.check_up_arrow(this.window);
 			
 			this.instruction_container.hide();
 			this.instruction_items.filter(':not(.active)').find('.text').hide();
 		},
 		
-		'.topper_container .buy click': 'scroll_to_map',
+		'.topper_container .buy click': function(el) {
+			_gaq.push(['_trackEvent', 'NearestPharmacyClick']); 
+			
+			this.scroll_to_map();
+		},
 		
 		scroll_to_map: function() {
-			var scrollTop = 	this.topper_container.height() +
-							this.video_container.height() +
-							this.dragon_container.height() +
-							this.safety_container.height() +
-							this.europe_container.height() -
-							this.fixed_topper.height();
+			var scrollTop = 	this.topper_container_height +
+							this.video_container_height +
+							this.dragon_container_height +
+							this.safety_container_height +
+							this.europe_container_height -
+							this.fixed_topper_height;
 			
 			$('html, body').stop().animate({
 				scrollTop: scrollTop
@@ -199,15 +216,17 @@ export default Controller.extend(
 		},
 		
 		'button.instruction click': function(el) {
+			_gaq.push(['_trackEvent', 'InstructionClick']);
+			
 			var func = 'slideUp',
 				visible = this.instruction_container.css('display') == 'block',
-				scrollTop = 	this.topper_container.height() +
-							this.video_container.height() +
-							this.dragon_container.height() +
-							this.safety_container.height() +
-							this.europe_container.height() +
-							this.map_container.height() -
-							this.fixed_topper.height();
+				scrollTop = 	this.topper_container_height +
+							this.video_container_height +
+							this.dragon_container_height +
+							this.safety_container_height +
+							this.europe_container_height +
+							this.map_container_height -
+							this.fixed_topper_height;
 			
 			if(!visible) {
 				func = 'slideDown';
@@ -239,16 +258,46 @@ export default Controller.extend(
 		
 		'.up_arrow click': function(el) {
 			$('html, body').scrollTop(0);
+			
+			_gaq.push(['_trackEvent', 'UpArrowClick']);
 		},
 		
-		'{window} scroll': 'check_up_arrow',
+		'.vimeo click': function(el) {
+			console.log(el)
+		},
 		
-		'check_up_arrow': function(el, ev) {
-			var scroll_top = $(el).scrollTop(),
-				wnd_height = this.window.height(),
-				comparison = this.topper_container.height() +
-							this.video_container.height() -
-							this.window.height(),
+		'.map_container .find click': function(el) {
+			_gaq.push(['_trackEvent', 'FindClick']);
+		},
+		
+		'{window} scroll': function(el, ev) {
+			if(!this.element.hasClass(this.active)) {
+				return;
+			}
+			
+			this.check_up_arrow(this.window, ev);
+			this.check_first_screen(this.window, ev);
+		},
+		
+		check_first_screen: function(el, ev) {
+			if(this.scrolled_first_screen) {
+				return;
+			}
+			
+			var scroll_top = el.scrollTop();
+			
+			if(scroll_top >= this.topper_container_height) {
+				_gaq.push(['_trackEvent', 'FirstScreenScrolled']);
+				
+				this.scrolled_first_screen = true;
+			}
+		},
+		
+		check_up_arrow: function(el, ev) {
+			var scroll_top = el.scrollTop(),
+				comparison = this.topper_container_height +
+							this.video_container_height -
+							this.window_height,
 				func = 'show';
 			
 			if(scroll_top < comparison) {

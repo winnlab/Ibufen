@@ -82,8 +82,16 @@ var Core = can.Control.extend(
 			this.change_warning_height();
 		},
 		
-		'.logo, .know_logo click': function() {
+		'.logo, .know_logo click': function(el) {
 			$('html, body').scrollTop(0);
+			
+			_gaq.push(['_trackEvent', 'LogoClick']);
+		},
+		
+		'button.advices click': function(el) {
+			$('html, body').scrollTop(0);
+			
+			_gaq.push(['_trackEvent', 'AdvicesClick']);
 		},
 		
 		change_warning_height: function() {
