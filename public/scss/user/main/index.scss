@@ -658,7 +658,7 @@
 		
 		.buy {
 			height: 90px;
-			width: auto;
+			width: 100%;
 			position: absolute;
 			bottom: 0;
 			right: 0;
@@ -1202,6 +1202,7 @@
 		img {
 			max-width: 100%;
 			display: block;
+			height: 15%;
 		}
 	}
 	
