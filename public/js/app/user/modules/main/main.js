@@ -184,7 +184,7 @@ export default Controller.extend(
 					});
 					
 					var infowindow = new google.maps.InfoWindow({
-						content: pharm.address
+						content: '<div style="overflow:hidden;line-height:1.35;min-width:200px;min-height:40px;">' + pharm.address + '</div>'
 					});
 					
 					google.maps.event.addListener(marker, 'click', function() {
