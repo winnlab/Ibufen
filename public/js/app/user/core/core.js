@@ -85,13 +85,15 @@ var Core = can.Control.extend(
 		'.logo, .know_logo click': function(el) {
 			$('html, body').scrollTop(0);
 			
-			ga('send', 'event', 'LogoClick');
+			ga('set', 'page', decodeURI(document.location.href));
+			ga('send', 'event', 'Logo', 'Click');
 		},
 		
 		'button.advices click': function(el) {
 			$('html, body').scrollTop(0);
 			
-			ga('send', 'event', 'AdvicesClick');
+			ga('set', 'page', decodeURI(document.location.href));
+			ga('send', 'event', 'Advices', 'Click');
 		},
 		
 		change_warning_height: function() {

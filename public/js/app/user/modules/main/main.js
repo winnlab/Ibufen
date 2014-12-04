@@ -51,6 +51,8 @@ export default Controller.extend(
 			
 			this.active = 'active';
 			
+			this.referrer = decodeURI(document.location.href);
+			
 			this.scrolled_first_screen = false;
 		},
 		
@@ -220,7 +222,8 @@ export default Controller.extend(
 		},
 		
 		'.topper_container .buy click': function(el) {
-			ga('send', 'event', 'NearestPharmacyClick');
+			ga('set', 'page', this.referrer);
+			ga('send', 'event', 'NearestPharmacy', 'Click');
 			
 			this.scroll_to_map();
 		},
@@ -239,7 +242,8 @@ export default Controller.extend(
 		},
 		
 		'button.instruction click': function(el) {
-			ga('send', 'event', 'InstructionClick');
+			ga('set', 'page', this.referrer);
+			ga('send', 'event', 'Instruction', 'Click');
 			
 			var func = 'slideUp',
 				visible = this.instruction_container.css('display') == 'block',
@@ -282,7 +286,8 @@ export default Controller.extend(
 		'.up_arrow click': function(el) {
 			$('html, body').scrollTop(0);
 			
-			ga('send', 'event', 'UpArrowClick');
+			ga('set', 'page', this.referrer);
+			ga('send', 'event', 'UpArrow', 'Click');
 		},
 		
 		'.vimeo click': function(el) {
@@ -290,7 +295,8 @@ export default Controller.extend(
 		},
 		
 		'.map_container .find click': function(el) {
-			ga('send', 'event', 'FindClick');
+			ga('set', 'page', this.referrer);
+			ga('send', 'event', 'Find', 'Click');
 			
 			var data = {
 				address: this.location_input.val()
@@ -316,7 +322,8 @@ export default Controller.extend(
 			var scroll_top = el.scrollTop();
 			
 			if(scroll_top >= this.topper_container_height) {
-				ga('send', 'event', 'FirstScreenScrolled');
+				ga('set', 'page', this.referrer);
+				ga('send', 'event', 'FirstScreen', 'Scrolled');
 				
 				this.scrolled_first_screen = true;
 			}

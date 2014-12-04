@@ -22,6 +22,8 @@ export default Controller.extend(
 			this.help_containers = this.element.find('.help_container');
 			
 			this.active = 'active';
+			
+			this.referrer = decodeURI(document.location.href);
 		},
 		
 		plugins: function() {
@@ -42,11 +44,13 @@ export default Controller.extend(
 		},
 		
 		'.topper_container_1 .how_to_help click': function(el) {
-			ga('send', 'event', 'PinkHelpClick');
+			ga('set', 'page', this.referrer);
+			ga('send', 'event', 'PinkHelp', 'Click');
 		},
 		
 		'.topper_container_2 .how_to_help click': function(el) {
-			ga('send', 'event', 'PaleHelpClick');
+			ga('set', 'page', this.referrer);
+			ga('send', 'event', 'PaleHelp', 'Click');
 		}
     }
 );
