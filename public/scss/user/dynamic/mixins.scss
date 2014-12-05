@@ -1,19 +1,4 @@
 /* useful */
-$small: 1180px;
-$large: 1600px;
-
-@mixin respond-to($media) {
-	@if $media == small {
-		@media only screen and (max-width: $small) { @content; }
-	}
-	@else if $media == medium {
-		@media only screen and (min-width: $small + 1) and (max-width: $large - 1) { @content; }
-	}
-	@else if $media == large {
-		@media only screen and (min-width: $large) { @content; }
-	}
-}
-
 
 @mixin absolute_horizontal_centered {
 	left: 0;

@@ -2,7 +2,7 @@ import Controller from 'controller';
 
 import 'googlemaps_api'
 import 'googlemaps_main'
-import 'youtube_iframe_api'
+// import 'youtube_iframe_api'
 
 export default Controller.extend(
 	{
@@ -58,6 +58,7 @@ export default Controller.extend(
 		
 		plugins: function() {
 			this.init_map();
+			// this.init_player();
 		},
 		
 		sizes: function() {
@@ -72,7 +73,32 @@ export default Controller.extend(
 			this.europe_container_height = this.europe_container.height();
 			this.map_container_height = this.map_container.height();
 			this.fixed_topper_height = this.fixed_topper.height();
+			
+			if(this.main_container.hasClass('mini')) {
+				this.up_arrow.hide();
+			}
 		},
+		
+		// init_player: function() {
+			// var that = this;
+			
+			// function onYouTubeIframeAPIReady() {
+				// this.player = new YT.Player('main_video', {
+					// events: {
+						// 'onReady': function(){
+							// that.onPlayerStateChange();
+						// },
+						// 'onStateChange': function(){
+							// that.onPlayerStateChange();
+						// }
+					// }
+				// });
+			// }
+		// },
+		
+		// onPlayerStateChange: function() {
+			// console.log(1)
+		// },
 		
 		init_map: function() {
 			var	options = {
@@ -330,6 +356,11 @@ export default Controller.extend(
 		},
 		
 		check_up_arrow: function(el, ev) {
+			if(this.main_container.hasClass('mini')) {
+				this.up_arrow.hide();
+				return;
+			}
+			
 			var scroll_top = el.scrollTop(),
 				comparison = this.topper_container_height +
 							this.video_container_height -

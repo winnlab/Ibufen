@@ -53,7 +53,7 @@
 			}
 			
 			.buy {
-				height: 36px;
+				height: 44px;
 				right: 20px;
 			}
 			
@@ -236,10 +236,10 @@
 			
 			.content {
 				&:after {
-					width: 135px;
+					width: 270px;
 					height: 272px;
 					background: url('/img/user/320/euro.png') no-repeat;
-					left: 0;
+					left: -135px;
 				}
 			}
 			
@@ -323,6 +323,10 @@
 				background-color: #c0daef;
 			}
 		}
+		
+		.up_arrow {
+			display: none;
+		}
 	}
 }
 
@@ -330,7 +334,7 @@
 	.module.main {
 		.topper_container {
 			min-height: 570px;
-			max-height: 700px;
+			max-height: 693px;
 			height: auto;
 			
 			&:after {
@@ -355,7 +359,7 @@
 			.text {
 				width: 354px;
 				height: 240px;
-				padding: 0;
+				padding: 30px 0 0;
 			}
 			
 			.top_label {
@@ -371,6 +375,7 @@
 			.buy {
 				margin: 0;
 				left: auto;
+				height: 73px;
 			}
 			
 			.buy_label {
@@ -378,29 +383,22 @@
 			}
 			
 			.note_content {
-				height: 50%;
+				height: 100%;
 				z-index: 1;
 			}
 			
 			.note {
 				@include absolute_horizontal_centered;
-				top: 100px;
-				width: $small_min_width;
+				top: 245px;
+				width: 400px;
 				height: auto;
 				letter-spacing: -0.2px;
-				
-				.note_text {
-					transform: none;
-				}
+				right: -90%;
 			}
 		}
 		
 		.video_container {
 			height: 700px;
-			
-			&:before {
-				background: url('/img/user/640/sky.png') no-repeat right center;
-			}
 			
 			.player {
 				width: 710px;
@@ -518,13 +516,8 @@
 			}
 			
 			.content {
-				overflow: hidden;
-				
 				&:after {
-					width: 227px;
-					height: 393px;
-					background: url('/img/user/640/euro.png') no-repeat;
-					left: -30px;
+					left: -162px;
 				}
 			}
 		}
@@ -589,6 +582,10 @@
 			.bottom_label {
 				font-size: 24px;
 				line-height: 24px;
+			}
+			
+			.buy {
+				height: 90px;
 			}
 		}
 	}
@@ -657,8 +654,8 @@
 		}
 		
 		.buy {
-			height: 90px;
-			width: 100%;
+			height: 73px;
+			width: auto;
 			position: absolute;
 			bottom: 0;
 			right: 0;
