@@ -3,10 +3,6 @@
 
 #main_container.mini {
 	.module.main {
-		.content {
-			padding: 0 20px;
-		}
-		
 		.topper_container {
 			min-height: 420px;
 			max-height: 420px;
@@ -565,7 +561,7 @@
 }
 
 #main_container.huge {
-	.module.main {		
+	.module.main {
 		.topper_container {
 			max-height: 852px;
 			background: url('/img/user/1360/bed.jpg') no-repeat center bottom;
