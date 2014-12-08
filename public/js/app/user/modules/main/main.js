@@ -1,7 +1,7 @@
 import Controller from 'controller';
 
-import 'googlemaps_api'
-import 'googlemaps_main'
+// import 'googlemaps_api'
+// import 'googlemaps_main'
 // import 'youtube_iframe_api'
 
 export default Controller.extend(
