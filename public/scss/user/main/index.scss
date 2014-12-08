@@ -51,6 +51,7 @@
 			.buy {
 				height: 44px;
 				right: 20px;
+				left: auto;
 			}
 			
 			.buy_label {
@@ -371,10 +372,6 @@
 			
 			.buy {
 				height: 73px;
-				
-				.adorable_cell {
-					text-align: right;
-				}
 			}
 			
 			.buy_label {
@@ -661,9 +658,14 @@
 			opacity: 0.9;
 			margin: auto;
 			left: 0;
+			width: 100%;
 			
 			img, span {
 				vertical-align: middle;
+			}
+			
+			.adorable_cell {
+				text-align: right;
 			}
 		}
 		
