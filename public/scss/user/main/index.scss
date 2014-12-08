@@ -342,6 +342,7 @@
 				top: 0;
 				left: 0;
 				right: 0;
+				z-index: 2;
 			}
 			
 			.pack {
@@ -369,9 +370,11 @@
 			}
 			
 			.buy {
-				margin: 0;
-				left: auto;
 				height: 73px;
+				
+				.adorable_cell {
+					text-align: right;
+				}
 			}
 			
 			.buy_label {
@@ -651,15 +654,24 @@
 		
 		.buy {
 			height: 73px;
-			width: auto;
 			position: absolute;
 			bottom: 0;
 			right: 0;
 			color: $black;
-			cursor: pointer;
 			opacity: 0.9;
 			margin: auto;
 			left: 0;
+			
+			img, span {
+				vertical-align: middle;
+			}
+		}
+		
+		.buy_button {
+			@include my_inline_block;
+			cursor: pointer;
+			line-height: 26px;
+			height: 26px;
 			
 			&:hover {
 				opacity: 0.8;
@@ -667,14 +679,6 @@
 			
 			&:active {
 				opacity: 1;
-			}
-			
-			.adorable_cell {
-				text-align: right;
-			}
-			
-			img, span {
-				vertical-align: middle;
 			}
 		}
 		

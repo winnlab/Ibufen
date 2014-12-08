@@ -247,7 +247,7 @@ export default Controller.extend(
 			this.instruction_items.filter(':not(.active)').find('.text').hide();
 		},
 		
-		'.topper_container .buy click': function(el) {
+		'.topper_container .buy_button click': function(el) {
 			ga('set', 'page', this.referrer);
 			ga('send', 'event', 'NearestPharmacy', 'Click');
 			
