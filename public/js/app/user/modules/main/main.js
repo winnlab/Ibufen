@@ -74,7 +74,7 @@ export default Controller.extend(
 			this.map_container_height = this.map_container.height();
 			this.fixed_topper_height = this.fixed_topper.height();
 			
-			if(this.main_container.hasClass('mini')) {
+			if(this.main_container.hasClass('mini') || this.main_container.hasClass('tiny')) {
 				this.up_arrow.hide();
 			}
 		},
@@ -356,7 +356,7 @@ export default Controller.extend(
 		},
 		
 		check_up_arrow: function(el, ev) {
-			if(this.main_container.hasClass('mini')) {
+			if(this.main_container.hasClass('mini') || this.main_container.hasClass('tiny')) {
 				this.up_arrow.hide();
 				return;
 			}

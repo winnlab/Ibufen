@@ -25,6 +25,7 @@ var Core = can.Control.extend(
 			
 			this.classes = [
 				'mini',
+				'tiny',
 				'small',
 				'big',
 				'huge'
@@ -57,14 +58,16 @@ var Core = can.Control.extend(
 		
 		resize: function() {
 			var wnd_width = this.window.width(),
-				class_index = 2;
-			
-			if(wnd_width < 768) {
-				class_index = 0;
-			} else if(wnd_width < 1200) {
-				class_index = 1;
-			} else if(wnd_width > 1360) {
 				class_index = 3;
+			
+			if(wnd_width < 480) {
+				class_index = 0;
+			} else if(wnd_width < 768) {
+				class_index = 1;
+			} else if(wnd_width < 1200) {
+				class_index = 2;
+			} else if(wnd_width >= 1360) {
+				class_index = 4;
 			}
 			
 			this.main_container.removeClass();

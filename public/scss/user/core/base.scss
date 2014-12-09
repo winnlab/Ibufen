@@ -104,6 +104,79 @@ body {
 		}
 	}
 	
+	&.tiny {
+		min-width: $tiny_min_width;
+		font-size: 16px;
+		
+		.logo {
+			width: 168px;
+			height: 41px;
+			background: url('/img/user/640/logo.png') no-repeat center;
+		}
+		
+		.icons {
+			height: 100%;
+			width: 203px;
+		}
+		
+		.icon {
+			width: 26px;
+			height: 26px;
+			background: url('/img/user/640/social.png') no-repeat;
+			
+			&.fb {
+				margin-left: 10px;
+			}
+			
+			&.vk {
+				background-position: -27px 0;
+			}
+		}
+		
+		#fixed_topper {
+			height: 60px;
+			
+			button {
+				@include border_radius(0);
+				height: 100%;
+				width: 100%;
+				font-size: 14px;
+				padding: 0;
+			}
+			
+			.content {
+				width: 100%;
+			}
+			
+			.adorable_cell {
+				padding: 0 0 0 30px;
+			}
+			
+			.fever {
+				display: none;
+			}
+		}
+		
+		.content {
+			width: $tiny_min_width;
+			padding: 0 20px;
+		}
+		
+		.instruction_top_container {
+			.know_logo {
+				left: 20px;
+			}
+			
+			.contacts {
+				right: 20px;
+			}
+			
+			.icons {
+				height: auto;
+			}
+		}
+	}
+	
 	&.small {
 		min-width: $small_min_width;
 		font-size: 16px;

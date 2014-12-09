@@ -206,7 +206,7 @@
 		
 		.safety_container {
 			height: 420px;
-			background: url('/img/user/320/safety.jpg') no-repeat center;
+			background: url('/img/user/320/safety.jpg') no-repeat right center;
 			
 			.top_label {
 				font-size: 22px;
@@ -360,6 +360,333 @@
 		
 		.up_arrow {
 			display: none;
+		}
+	}
+}
+
+#main_container.tiny {
+	.module.main {
+		.topper_container {
+			min-height: 420px;
+			max-height: 557px;
+			height: auto;
+			background: url('/img/user/480/bed.jpg') no-repeat center bottom;
+			
+			&:after {
+				@include white_bubbles_small;
+			}
+			
+			.content {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				z-index: 2;
+			}
+			
+			.pack {
+				width: 247px;
+				height: 298px;
+				bottom: 0;
+				left: -20px;
+				background: url('/img/user/480/pack.png') no-repeat;
+			}
+			
+			.text {
+				@include border_boxed;
+				width: 215px;
+				height: 240px;
+				padding: 50px 0 0;
+				right: 20px;
+			}
+			
+			.top_label {
+				font-size: 22px;
+				line-height: 24px;
+			}
+			
+			.bottom_label {
+				font-size: 16px;
+				line-height: 16px;
+			}
+			
+			.buy {
+				height: 59px;
+				
+				.adorable_cell {
+					padding: 0 20px;
+				}
+			}
+			
+			.buy_label {
+				font-size: 16px;
+			}
+			
+			.note_content {
+				height: 50%;
+				z-index: 1;
+			}
+			
+			.note {
+				@include absolute_horizontal_centered;
+				top: 75px;
+				width: 440px;
+				height: auto;
+				
+				.note_text {
+					@include transform(none);
+				}
+			}
+		}
+		
+		.video_container {
+			height: 560px;
+			
+			.player {
+				width: 440px;
+				height: 270px;
+				top: 80px;
+				
+				&:before {
+					height: 11px;
+					bottom: -9px;
+					background: url('/img/user/320/player_shadow.png') no-repeat center;
+				}
+			}
+			
+			.know_more {
+				bottom: 143px;
+			}
+		}
+		
+		.dragon_container {
+			height: 2080px;
+			
+			&:before {
+				@include blue_bubbles_top_small;
+			}
+			
+			&:after {
+				@include blue_bubbles_bottom_small;
+			}
+			
+			.dragon_content {
+				&:before {
+					width: 625px;
+					height: 1909px;
+					top: -111px;
+					left: 40px;
+					background: url('/img/user/640/line.png') no-repeat;
+					display: none;
+				}
+			}
+			
+			.dragon_1 {
+				width: 440px;
+				height: 378px;
+				top: 0;
+				right: 0;
+				left: 0;
+				margin: auto;
+				background: url('/img/user/480/dragon_1.png') no-repeat;
+			}
+			
+			.dragon_2 {
+				width: 440px;
+				height: 440px;
+				top: 550px;
+				right: 0;
+				left: 0;
+				margin: auto;
+				background: url('/img/user/480/dragon_2.png') no-repeat;
+			}
+			
+			.dragon_3 {
+				width: 440px;
+				height: 440px;
+				top: 1190px;
+				right: 0;
+				left: 0;
+				margin: auto;
+				background: url('/img/user/480/dragon_3.png') no-repeat;
+			}
+			
+			.dragon_text {
+				padding: 0 20px;
+			}
+			
+			.dragon_text_1 {
+				top: 350px;
+				width: 100%;
+				
+				.dragon_top_label {
+					padding: 0;
+				}
+			}
+			
+			.dragon_text_2 {
+				top: 1030px;
+				width: 100%;
+			}
+			
+			.dragon_text_3 {
+				top: 1650px;
+				width: 100%;
+			}
+			
+			.dragon_top_label {
+				text-align: left;
+				font-size: 30px;
+				line-height: 32px;
+			}
+			
+			.dragon_bottom_label {
+				margin-top: 17px;
+				line-height: 26px;
+				font-size: 18px;
+				
+				.r {
+					font-size: 10px;
+					line-height: 14px;
+				}
+			}
+			
+			.notes {
+				height: 180px;
+				line-height: 14px;
+				
+				.adorable_cell {
+					vertical-align: top;
+					padding: 0 20px;
+				}
+			}
+		}
+		
+		.safety_container {
+			height: 560px;
+			background: url('/img/user/480/safety.jpg') no-repeat right center;
+			
+			.top_label {
+				font-size: 30px;
+				line-height: 32px;
+			}
+			
+			.bottom_label {
+				font-size: 18px;
+				line-height: 22px;
+				
+				.r {
+					font-size: 16px;
+					line-height: 20px;
+				}
+			}
+		}
+		
+		.europe_container {
+			height: 560px;
+			
+			&:before {
+				@include blue_bubbles_top_small;
+			}
+			
+			.content {
+				&:after {
+					left: -162px;
+				}
+			}
+			
+			.top_label {
+				font-size: 30px;
+				line-height: 32px;
+			}
+			
+			.bottom_label {
+				color: #4c4c4c;
+				margin-top: 24px;
+				font-size: 18px;
+				line-height: 22px;
+				
+				.r {
+					font-size: 16px;
+					line-height: 20px;
+				}
+			}
+			
+			.note {
+				@include border_boxed;
+				padding: 0 20px 0 0;
+			}
+		}
+		
+		.map_container {
+			height: 560px;
+			
+			.title {
+				font-size: 20px;
+				line-height: 22px;
+				
+				.adorable_cell {
+					padding: 0 25px;
+				}
+			}
+			
+			#map {
+				height: 470px;
+			}
+			
+			.location_container {
+				width: 280px;
+				height: 50px;
+				
+				.left {
+					width: 200px;
+				}
+				
+				.right {
+					width: 80px;
+					
+					&:before {
+						display: none;
+					}
+				}
+			}
+			
+			.location_input {
+				width: 190px;
+				margin: 10px 0 3px 10px;
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+				height: 20px;
+				font-size: 12px;
+			}
+			
+			.label {
+				font-size: 10px;
+				color: #a6a6a6;
+				padding: 0 0 0 20px;
+			}
+			
+			.find {
+				padding: 0;
+			}
+		}
+		
+		.instruction_container {
+			background-color: $blue;
+			
+			.content {
+				padding: 29px 20px 45px;
+			}
+			
+			.slide_up {
+				height: 26px;
+				border: 1px solid white;
+				padding: 0 35px;
+				font-size: 13px;
+				color: $buttonblue;
+				margin-top: 45px;
+				background-color: #c0daef;
+			}
 		}
 	}
 }

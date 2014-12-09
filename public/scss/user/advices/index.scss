@@ -97,6 +97,48 @@
 	}
 }
 
+#main_container.tiny {
+	.module.advices {
+		.topper_container {
+			.how_to_help {
+				left: 20px;
+			}
+		}
+		
+		.topper_container_1 {
+			height: 590px;
+			
+			.content {
+				padding: 84px 20px 0;
+			}
+		}
+		
+		.topper_container_2 {
+			height: 310px;
+			
+			.content {
+				padding: 17px 20px 0;
+			}
+		}
+		
+		.notes_container {
+			height: 285px;
+		}
+		
+		.help_container_1 {
+			height: 810px;
+		}
+		
+		.notes_container {
+			height: 330px;
+			
+			.content {
+				padding: 52px 20px 0;
+			}
+		}
+	}
+}
+
 #main_container.small {
 	.module.advices {
 		.topper_container_1 {
