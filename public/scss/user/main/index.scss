@@ -49,9 +49,8 @@
 			}
 			
 			.buy {
+				width: $mini_content_width;
 				height: 44px;
-				right: 20px;
-				left: auto;
 			}
 			
 			.buy_label {
@@ -411,11 +410,8 @@
 			}
 			
 			.buy {
+				width: $tiny_min_width;
 				height: 59px;
-				
-				.adorable_cell {
-					padding: 0 20px;
-				}
 			}
 			
 			.buy_label {
@@ -1021,7 +1017,6 @@
 			color: $black;
 			opacity: 0.9;
 			margin: auto;
-			left: 0;
 			width: 100%;
 			
 			img, span {
@@ -1030,6 +1025,7 @@
 			
 			.adorable_cell {
 				text-align: right;
+				padding: 0 20px;
 			}
 		}
 		
