@@ -347,7 +347,7 @@ export default Controller.extend(
 			
 			var scroll_top = el.scrollTop();
 			
-			if(scroll_top >= this.topper_container_height) {
+			if(scroll_top + this.window_height > this.topper_container_height) {
 				ga('set', 'page', this.referrer);
 				ga('send', 'event', 'FirstScreen', 'Scrolled');
 				
