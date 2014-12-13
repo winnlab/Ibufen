@@ -1,6 +1,7 @@
 mongoose = require 'mongoose'
 
 pharmacy = require './pharmacy'
+# iptolocation = require './iptolocation'
 
 module.exports = [
     modelName: 'permission'
@@ -50,4 +51,7 @@ module.exports = [
 ,
     modelName: 'pharmacy'
     data: pharmacy
+# ,
+    # modelName: 'iptolocation'
+    # data: iptolocation
 ]
