@@ -10,7 +10,7 @@ Application = require './application'
 AuthStartegies = require './auth'
 ModelPreloader = require './mpload'
 
-port = 80
+port = 8080
 
 _.mixin _.str.exports()
 
