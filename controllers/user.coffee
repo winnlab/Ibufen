@@ -11,6 +11,7 @@ Router = express.Router()
 #
 
 Router.get '/', Main.index
+Router.get '/video', Main.index
 
 #
 

@@ -83,6 +83,11 @@ export default can.Control.extend({
 					module.entity_id = data.id;
 					module.param2 = data.param2;
 					
+					if(typeof(module.fake_path) != 'undefined') {
+						ga('send', 'pageview', '/' + module.name);
+						return can.route.attr({module: module.fake_path}, true);
+					}
+					
 					this.Placeholder.initModule(module);
 				} else {
 					throw new Error("There is no '" + moduleName + "' module, please check your configuration file");

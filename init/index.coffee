@@ -7,7 +7,7 @@ require './database'
 Logger = require '../lib/logger'
 Migrate = require './migrate'
 Application = require './application'
-AuthStartegies = require './auth'
+# AuthStartegies = require './auth'
 ModelPreloader = require './mpload'
 
 port = 8080
@@ -34,8 +34,8 @@ async.waterfall [
 	(appPort, next) ->
 		Logger.log 'info', "Application is binded to #{appPort}"
 		
-		AuthStartegies.init next
-	(next) ->
-		Logger.log 'info', 'Auth is initializated'
+		# AuthStartegies.init next
+	# (next) ->
+		# Logger.log 'info', 'Auth is initializated'
 ], (err) ->
 	Logger.error 'Init error: ', err

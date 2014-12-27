@@ -16,6 +16,10 @@ var config = {
 					client: 'js/app/user/modules/advices/',
 					server: ':name'
 				}
+			},
+			{
+				name: 'video',
+				fake_path: ''
 			}
 		],
 		defaultModule: 'main'

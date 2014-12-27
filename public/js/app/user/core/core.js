@@ -31,7 +31,13 @@ var Core = can.Control.extend(
 				'huge'
 			];
 			
+			this.scrollTop = 0;
+			
 			this.resize();
+			
+			//
+			
+			this.check_pathname();
 		},
 		
 		'{window} scroll': function(el, ev){
@@ -47,9 +53,15 @@ var Core = can.Control.extend(
 		},
 		
 		'{window} custom_ready': function() {
+			var that = this;
+			
 			$('body').css({
 				overflow: 'auto'
 			});
+			
+			$('html, body').stop().animate({
+				scrollTop: that.scrollTop
+			}, 1);
 			
 			$('#preloader').fadeOut(300);
 		},
@@ -77,6 +89,15 @@ var Core = can.Control.extend(
 		},
 		
 		// custom
+		
+		check_pathname: function() {
+			var that = this;
+			
+			if(location.pathname == '/video') {
+				that.scrollTop =	that.element.find('.topper_container').height() -
+									that.element.find('#fixed_topper').height();
+			}
+		},
 		
 		'{window} custom_warning': function(el, ev, classname) {
 			this.warning_container.removeClass();

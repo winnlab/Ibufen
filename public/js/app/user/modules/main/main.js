@@ -41,6 +41,8 @@ export default Controller.extend(
 			this.europe_container = this.element.find('.europe_container');
 			this.map_container = this.element.find('.map_container');
 			
+			this.player = this.video_container.find('.player');
+			
 			this.instruction_button = this.element.find('button.instruction');
 			this.instruction_container = this.element.find('.instruction_container');
 			this.instruction_items = this.instruction_container.find('.item');
@@ -73,6 +75,10 @@ export default Controller.extend(
 			this.europe_container_height = this.europe_container.height();
 			this.map_container_height = this.map_container.height();
 			this.fixed_topper_height = this.fixed_topper.height();
+			
+			this.video_bottom_offset =	(this.topper_container_height +
+										this.player.position().top +
+										this.player.height()) | 0;
 			
 			if(this.main_container.hasClass('mini') || this.main_container.hasClass('tiny')) {
 				this.up_arrow.hide();
@@ -316,10 +322,6 @@ export default Controller.extend(
 			ga('send', 'event', 'UpArrow', 'Click');
 		},
 		
-		'.vimeo click': function(el) {
-			console.log(el)
-		},
-		
 		'.map_container .find click': function(el) {
 			ga('set', 'page', this.referrer);
 			ga('send', 'event', 'Find', 'Click');
@@ -338,6 +340,18 @@ export default Controller.extend(
 			
 			this.check_up_arrow(this.window, ev);
 			this.check_first_screen(this.window, ev);
+			this.check_video_module(this.window, ev);
+		},
+		
+		check_video_module: function(el, ev) {
+			var	scroll = el.scrollTop() + this.window_height,
+				module = '';
+			
+			if(scroll > this.video_bottom_offset) {
+				module = 'video';
+			}
+			
+			can.route.attr({module: module}, true);
 		},
 		
 		check_first_screen: function(el, ev) {

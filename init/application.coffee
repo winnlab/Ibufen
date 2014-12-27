@@ -10,10 +10,10 @@ bodyParser = require 'body-parser'
 methodOverride = require 'method-override' 
 
 Ajax = require '../lib/ajax'
-Auth = require '../lib/auth'
+# Auth = require '../lib/auth'
 View = require '../lib/view'
 
-adminController = require '../controllers/admin'
+# adminController = require '../controllers/admin'
 userController = require '../controllers/user'
 
 locals = require './locals'
@@ -21,7 +21,7 @@ locals = require './locals'
 routes = () ->
 	@use userController.Router
 	@use '/', userController.Router
-	@use '/admin', adminController.Router
+	# @use '/admin', adminController.Router
 
 configure = () ->
 	@use '/js', express.static "#{__dirname}/../public/js"
@@ -38,12 +38,12 @@ configure = () ->
 	@use cookieParser 'LmAK3VNuA6'
 	@use passport.initialize()
 	@use passport.session()
-	@use '/admin', Auth.isAuth
+	# @use '/admin', Auth.isAuth
 	@use methodOverride()
 	@use View.globals
 
-	@use '/admin', (req, res, next) ->
-		Ajax.isAjax req, res, next, adminController.layoutPage
+	# @use '/admin', (req, res, next) ->
+		# Ajax.isAjax req, res, next, adminController.layoutPage
 
 exports.init = (port, callback) ->
 	exports.express = app = express()
