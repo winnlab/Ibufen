@@ -59,9 +59,7 @@ var Core = can.Control.extend(
 				overflow: 'auto'
 			});
 			
-			$('html, body').stop().animate({
-				scrollTop: that.scrollTop
-			}, 1);
+			$('html, body').scrollTop(that.scrollTop);
 			
 			$('#preloader').fadeOut(300);
 		},
@@ -114,8 +112,6 @@ var Core = can.Control.extend(
 		},
 		
 		'button.advices click': function(el) {
-			$('html, body').scrollTop(0);
-			
 			ga('set', 'page', decodeURI(document.location.href));
 			ga('send', 'event', 'Advices', 'Click');
 		},
