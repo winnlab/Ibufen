@@ -114,6 +114,8 @@ var Core = can.Control.extend(
 		'button.advices click': function(el) {
 			ga('set', 'page', decodeURI(document.location.href));
 			ga('send', 'event', 'Advices', 'Click');
+			
+			ga('send', 'pageview', '/advices');
 		},
 		
 		change_warning_height: function() {
