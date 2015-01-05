@@ -18,7 +18,7 @@ export default Controller.extend(
 					return false;
 				}
 				
-				$(window).trigger('custom_warning', 'big');
+				// $(window).trigger('custom_warning', 'big');
 			});
 		},
 		
