@@ -32,6 +32,10 @@ configure = () ->
 		res.set 'Content-Type', 'text/plain'
 		res.send "User-agent: *\nDisallow: /"
 	
+	@use '/google194fe5f2e1f072cb.html', (req, res)->
+		res.set 'Content-Type', 'text/plain'
+		res.send "google-site-verification: google194fe5f2e1f072cb.html"
+	
 	@use View.compiler {root: '/views'}
 	
 	@use bodyParser()
