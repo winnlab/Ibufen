@@ -21,9 +21,11 @@ html
 			#footer
 				include footer
 		
-		script(src="/js/plugins/steal/steal.js", config-path="/js/app/user/config.js", main="js/app/user/core/")
-		script(src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=true")
+		// script(src="/js/plugins/steal/steal.js", config-path="/js/app/user/config.js", main="js/app/user/core/")
+		script(src="/js/plugins/steal/steal.production.js", data-env="production", main="core")
 		
 		block scripts
 			include route
 			include codes
+			
+			script(src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=true")

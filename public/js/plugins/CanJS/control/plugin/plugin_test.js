@@ -4,7 +4,7 @@ steal("can/control/plugin", function () {
 	}
 
 	/* global My */
-	QUnit.module('can/control/plugin');
+	module('can/control/plugin');
 	test('pluginName', function () {
 		expect(8);
 		can.Control('My.TestPlugin', {

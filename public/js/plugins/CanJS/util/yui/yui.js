@@ -15,8 +15,8 @@
 steal('can/util/can.js', "can/util/attr", 'yui', 'can/event',
 	"can/util/fragment.js", 'can/util/array/each.js',
 	'can/util/object/isplain', 'can/util/deferred.js',
-	'can/util/hashchange.js', "can/util/inserted", function (can, attr, YUI) {
-		YUI = YUI || window.YUI;
+	'../hashchange.js', "can/util/inserted", function (can, attr) {
+
 		// lets overwrite 
 		YUI.add('can-modifications', function (Y, NAME) {
 			var addHTML = Y.DOM.addHTML;
@@ -383,7 +383,7 @@ steal('can/util/can.js', "can/util/attr", 'yui', 'can/event',
 					};
 				}
 				event.target = event.target || item;
-				can.dispatch.call(item, event, can.makeArray(args));
+				can.dispatch.call(item, event, args);
 			}
 		};
 		// Allow `dom` `destroyed` events.

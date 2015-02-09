@@ -6,14 +6,14 @@ var config = {
 			{
 				name: 'main',
 				path: {
-					client: 'js/app/user/modules/main/',
+					client: 'modules/main/main',
 					server: ''
 				}
 			},
 			{
 				name: 'advices',
 				path: {
-					client: 'js/app/user/modules/advices/',
+					client: 'modules/advices/advices',
 					server: ':name'
 				}
 			},

@@ -1,4 +1,4 @@
-@function can.view.mustache mustache
+@function can.mustache mustache
 @parent can.view.static
 
 @deprecated {2.1} Use [can.mustache] instead.

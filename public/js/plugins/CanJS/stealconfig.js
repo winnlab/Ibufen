@@ -23,60 +23,24 @@
 		}
 	}());
 
-	// Dojo specific hacks
-	var dojoDefine;
-	var oldInstantiate = System.instantiate;
-	System.instantiate = function(load) {
-		var loader = this;
-		if(load.name === 'can/util/util' || load.name === "dojo/dojo") {
-			return oldInstantiate.apply(this, arguments).then(function(instantiateObj) {
-
-				var oldExecute = loader.defined[load.name].execute;
-				loader.defined[load.name].execute = function() {
-
-					if( load.name === "dojo/dojo" ) {
-						
-						var oldExec = loader.__exec;
-						loader.__exec = function(){
-							var ret = oldExec.apply(this, arguments);
-							dojoDefine = loader.global.define;
-							loader.__exec = oldExec;
-							return ret;
-						};
-						
-						return  oldExecute.apply(this, arguments);;
-					} else if(load.name === 'can/util/util') {
-						var ourDefine = loader.global.define;
-						loader.global.define = dojoDefine;
-						var ret = oldExecute.apply(this, arguments);
-						loader.global.define = ourDefine;
-						return ret;
-					}
-				};
-				return instantiateObj;
-			});	
-		}
-
-		return oldInstantiate.apply(this, arguments);
-	};
 
 	steal.config({
 		map: {
 			"jquery/jquery": "jquery",
+			"can/util/util": "can/util/jquery/jquery",
 			"benchmark/benchmark": "benchmark"
 		},
 		paths: {
 			"jquery": "lib/jquery.1.10.2.js",
-			"mootools/mootools": "lib/mootools-core-1.4.5.js",
-			"dojo/dojo": "util/dojo/dojo-1.8.1.js",
-			"yui/yui": "lib/yui-3.7.3.js",
-			"zepto/zepto": "bower_components/zepto/zepto.js",
+			"mootools/mootools.js": "lib/mootools-core-1.4.5.js",
+			"dojo/dojo.js": "util/dojo/dojo-1.8.1.js",
+			"yui/yui.js": "lib/yui-3.7.3.js",
+			"zepto/zepto.js": "bower_components/zepto/zepto.js",
 			"can/*": "*.js",
 			"jquerypp/": "http://jquerypp.com/release/1.0.1/steal/",
 			"benchmark": "bower_components/benchmark/benchmark.js",
 			"jqueryui/jqueryui.js" :"http://code.jquery.com/ui/1.10.4/jquery-ui.js",
-			"steal/dev/dev.js": "lib/steal/dev/dev.js",
-			"can/util/util": "util/jquery/jquery.js"
+			"steal/dev/dev.js": "lib/steal/dev/dev.js"
 		},
 		meta: {
 			jquery: {
@@ -86,28 +50,23 @@
 			"jqueryui/jqueryui": {
 				deps: ["jquery"]
 			},
-			"zepto/zepto.": {
+			"zepto/zepto.js": {
 				"exports": "Zepto"
 			},
-			"mootools/mootools" : {
-				format: "global",
-				deps: supportsUnknownElements ? undefined : ["can/lib/html5shiv.js"],
-				scriptEval: true
+			"mootools/mootools.js" : {
+				deps: supportsUnknownElements ? undefined : ["can/lib/html5shiv.js"]
 			},
-			"dojo/dojo": {
-				deps: supportsUnknownElements ? undefined : ["can/lib/html5shiv.js"],
-				format: "global"
+			"dojo/dojo.js": {
+				deps: supportsUnknownElements ? undefined : ["can/lib/html5shiv.js"]
 			},
-			"yui/yui": {
-				deps: supportsUnknownElements ? undefined : ["can/lib/html5shiv.js"],
-				format: "global",
-				scriptEval: true
+			"yui/yui.js": {
+				deps: supportsUnknownElements ? undefined : ["can/lib/html5shiv.js"]
 			}
 		},
 		ext: {
-			ejs: "view/ejs/system",
-			mustache: "view/mustache/system",
-			stache: "view/stache/system"
+			ejs: "view/ejs/ejs.js",
+			mustache: "view/mustache/mustache.js",
+			stache: "view/stache/stache.js"
 		}
 	});
 })();

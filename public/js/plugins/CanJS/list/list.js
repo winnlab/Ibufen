@@ -271,26 +271,16 @@ steal("can/util", "can/map", "can/map/bubble.js",function (can, Map, bubble) {
 			 */
 			splice: function (index, howMany) {
 				var args = can.makeArray(arguments),
-					added =[],
-					i, j;
+					i;
+
 				for (i = 2; i < args.length; i++) {
 					args[i] = bubble.set(this, i, this.__type(args[i], i) );
-					added.push(args[i]);
+					
 				}
 				if (howMany === undefined) {
 					howMany = args[1] = this.length - index;
 				}
-				var removed = splice.apply(this, args),
-					cleanRemoved = removed;
-
-				// remove any items that were just added from the removed array
-				if(added.length && removed.length){
-					for (j = 0; j < removed.length; j++) {
-						if(can.inArray(removed[j], added) >= 0) {
-							cleanRemoved.splice(j, 1);
-						}
-					}
-				}
+				var removed = splice.apply(this, args);
 
 				if (!spliceRemovesProps) {
 					for (i = this.length; i < removed.length + this.length; i++) {

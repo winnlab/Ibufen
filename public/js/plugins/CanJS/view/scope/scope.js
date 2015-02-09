@@ -141,8 +141,6 @@ steal(
 									rootReads = data.reads;
 									computeData.scope = data.scope;
 									computeData.initialValue = data.value;
-									computeData.reads = data.reads;
-									computeData.root = rootObserve;
 									return data.value;
 								}
 							})
@@ -162,7 +160,7 @@ steal(
 				// was found in, readsData and the current scope.
 				/**
 				 * @hide
-				 * @param {can.mustache.key} attr A dot seperated path.  Use `"\."` if you have a property name that includes a dot.
+				 * @param {can.Mustache.key} attr A dot seperated path.  Use `"\."` if you have a property name that includes a dot.
 				 * @param {can.view.Scope.readOptions} options that configure how this gets read.
 				 * @return {{}}
 				 * @option {Object} parent the value's immediate parent

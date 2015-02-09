@@ -246,16 +246,12 @@ steal('can/util/can.js', function (can) {
 
 		// Grab event listeners
 		var eventName = event.type,
-			handlers = (events[eventName] || []).slice(0),
-			passed = [event];
+			handlers = (events[eventName] || []).slice(0);
 		
 		// Execute handlers listening for this event.
-		if(args) {
-			passed.push.apply(passed, args);
-		}
-
+		args = [event].concat(args || []);
 		for (var i = 0, len = handlers.length; i < len; i++) {
-			handlers[i].handler.apply(this, passed);
+			handlers[i].handler.apply(this, args);
 		}
 
 		return event;
@@ -304,15 +300,7 @@ steal('can/util/can.js', function (can) {
 		 *
 		 * This syntax can be used for objects that don't include the `can.event` mixin.
 		 */
-		on: function() {
-			if (arguments.length === 0 && can.Control && this instanceof can.Control) {
-				return can.Control.prototype.on.call(this);
-			}
-			else {
-				return can.addEvent.apply(this, arguments);
-			}
-		},
-
+		on: can.addEvent,
 		/**
 		 * @function can.event.off
 		 * @parent can.event.static
@@ -326,15 +314,7 @@ steal('can/util/can.js', function (can) {
 		 *
 		 * This syntax can be used for objects that don't include the `can.event` mixin.
 		 */
-		off: function() {
-			if (arguments.length === 0 && can.Control && this instanceof can.Control) {
-				return can.Control.prototype.off.call(this);
-			}
-			else {
-				return can.removeEvent.apply(this, arguments);
-			}
-		},
-
+		off: can.removeEvent,
 		/**
 		 * @function can.event.bind
 		 * @parent can.event.static
@@ -384,7 +364,7 @@ steal('can/util/can.js', function (can) {
 		 * This syntax can be used for objects that don't include the `can.event` mixin.
 		 */
 		delegate: function(selector, event, handler) {
-			return can.addEvent.call(this, event, handler);
+			return can.addEvent.call(event, handler);
 		},
 		/**
 		 * @function can.event.undelegate
@@ -407,7 +387,7 @@ steal('can/util/can.js', function (can) {
 		 * This syntax can be used for objects that don't include the `can.event` mixin.
 		 */
 		undelegate: function(selector, event, handler) {
-			return can.removeEvent.call(this, event, handler);
+			return can.removeEvent.call(event, handler);
 		},
 		/**
 		 * @function can.event.trigger

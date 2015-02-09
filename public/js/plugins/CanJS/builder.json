@@ -208,17 +208,10 @@
 			"isDefault": true,
 			"hidden": true
 		},
-		"can/view/stache/system.js": {
-			"name": "can.view.stache.system",
-			"type": "loader",
-			"isDefault": true,
-			"hasTest": false
-		},
 		"can/util/domless": {
 			"name": "can.util.domless",
-			"type": "loader",
-			"isDefault": true,
-			"hasTest": false
+			"type": "plugin",
+			"hidden": true
 		}
 	},
 	"types": {
@@ -245,14 +238,11 @@
 			"library": "lib/jquery.1.10.2.js",
 			"steal": {
 				"map": {
-					"jquery/jquery": "jquery"
-				},
-				"paths": {
-					"can/util/util": "util/jquery/jquery.js",
-					"jquery": "lib/jquery.1.10.2.js"
+          "can/util/util": "can/util/jquery/jquery",
+          "jquery/jquery": "can/lib/jquery.1.10.2"
 				},
 				"meta": {
-					"jquery": {
+					"can/lib/jquery.1.10.2": {
 						"format": "global"
 					}
 				}
@@ -264,10 +254,8 @@
 			"library": "lib/jquery.2.0.3.js",
 			"steal": {
 				"map": {
+					"can/util/util": "can/util/jquery/jquery",
 					"jquery/jquery": "can/lib/jquery.2.0.3"
-				},
-				"paths": {
-					"can/util/util": "util/jquery/jquery.js"
 				},
 				"meta": {
 					"can/lib/jquery.2.0.3": {
@@ -280,10 +268,9 @@
 			"description": "Zepto",
 			"library": "bower_components/zepto/zepto.js",
 			"steal": {
-				"paths": {
-					"can/*": "*.js",
-					"can/util/util": "util/zepto/zepto.js",
-					"zepto/zepto": "bower_components/zepto/zepto.js"
+				"map": {
+					"can/util/util": "can/util/zepto/zepto",
+					"zepto/zepto": "can/bower_components/zepto/zepto"
 				}
 			}
 		},
@@ -291,10 +278,9 @@
 			"description": "Mootools",
 			"library": "lib/mootools-core-1.4.5.js",
 			"steal": {
-				"paths": {
-					"can/*": "*.js",
-					"can/util/util": "util/mootools/mootools.js",
-					"mootools/mootools": "lib/mootools-core-1.4.5.js"
+				"map": {
+					"can/util/util": "can/util/mootools/mootools",
+					"mootools/mootools": "can/lib/mootools-core-1.4.5"
 				}
 			}
 		},
@@ -302,15 +288,9 @@
 			"description": "YUI",
 			"library": "lib/yui-3.7.3.js",
 			"steal": {
-				"paths": {
-					"can/*": "*.js",
-					"can/util/util": "util/yui/yui.js",
-					"yui/yui": "lib/yui-3.7.3.js"
-				}
-			},
-			"pluginifyOptions": {
-				"exports": {
-					"yui/yui": "YUI"
+				"map": {
+					"can/util/util": "can/util/yui/yui",
+					"yui/yui": "can/lib/yui-3.7.3"
 				}
 			}
 		},
@@ -318,20 +298,14 @@
 			"description": "Dojo",
 			"library": "util/dojo/dojo-1.8.1.js",
 			"steal": {
-				"paths": {
-					"can/*": "*.js",
-					"can/util/util": "util/dojo/dojo.js",
-					"dojo/dojo": "util/dojo/dojo-1.8.1.js"
+				"map": {
+					"can/util/util": "can/util/dojo/dojo",
+					"dojo/dojo": "can/util/dojo/dojo-1.8.1"
 				},
 				"meta": {
-					"dojo/dojo": {
+					"can/util/dojo/dojo-1.8.1": {
 						"format": "global"
 					}
-				}
-			},
-			"pluginifyOptions": {
-				"exports": {
-					"dojo/dojo": "dojo"
 				}
 			}
 		}

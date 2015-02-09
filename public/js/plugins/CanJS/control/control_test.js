@@ -1,7 +1,7 @@
 /* jshint asi:true*/
 steal("can/control", function () {
 	/*global WeirdBind*/
-	QUnit.module('can/control');
+	module('can/control');
 	var isOpera = /Opera/.test(navigator.userAgent),
 		isDojo = typeof dojo !== 'undefined';
 	// bug in opera/dojo with on/trigger, so skip

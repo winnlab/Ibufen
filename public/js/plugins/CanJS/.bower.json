@@ -18,11 +18,11 @@
     "dojo": "1.8.6"
   },
   "homepage": "https://github.com/bitovi/canjs",
-  "_release": "5340fbdf83",
+  "_release": "58bcc48328",
   "_resolution": {
     "type": "branch",
     "branch": "minor",
-    "commit": "5340fbdf838f36d8767cef91f724ee8bcde13bab"
+    "commit": "58bcc483284753d06d3854749c63c13a5f1fb92a"
   },
   "_source": "git://github.com/bitovi/canjs.git",
   "_target": "minor",

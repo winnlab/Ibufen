@@ -1,5 +1,5 @@
 steal("can/view/live", "can/observe", "can/test", function () {
-	QUnit.module('can/view/live');
+	module('can/view/live');
 	test('html', function () {
 		var div = document.createElement('div'),
 			span = document.createElement('span');

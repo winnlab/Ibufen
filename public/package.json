@@ -1,0 +1,8 @@
+{
+	"name": "ibufen",
+	"version": "1.2.1",
+	"devDependencies": {
+		"grunt": "^0.4.5",
+		"steal-tools": "0.5.0"
+	}
+}

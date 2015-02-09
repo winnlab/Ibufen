@@ -269,11 +269,7 @@ steal('can/util/string', function (can) {
 		 * @return {function} The constructor function.
 		 *
 		 */
-		extend: function (name, staticProperties, instanceProperties) {
-			var fullName = name,
-				klass = staticProperties,
-				proto = instanceProperties;
-
+		extend: function (fullName, klass, proto) {
 			// Figure out what was passed and normalize it.
 			if (typeof fullName !== 'string') {
 				proto = klass;
@@ -287,7 +283,7 @@ steal('can/util/string', function (can) {
 			proto = proto || {};
 			var _super_class = this,
 				_super = this.prototype,
-				parts, current, _fullName, _shortName, propName, shortName, namespace, prototype;
+				parts, current, _fullName, _shortName, name, shortName, namespace, prototype;
 			// Instantiate a base class (but only create the instance,
 			// don't run the init constructor).
 			prototype = this.instance();
@@ -313,9 +309,9 @@ steal('can/util/string', function (can) {
 				}
 			}
 			// Copy old stuff onto class (can probably be merged w/ inherit)
-			for (propName in _super_class) {
-				if (_super_class.hasOwnProperty(propName)) {
-					Constructor[propName] = _super_class[propName];
+			for (name in _super_class) {
+				if (_super_class.hasOwnProperty(name)) {
+					Constructor[name] = _super_class[name];
 				}
 			}
 			// Copy new static properties on class.

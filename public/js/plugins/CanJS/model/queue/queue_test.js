@@ -2,13 +2,13 @@
 /* global User: true */
 /* global Hero: true */
 steal('can/util', 'can/model', 'can/model/queue', 'can/util/fixture', 'can/map/attributes', "can/test", function () {
-	QUnit.module('can/model/queue', {
+	module('can/model/queue', {
 		setup: function () {}
 	});
 	test('queued requests will not overwrite attrs', function () {
 		var delay = can.fixture.delay;
 		can.fixture.delay = 1000;
-		can.Model.extend('Person', {
+		can.Model('Person', {
 			create: function (id, attrs, success, error) {
 				return can.ajax({
 					url: '/people/' + id,

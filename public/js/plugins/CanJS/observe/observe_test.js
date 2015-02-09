@@ -1,5 +1,5 @@
 steal('can/util', "can/observe", 'can/map', 'can/list', "can/test",function () {
-	QUnit.module('can/observe map+list');
+	module('can/observe map+list');
 	test('Basic Map', 9, function () {
 		var state = new can.Map({
 			category: 5,
@@ -848,7 +848,7 @@ steal('can/util', "can/observe", 'can/map', 'can/list', "can/test",function () {
 		list.pop();
 		equal(list.length, 0, 'list is empty');
 	});
-	QUnit.module('can/observe compute');
+	module('can/observe compute');
 	test('Basic Compute', function () {
 		var o = new can.Map({
 			first: 'Justin',
@@ -1334,28 +1334,6 @@ steal('can/util', "can/observe", 'can/map', 'can/list', "can/test",function () {
 		
 		equal(computedCount, 2, "recalculated twice");
 		
-	});
-
-	test("compute(obs, prop) doesn't read attr", function(){
-		
-		var map = new can.Map({name: "foo"});
-		
-		var name = can.compute(map, "name");
-		
-		var oldAttr = map.attr;
-		
-		var count = 0;
-		map.attr= function(){
-			count++;
-			
-			return oldAttr.apply(this, arguments);
-		};
-		name.bind("change", function(){});
-		equal(count, 1, "attr only called once to get cached value");
-		
-		oldAttr.call(map,"name","bar");
-		
-		equal(count, 1, "attr only called once to get cached value");
 	});
 
 });

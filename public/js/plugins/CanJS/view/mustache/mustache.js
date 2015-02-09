@@ -4,7 +4,6 @@ steal('can/util',
 	'can/view/scanner.js',
 	'can/compute',
 	'can/view/render.js',
-	'can/view/bindings',
 	function (can) {
 
 		// # mustache.js
@@ -35,7 +34,7 @@ steal('can/util',
 			ARG_NAMES = SCOPE + ",options",
 
 			// matches arguments inside a {{ }}
-			argumentsRegExp = /((([^'"\s]+?=)?('.*?'|".*?"))|.*?)\s/g,
+			argumentsRegExp = /((([^\s]+?=)?('.*?'|".*?"))|.*?)\s/g,
 
 			// matches a literal number, string, null or regexp
 			literalNumberStringBooleanRegExp = /^(('.*?'|".*?"|[0-9]+\.?[0-9]*|true|false|null|undefined)|((.+?)=(('.*?'|".*?"|[0-9]+\.?[0-9]*|true|false)|(.+))))$/,
@@ -114,18 +113,21 @@ steal('can/util',
 		};
 
 		/**
-		 * @add can.MustacheConstructor
+		 * @add can.Mustache
 		 */
 		// Put Mustache on the `can` object.
-		can.Mustache = can.global.Mustache = Mustache;
+		can.Mustache = Mustache;
+		if(typeof window !== "undefined") {
+			window.Mustache = Mustache;
+		}
 
 		/** 
 		 * @prototype
 		 */
 		Mustache.prototype.
 		/**
-		 * @function can.MustacheConstructor.prototype.render render
-		 * @parent can.MustacheConstructor.prototype
+		 * @function can.Mustache.prototype.render render
+		 * @parent can.Mustache.prototype
 		 * @signature `mustache.render( data [, helpers] )`
 		 * @param {Object} data Data to interpolate into the template.
 		 * @return {String} The template with interpolated data, in string form.
@@ -1320,7 +1322,7 @@ steal('can/util',
 		}
 
 		/**
-		 * @function can.MustacheConstructor.txt
+		 * @function can.Mustache.txt
 		 * @hide
 		 *
 		 * Evaluates the resulting string based on the context/name.
@@ -1359,7 +1361,7 @@ steal('can/util',
 						}
 					}
 				} else if (arg && isLookup(arg)) {
-					args.push(Mustache.get(arg.get, scopeAndOptions, false, true, true));
+					args.push(Mustache.get(arg.get, scopeAndOptions, false, true));
 				} else {
 					args.push(arg);
 				}
@@ -1477,7 +1479,7 @@ steal('can/util',
 		};
 
 		/**
-		 * @function can.MustacheConstructor.get
+		 * @function can.Mustache.get
 		 * @hide
 		 *
 		 * Resolves a key for a given object (and then a context if that fails).
@@ -1512,7 +1514,7 @@ steal('can/util',
 		 * @param {Object} context The context to use for checking for a reference if it doesn't exist in the object.
 		 * @param {Boolean} [isHelper] Whether the reference is seen as a helper.
 		 */
-		Mustache.get = function (key, scopeAndOptions, isHelper, isArgument, isLookup) {
+		Mustache.get = function (key, scopeAndOptions, isHelper, isArgument) {
 
 			// Cache a reference to the current context and options, we will use them a bunch.
 			var context = scopeAndOptions.scope.attr('.'),
@@ -1555,7 +1557,7 @@ steal('can/util',
 			//!steal-remove-end
 
 			// Use helper over the found value if the found value isn't in the current context
-			if (!isLookup && (initialValue === undefined || computeData.scope !== scopeAndOptions.scope) && Mustache.getHelper(key, options)) {
+			if ((initialValue === undefined || computeData.scope !== scopeAndOptions.scope) && Mustache.getHelper(key, options)) {
 				return key;
 			}
 
@@ -1645,7 +1647,7 @@ steal('can/util',
 
 		/**
 		 * @hide
-		 * @function can.MustacheConstructor.getHelper getHelper
+		 * @function can.Mustache.getHelper getHelper
 		 * @description Retrieve a helper.
 		 * @signature `Mustache.getHelper(name)`
 		 * @param {String} name The name of the helper.
@@ -1663,7 +1665,7 @@ steal('can/util',
 		};
 
 		/**
-		 * @function can.MustacheConstructor.static.render render
+		 * @function can.Mustache.static.render render
 		 * @hide
 		 * @parent can.Mustache.static
 		 * @signature `Mustache.render(partial, context)`
@@ -1703,7 +1705,7 @@ steal('can/util',
 
 			// Call into `can.view.render` passing the
 			// partial and scope.
-			return can.view.render(partial, scope, options);
+			return can.view.render(partial, scope /*, options*/ );
 		};
 
 		/**
@@ -1777,7 +1779,7 @@ steal('can/util',
 			 * @param {can.mustache.key} key A key that references a value within the current or parent
 			 * context. If the value is a function or can.compute, the function's return value is used.
 			 *
-			 * @param {can.mustache} BLOCK A mustache template.
+			 * @param {can.Mustache} BLOCK A mustache template.
 			 *
 			 * @return {String} If the key's value is truthy, the `BLOCK` is rendered with the
 			 * current context and its value is returned; otherwise, an empty string.
@@ -1867,7 +1869,9 @@ steal('can/util',
 			 *     {{/unless}}
 			 */
 			'unless': function (expr, options) {
-				return Mustache._helpers['if'].fn.apply(this, [can.isFunction(expr) ? can.compute(function() { return !expr(); }) : !expr, options]);
+				if (!Mustache.resolve(expr)) {
+					return options.fn(options.contexts || this);
+				}
 			},
 
 			// Implements the `each` built-in helper.
@@ -2014,7 +2018,7 @@ steal('can/util',
 			 * context. If the value is a function or can.compute, the function's
 			 * return value is used.
 			 *
-			 * @param {can.mustache} BLOCK A template that is rendered
+			 * @param {can.Mustache} BLOCK A template that is rendered
 			 * with the context of the `key`'s value.
 			 *
 			 * @body
@@ -2054,7 +2058,7 @@ steal('can/util',
 						console.log(expr, options.context);
 					}
 				}
-			},
+			}
 			/**
 			 * @function can.mustache.helpers.elementCallback {{(el)->CODE}}
 			 *
@@ -2117,14 +2121,7 @@ steal('can/util',
 			 *     </ul>
 			 *
 			 */
-			"@index": function(offset, options) {
-				if (!options) {
-					options = offset;
-					offset = 0;
-				}
-				var index = options.scope.attr("@index");
-				return ""+((can.isFunction(index) ? index() : index) + offset);
-			}
+			//
 			/**
 			 * @function can.mustache.helpers.key {{@key}}
 			 *

@@ -2,7 +2,7 @@
 /*global Mustache*/
 steal("can/model", "can/view/mustache", "can/test", "can/view/mustache/spec/specs",function () {
 
-	QUnit.module("can/view/mustache, rendering", {
+	module("can/view/mustache, rendering", {
 		setup: function () {
 			can.view.ext = '.mustache';
 
@@ -420,20 +420,6 @@ steal("can/model", "can/view/mustache", "can/test", "can/view/mustache/spec/spec
 		deepEqual(div.innerHTML, "foo");
 	});
 
-	test("String literals passed to helper should work (#1143)", 1, function() {
-		can.Mustache.registerHelper("concatStrings", function(arg1, arg2) {
-			return arg1 + arg2;
-		});
-
-		// Test with '=' because the regexp to find arguments uses that char
-		// to delimit a keyword-arg name from its value.
-		can.view.mustache('testStringArgs', '{{concatStrings "==" "word"}}');
-		var div = document.createElement('div');
-		div.appendChild(can.view('testStringArgs', {}));
-
-		equal(div.innerHTML, '==word');
-	});
-
 	test("Partials and observes", function () {
 		var template;
 		var div = document.createElement('div');
@@ -538,10 +524,7 @@ steal("can/model", "can/view/mustache", "can/test", "can/view/mustache/spec/spec
 			expected: "Andy is missing!",
 			data: {
 				name: 'Andy'
-			},
-			liveData: new can.Map({
-				name: 'Andy'
-			})
+			}
 		};
 
 		var expected = t.expected.replace(/&quot;/g, '&#34;')
@@ -550,13 +533,6 @@ steal("can/model", "can/view/mustache", "can/test", "can/view/mustache/spec/spec
 				text: t.template
 			})
 			.render(t.data), expected);
-
-		// #1019 #unless does not live bind
-		var div = document.createElement('div');
-		div.appendChild(can.view.mustache(t.template)(t.liveData));
-		deepEqual(div.innerHTML, expected, '#unless condition false');
-		t.liveData.attr('missing', true);
-		deepEqual(div.innerHTML, '', '#unless condition true');
 	});
 
 	test("Handlebars helper: each", function () {
@@ -2302,7 +2278,7 @@ steal("can/model", "can/view/mustache", "can/test", "can/view/mustache/spec/spec
 	if (typeof steal !== 'undefined') {
 		test("avoid global helpers", function () {
 			stop();
-			steal('view/mustache/test/noglobals.mustache!', function (noglobals) {
+			steal('view/mustache/test/noglobals.mustache', function (noglobals) {
 				var div = document.createElement('div'),
 					div2 = document.createElement('div');
 				var person = new can.Map({
@@ -2912,37 +2888,6 @@ steal("can/model", "can/view/mustache", "can/test", "can/view/mustache/spec/spec
 			list: list
 		})
 			.childNodes[0].getElementsByTagName('li');
-
-		for (var i = 0; i < lis.length; i++) {
-			equal(lis[i].innerHTML, (i + ' ' + i), 'rendered index and value are correct');
-		}
-	});
-
-	test("Rendering indicies of an array with @index + offset (#1078)", function () {
-		var template = can.view.mustache("<ul>{{#each list}}<li>{{@index 5}} {{.}}</li>{{/each}}</ul>");
-		var list = [0, 1, 2, 3];
-
-		var lis = template({
-			list: list
-		})
-			.childNodes[0].getElementsByTagName('li');
-
-		for (var i = 0; i < lis.length; i++) {
-			equal(lis[i].innerHTML, (i+5 + ' ' + i), 'rendered index and value are correct');
-		}
-	});
-
-	test("Passing indices into helpers as values", function () {
-		var template = can.view.mustache("<ul>{{#each list}}<li>{{test @index}} {{.}}</li>{{/each}}</ul>");
-		var list = [0, 1, 2, 3];
-
-		var lis = template({
-			list: list
-		}, {
-			test: function(index) {
-				return ""+index;
-			}
-		}).childNodes[0].getElementsByTagName('li');
 
 		for (var i = 0; i < lis.length; i++) {
 			equal(lis[i].innerHTML, (i + ' ' + i), 'rendered index and value are correct');
@@ -3821,33 +3766,4 @@ steal("can/model", "can/view/mustache", "can/test", "can/view/mustache/spec/spec
 		equal(content[7].innerHTML, "bar", "passed as a hash to helper" + description);
 	});
 
-	test("Partials are passed helpers (#791)", function () {
-		var t = {
-			template: "{{>partial}}",
-			expected: "foo",
-			partials: {
-				partial: '{{ help }}'
-			},
-			helpers: {
-				'help': function(){
-					return 'foo';
-				}
-			}
-		};
-		for (var name in t.partials) {
-			can.view.registerView(name, t.partials[name], ".mustache")
-		}
-
-		deepEqual(new can.Mustache({
-				text: t.template
-			})
-			.render({}, t.helpers), t.expected);
-	});
-
-	test("{{else}} with {{#unless}} (#988)", function(){
-		var tmpl = "<div>{{#unless noData}}data{{else}}no data{{/unless}}</div>";
-
-		var frag = can.mustache(tmpl)({ noData: true });
-		equal(frag.childNodes[0].innerHTML, 'no data', 'else with unless worked');
-	});
 });

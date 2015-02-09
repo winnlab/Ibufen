@@ -4,7 +4,6 @@ steal('jquery', 'can/util/can.js', 'can/util/attr', "can/event", 'can/util/array
 		/*jshint eqeqeq:false*/
 		return ( node.nodeName && (node.nodeType === 1 || node.nodeType === 9) )|| node == window;
 	};
-	$ = $ || window.$;
 	// _jQuery node list._
 	$.extend(can, $, {
 		trigger: function (obj, event, args, bubbles) {
@@ -19,16 +18,6 @@ steal('jquery', 'can/util/can.js', 'can/util/attr', "can/event", 'can/util/array
 					};
 				}
 				event.target = event.target || obj;
-				if(args){
-					if( args.length && typeof args === "string") {
-						args = [args];
-					} else if(! args.length ) {
-						args = [args];
-					}
-				}
-				if(!args){
-					args = [];
-				}
 				can.dispatch.call(obj, event, args);
 			}
 		},

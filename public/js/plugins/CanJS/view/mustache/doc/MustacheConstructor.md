@@ -1,5 +1,6 @@
-@constructor can.MustacheConstructor can.Mustache
+@constructor can.Mustache
 @release 1.1
+@hide
 
 @deprecated {2.1} As of 2.1, this is considered an internal API.  Use [can.mustache] to create
 templates.
@@ -7,7 +8,7 @@ templates.
 @description Logic-less [http://mustache.github.io/ mustache] templates with live binding 
 when used with [can.Maps](#can_observe).
 
-@signature `new can.Mustache(options)`
+@signature `new can.mustache(options)`
 
 Creates an instance of a mustache template. This is typically not used directly in 
 favor of [can.view] or [can.mustache].

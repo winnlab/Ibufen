@@ -13,7 +13,7 @@
 <ol id="qunit-tests"></ol>
 <div id="qunit-test-area"></div>
 
-<script type="text/javascript" src="../bower_components/steal/steal.js"></script>
+<script type="text/javascript" src="../lib/steal/steal.js"></script>
 <script type="text/javascript" src="//code.jquery.com/qunit/qunit-1.14.0.js"></script>
 <script type="text/javascript">
     if (typeof QUnit === 'undefined') {
@@ -22,13 +22,10 @@
     }
 
     QUnit.config.autostart = false;
-    setTimeout(function(){
-		steal("can/model/model_test.js", function() {
-			can.dev.logLevel = 3;
-	        QUnit.start();
-		});
-    },1000)
-
+	steal("can/model/model_test.js", function() {
+		can.dev.logLevel = 3;
+        QUnit.start();
+	});
 </script>
 </body>
 </html>

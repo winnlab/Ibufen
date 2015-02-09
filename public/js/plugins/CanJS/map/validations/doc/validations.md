@@ -58,7 +58,7 @@ There are several built-in validation methods so you don't have to define your o
 - [can.Map.validations.static.validateFormatOf can.Map.validateFormatOf]<code>(attrNames, regexp, options)</code> Attributes match the regular expression.	
 - [can.Map.validations.static.validateInclusionOf can.Map.validateInclusionOf]<code>( attrNames, inArray, [options] )</code> Attributes are available in a particular array.	
 - [can.Map.validations.static.validateLengthOf can.Map.validateLengthOf]<code>(attrNames, min, max, [options])</code> Attributes' lengths are in the given range.	
-- [can.Map.validations.static.validatePresenceOf can.Map.validatePresenceOf]<code>( attrNames, [options] )</code> Attributes are not blank.	
+- [can.Map.validations.static.validatePresenceOf can.Map.validatePrese]<code>( attrNames, [options] )</code> Attributes are not blank.	
 - [can.Map.validations.static.validateRangeOf can.Map.validateRangeOf]<code>(attrNames, low, hi, [options])</code> Attributes are in the given numeric range.
 
 ## Error Method
@@ -95,4 +95,4 @@ Use [can.Map::bind bind] to listen to error messages:
 Click a person's name to update their birthday.  If you put the date
 in the future, say the year 2525, it will report back an error.
 
-@demo can/map/validations/doc/validations.html
+@demo can/map/validations/validations.html

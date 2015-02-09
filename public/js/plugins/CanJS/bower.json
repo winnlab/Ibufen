@@ -2,7 +2,7 @@
   "name": "CanJS",
   "repo": "bitovi/canjs",
   "description": "Can do JavaScript MVC",
-	"version": "2.0.7",
+	"version": "2.1.0-pre.1",
   "main": "can.jquery.js",
   "keywords": [
     "mvc",
@@ -11,11 +11,10 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "qunit": "~1.14.0",
+    "qunit": "~1.12.0",
     "zepto": "~1.0.0",
     "benchmark": "~1.0.0",
     "requirejs": "~2.1.10",
-    "steal": "git://github.com/bitovi/steal#738455bbf1eaf28b14ed6c22cb2ae9ade7248c05",
-    "dojo" : "1.8.6"
+    "steal": "git://github.com/bitovi/steal.git#438a3826d8b65637bdeb4c65ea1c432f0d3da811"
   }
 }

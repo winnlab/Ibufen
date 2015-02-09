@@ -96,7 +96,7 @@ steal('can/util', function (can) {
 		// You should only be using `//` if you are using an AMD loader like `steal` or `require` (not almond).
 		if (url.match(/^\/\//)) {
 			url = url.substr(2);
-			url = !window.steal ?
+			url = ( typeof window === "undefined" || ! window.steal ) ?
 				url :
 				steal.config()
 					.root.mapJoin("" + steal.id(url));
@@ -393,41 +393,20 @@ steal('can/util', function (can) {
 			//!steal-remove-end
 
 			can[info.suffix] = $view[info.suffix] = function (id, text) {
-				var renderer,
-					renderFunc;
 				// If there is no text, assume id is the template text, so return a nameless renderer.
 				if (!text) {
-					renderFunc = function(){
-						if(!renderer){
-							// if the template has a fragRenderer already, just return that.
-							if(info.fragRenderer) {
-								renderer = info.fragRenderer(null, id);
-							} else {
-								renderer = makeRenderer(info.renderer(null, id));
-							}
-						}
-						return renderer.apply(this, arguments);
-					};
-					renderFunc.render = function() {
-						var textRenderer = info.renderer(null, id);
-						return textRenderer.apply(textRenderer, arguments);
-					};
-					return renderFunc;
-				}
-				var registeredRenderer = function(){
-					if(!renderer){
-						if(info.fragRenderer) {
-							renderer = info.fragRenderer(id, text);
-						} else {
-							renderer = info.renderer(id, text);
-						}
+					// if the template has a fragRenderer already, just return that.
+					if(info.fragRenderer) {
+						return info.fragRenderer(null, id);
+					} else {
+						return makeRenderer(info.renderer(null, id));
 					}
-					return renderer.apply(this, arguments);
-				};
+
+				}
 				if(info.fragRenderer) {
-					return $view.preload( id, registeredRenderer );
+					return $view.preload( id, info.fragRenderer(id, text) );
 				} else {
-					return $view.preloadStringRenderer(id, registeredRenderer);
+					return $view.preloadStringRenderer(id, info.renderer(id, text));
 				}
 
 			};
@@ -648,7 +627,7 @@ steal('can/util', function (can) {
 				// Return the deferred...
 				return deferred;
 			} else {
-				// get is called async but in
+				// get is called async but in 
 				// ff will be async so we need to temporarily reset
 				reading = can.__clearReading();
 
@@ -694,7 +673,7 @@ steal('can/util', function (can) {
 				return response;
 			}
 		},
-
+		
 		/**
 		 * @hide
 		 * Registers a view with `cached` object.  This is used
@@ -713,7 +692,7 @@ steal('can/util', function (can) {
 			} else {
 				renderer = makeRenderer( info.renderer(id, text) );
 			}
-
+			
 			def = def || new can.Deferred();
 
 			// Cache if we are caching.

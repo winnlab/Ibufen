@@ -1,7 +1,7 @@
 steal("can/construct/proxy", "can/control", function () {
 	/* global Car */
 	var isSteal = typeof steal !== 'undefined';
-	QUnit.module('can/construct/proxy');
+	module('can/construct/proxy');
 	test('static proxy if control is loaded first', function () {
 		var curVal = 0;
 		expect(2);

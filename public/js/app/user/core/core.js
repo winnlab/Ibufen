@@ -1,9 +1,13 @@
+'use strict';
+import can from 'can/'
+import 'jquery'
 import 'can/map/delegate/'
 import 'can/map/define/'
 
 import config from 'rConfig'
+import 'helpers'
+
 import Router from 'router'
-import helpers from 'helpers'
 
 var Core = can.Control.extend(
 	{

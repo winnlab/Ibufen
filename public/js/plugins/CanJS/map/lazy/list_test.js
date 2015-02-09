@@ -1,5 +1,5 @@
 steal("can/util", "can/test", function () {
-	QUnit.module('can/list/lazy');
+	module('can/list/lazy');
 	test('list attr changes length', function () {
 		var l = new can.LazyList([
 			0,

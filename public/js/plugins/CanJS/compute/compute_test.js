@@ -1,5 +1,5 @@
 steal("can/compute", "can/test", "can/map", function () {
-	QUnit.module('can/compute');
+	module('can/compute');
 	test('single value compute', function () {
 		var num = can.compute(1);
 		num.bind('change', function (ev, newVal, oldVal) {
@@ -315,14 +315,6 @@ steal("can/compute", "can/test", "can/map", function () {
 		});
 		
 		async([]);
-	});
-
-	test("compute.read works with a Map wrapped in a compute", function() {
-		var parent = can.compute(new can.Map({map: {first: "Justin" }}));
-		var reads = ["map", "first"];
-
-		var result = can.compute.read(parent, reads);
-		equal(result.value, "Justin", "The correct value is found.");
 	});
 	
 });

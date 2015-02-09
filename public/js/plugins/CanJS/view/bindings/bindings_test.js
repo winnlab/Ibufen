@@ -1,5 +1,5 @@
-steal("can/view/bindings", "can/map", "can/test", "can/view/stache", function (special) {
-	QUnit.module('can/view/bindings', {
+steal("can/view/bindings", "can/map", "can/test", function (special) {
+	module('can/view/bindings', {
 		setup: function () {
 			document.getElementById("qunit-test-area")
 				.innerHTML = "";
@@ -553,25 +553,6 @@ steal("can/view/bindings", "can/map", "can/test", "can/view/stache", function (s
 		can.append(can.$('#qunit-test-area'), frag);
 		var input = can.$('#qunit-test-area')[0].getElementsByTagName('input')[0];
 		ok(input.checked, 'checkbox value bound');
-	});
-
-
-	test("template with view binding breaks in stache, not in mustache (#966)", function(){
-		var templateString = '<a href="javascript://" can-click="select">'+
-								'{{#if thing}}\n<div />{{/if}}'+
-								'<span>{{name}}</span>'+
-							 '</a>';
-		//var mustacheRenderer = can.mustache(templateString);
-		var stacheRenderer = can.stache(templateString);
-		
-		var obj = new can.Map({thing: 'stuff'});
-		
-		
-		//mustacheRenderer(obj);
-		//ok(true, 'mustache worked without errors');
-		stacheRenderer(obj);
-		ok(true, 'stache worked without errors');
-		
 	});
 
 

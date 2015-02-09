@@ -1,8 +1,8 @@
 /* jshint asi:true*/
 /*global Router*/
-steal("can/control/route",  "can/test",function () {
+steal("can/control/route", function () {
 
-	QUnit.module("can/control/route", {
+	module("can/control/route", {
 		setup: function () {
 			stop();
 			can.route.routes = {};

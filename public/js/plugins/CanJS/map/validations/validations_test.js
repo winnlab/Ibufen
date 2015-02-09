@@ -1,6 +1,6 @@
 /*global Person,Task*/
 steal("can/map/validations", "can/compute", "can/test", function () {
-	QUnit.module('can/map/validations', {
+	module('can/map/validations', {
 		setup: function () {
 			can.Map.extend('Person', {}, {});
 		}

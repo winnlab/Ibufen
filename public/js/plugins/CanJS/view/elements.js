@@ -56,7 +56,6 @@ steal('can/util', "can/view",function (can) {
 		 */
 		tagMap: {
 			'': 'span',
-			colgroup: 'col',
 			table: 'tbody',
 			tr: 'td',
 			ol: 'li',
@@ -69,7 +68,6 @@ steal('can/util', "can/view",function (can) {
 		},
 		// a tag's parent element
 		reverseTagMap: {
-			col: 'colgroup',
 			tr: 'tbody',
 			option: 'select',
 			td: 'tr',

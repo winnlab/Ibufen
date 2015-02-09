@@ -1,6 +1,6 @@
 /*global School*/
 steal("can/map/setter", "can/test", function () {
-	QUnit.module('can/map/setter');
+	module('can/map/setter');
 	test('setter testing works', function () {
 		var Contact = can.Map({
 			setBirthday: function (raw) {
