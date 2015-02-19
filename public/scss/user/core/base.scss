@@ -31,11 +31,6 @@ body {
 			background: url('/img/user/320/logo.png') no-repeat center;
 		}
 		
-		.icons {
-			height: 100%;
-			width: 112px;
-		}
-		
 		.icon {
 			width: 26px;
 			height: 26px;
@@ -56,9 +51,9 @@ body {
 			button {
 				@include border_radius(0);
 				height: 100%;
-				width: 100%;
-				font-size: 14px;
-				padding: 0;
+				font-size: 12px;
+				line-height: 12px;
+				padding: 0 20px;
 			}
 			
 			.content {
@@ -118,11 +113,6 @@ body {
 			background: url('/img/user/640/logo.png') no-repeat center;
 		}
 		
-		.icons {
-			height: 100%;
-			width: 203px;
-		}
-		
 		.icon {
 			width: 26px;
 			height: 26px;
@@ -143,9 +133,9 @@ body {
 			button {
 				@include border_radius(0);
 				height: 100%;
-				width: 100%;
 				font-size: 14px;
-				padding: 0;
+				line-height: 14px;
+				padding: 0 22px;
 			}
 			
 			.content {
@@ -191,11 +181,6 @@ body {
 			background: url('/img/user/640/logo.png') no-repeat center;
 		}
 		
-		.icons {
-			height: 100%;
-			width: 203px;
-		}
-		
 		.icon {
 			width: 26px;
 			height: 26px;
@@ -216,9 +201,8 @@ body {
 			button {
 				@include border_radius(0);
 				height: 100%;
-				width: 100%;
-				font-size: 14px;
-				padding: 0;
+				font-size: 16px;
+				line-height: 16px;
 			}
 			
 			.content {
@@ -247,7 +231,12 @@ body {
 	}
 	
 	button {
+		@include border_radius(0);
 		opacity: 0.9;
+		vertical-align: top;
+		height: 100%;
+		font-size: 18px;
+		line-height: 18px;
 		
 		&:hover {
 			opacity: 0.8;
@@ -255,6 +244,19 @@ body {
 		
 		&:active {
 			opacity: 1;
+		}
+		
+		&.advices {
+			background-color: white;
+			color: #4d4d4d;
+			padding: 0 38px;
+			border-left: 1px solid #cccccc;
+		}
+		
+		&.sopelka {
+			background-color: #2e6fb1;
+			color: white;
+			padding: 0 22px;
 		}
 	}
 	
@@ -272,18 +274,9 @@ body {
 	
 	.icons {
 		position: absolute;
-		height: 40px;
+		height: 100%;
 		right: 0;
 		text-align: right;
-	}
-	
-	button.advices {
-		background-color: #175fa9;
-		color: white;
-		font-size: 16px;
-		line-height: 16px;
-		height: 40px;
-		padding: 0 38px;
 	}
 	
 	.icon {
