@@ -323,7 +323,8 @@ body {
 		z-index: 5;
 		height: 90px;
 		top: 0px;
-		background-color: rgba(255, 255, 255, 0.2);
+		/* background-color: rgba(255, 255, 255, 0.2); */
+		background-color: white;
 		
 		&.scrolled {
 			background-color: white;
@@ -351,7 +352,8 @@ body {
 		.fever {
 			@include transition(color 0.3s ease-in-out);
 			vertical-align: middle;
-			color: transparent;
+			/* color: transparent; */
+			color: #595959;
 			font-family: 'PT_Sans_Italic';
 			margin-left: 18px;
 		}
