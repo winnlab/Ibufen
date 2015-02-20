@@ -134,9 +134,7 @@ var Core = can.Control.extend(
 		
 		'a.sopelka click': function(el, ev) {
 			ev.preventDefault();
-			
-			var win = window.open('/sopelka', '_blank');
-			return win.focus();
+			window.location = '/sopelka';
 		}
 	}
 );
