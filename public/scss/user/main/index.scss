@@ -1479,9 +1479,10 @@
 		color: #4d91ca;
 		
 		button {
+			@include border_radius(999999px !important);
 			background: url('/img/user/1280/dashed_button.png') no-repeat;
 			background-color: transparent;
-			height: 40px;
+			height: 40px !important;
 			padding: 0 25px;
 			font-size: 16px;
 			font-family: 'PT_Sans_Bold';
