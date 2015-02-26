@@ -22,11 +22,26 @@ export default can.Control.extend({
 			
 			$(options.modulesContainer).prepend(html);
 			
+			if(!can.route.bindings.pushstate) {
+				var href = location.href.split(options.base).slice(3).join('/'),
+					hrefLastChar = href.length - 1;
+				
+				if(href[hrefLastChar] == '/') {
+					href = href.substr(0, hrefLastChar); // remove ending slash
+				}
+				
+				return this.new_module(href);
+			}
+			
 			can.route.bindings.pushstate.root = options.base;
 			can.route.ready();
 		},
 		
 		'.new_module click': function (el, ev) {
+			if(!can.route.bindings.pushstate) {
+				return;
+			}
+			
 			ev.preventDefault();
 			
 			var options = this.options,
